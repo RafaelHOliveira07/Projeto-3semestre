@@ -125,6 +125,39 @@ height: 20rem;
     background-color: rgb(20, 39, 20);
 }
 
+.sec-sobre img{
+    width: 30rem;
+    height: 10rem;
+    
+    
+}
+.sec-sobre h2{
+    color: white;
+    font-size: 4rem;
+    font-variant: small-caps;
+}
+
+.sec-sobre p{
+    font-size: 2rem;
+    color: white;
+
+}
+
+.sec-sobre{
+    width: 70rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 20px;
+    gap: 2rem;
+    border: 2px solid rgba(0, 0, 0, 0.13);
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.342);
+    background-color: rgb(20, 39, 20);
+}
+
 footer{
     
     background-color: rgb(20, 20, 20);height: 10rem;
