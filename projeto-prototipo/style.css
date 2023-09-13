@@ -5,7 +5,9 @@
 }
 
 
+
 body{
+
     width: 100%;
     height: 100%;
     background-color: rgb(44, 87, 57);
@@ -14,103 +16,123 @@ body{
 
 header{
 
-    height: 1rem;
     width: 100%;
-
-    
+    height: 1rem;
+  
 }
 .h1-logo{
+
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: left;
-   height: 5.5rem;
+    height: 3rem;
 }
 
 .h1-logo img{
-width: 90%;
 
-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.616));
-margin-bottom: 0.3rem;
-overflow: hidden;
-
-
-
+    width: 90%;
+    margin-top: 0.5rem;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.616));
+    margin-bottom: 0.3rem;
 
 }
 
 .head-back{
+
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
-    padding: 0rem 1rem;
+ 
     
 }
     
 nav{
+
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.3rem;
+   
+   
+
+
 }
 nav a{
-    color: white;
+
+    color: #fff;
+    padding: 1rem;
     text-decoration: none;
-    font-size: 1rem;
+    font-weight: lighter;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.3rem;
+    backdrop-filter: blur(0);
+    transition: 0.4s ease-in-out;
+
+}
+nav a:hover{
+    
+    background-color: rgba(160, 160, 160, 0.452);
+    backdrop-filter: blur(30px);
+ 
+    
 }
 
 
 .img-fundo{
+
     width: 100%;
+     height: 90vh;
     background:linear-gradient(to bottom,
-        rgba(0, 0, 0, 0.918),rgba(0, 0, 0, 0.171)
+        rgba(0, 0, 0, 0.952),rgba(0, 0, 0, 0)
       ), url('img/post-id-dia-internacional-da-reciclagem-secretaria-municip.jpg');
     background-position: center;
-    height: 50rem;
     background-size: cover;
     background-repeat: no-repeat;
-    
-    
-    
-    
 
 }
-
+.carousel .carousel-item {
+    width: 100%;
+   
+    height: 20rem;
+    
+    
+}
 main{
     
-  
     height: max-content;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    padding: 5rem;
-    
-
-    
+    padding: 5rem; 
 
 }
 
 .sec-principal img{
-width: 30rem;
-height: 20rem;
 
+    width: 30rem;
+    height: 20rem;
 
 }
 .sec-principal h2{
-    color: white;
+
+    color: rgb(16, 56, 8);
     font-size: 2rem;
     font-variant: small-caps;
 }
 
 .sec-principal p{
-    color: white;
-
+    font-weight: bold;
+    color: rgb(16, 56, 8);
+    letter-spacing: 1px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1rem;
+    
 }
 
 .sec-principal{
+
     width: 30rem;
     display: flex;
     text-align: center;
@@ -121,66 +143,73 @@ height: 20rem;
     border-radius: 20px;
     gap: 2rem;
     border: 2px solid rgba(0, 0, 0, 0.13);
-    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.342);
-    background-color: rgb(20, 39, 20);
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.212);
+    background-color: rgb(226, 226, 226);
+    
+
 }
 
 footer{
     
     background-color: rgb(20, 20, 20);height: 10rem;
-    padding: 2rem;
+    
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1rem;
+
 }
 footer h3{
+
     color: #fff;
     font-size: 2rem;
     font-variant: small-caps;
     overflow: hidden;
     position: absolute;
-    margin-bottom: 9rem;
+    margin-bottom: 7rem;
     
    
 }
 
 .redes{
-    margin-top: 1.3rem;
+
+    margin-top: 1rem;
     display: flex;
     flex-direction: row;
     gap: 3rem;
 }
 .redes .fa {
+
     border: 0.16rem solid rgb(255, 255, 255);
     padding: 0.5rem;
     font-size: 2rem;
-    width: 2rem;
+    width: 3rem;
     border-radius: 10rem;
     text-align: center;
     text-decoration: none;
     filter: drop-shadow(4px 4px 3px rgba(0, 0, 0, 0.555));
     text-shadow: 3px 2px 2px rgba(0, 0, 0, 0.678);
-    
-    transition:  0.6s  ;
+    transition:  0.4s ease-in-out;
     transform: scale(1);
     
   }
   
-  /* Add a hover effect if you want */
+
   .fa:hover {
+    
     border-color:  rgb(255, 255, 255);
     color: rgb(255, 255, 255);
     background-color: rgb(16, 56, 8);
-    
-    transform: scale(1.2);
+    transform:  scale(1.2) ;
     
    
   }
   
 
   .fa-facebook ,.fa-youtube, .fa-twitter{
+
     background: rgb(28, 151, 65);
     color: white;
+
   }
