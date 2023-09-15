@@ -319,7 +319,7 @@ footer h3 {
 
 #mainMenu ul{
 
-  
+  object-fit: cover;
   width: 62rem;
   height: 3rem;
   background-color: #0000002b;
@@ -328,14 +328,14 @@ footer h3 {
   flex-direction: row;
   justify-content: right;
   align-items: center;
-  
+  padding-right: 1rem;
  
 } 
 #mainMenu li {
   object-fit: cover;
   display: flex;
   justify-content: right;
-  padding-right: 1rem;
+  
 }
 
 
