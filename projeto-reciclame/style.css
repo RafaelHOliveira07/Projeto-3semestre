@@ -201,7 +201,7 @@ header {
 .sec-01 {
 
   
-  padding: 3rem;
+ 
   margin: 1rem 0rem;
   text-align: center;
   border-radius: 10px;
@@ -226,7 +226,8 @@ label{
   align-items: center;
   font-weight: bolder;
   gap: 20px;
-  width: 30%;
+ width: 25rem;
+ padding: 1rem;
 
   
 }
@@ -236,7 +237,7 @@ label span{
   padding: 5px;
   font-variant: small-caps;
   letter-spacing: 5px;
-  font-size: 1.3em;
+
   text-align: center;
 }
 
@@ -246,9 +247,10 @@ label span{
   border: 2px solid #1313135d;
   border-radius: 10px;
   max-width: 100%;
-  width: 90rem;
+  width: 70rem;
+  height: max-content;
   justify-content: space-around;
-  padding: 3rem;
+  padding: 1rem;
   display: flex;
   flex-direction: row;
   background-color: #133f0ce9;
@@ -274,6 +276,7 @@ box-shadow: 7px 5px 9px 1px rgba(0, 0, 0, 0.603);
   font-weight: bolder;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 2px;
+  padding: 1rem;
   text-align: left;
   font-size: 1.2em;
 }
@@ -290,13 +293,16 @@ box-shadow: 7px 5px 9px 1px rgba(0, 0, 0, 0.603);
   padding: 2rem;
   max-width: 100%;
   display: flex;
-gap: 3rem;
+  gap: 3rem;
 
 
 
 }
-
-
+/*MAPS*/
+#mapa {
+  height:400px;
+  width:400px;
+}
 .container-fluid {
   padding-right: 0;
   padding-left: 0;

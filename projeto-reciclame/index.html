@@ -125,19 +125,18 @@
       </div>
     </section>
 
-
-    <section class="sec-01">
+    <section class="sec-01 container-fluid" id="sec-ini">
 
       <h1 class="dysplay-4">Encontre a lixeira mais proxima de voce:</h1>
+      <div class="img-sec">
       <p class="lead">Basta clicar em permitir sua localização e pronto, nosso mapa ira te indicar as lixeiras mais
         proximas da sua localização atual:</p>
 
-      <img class="img-fluid"
-        src="img/data=i3EQJD6adE5hbO6cVWgfCytp_LsrY25ffVt7kEd9XIVFeif6NvnE-pEe_29AgBnmlt4Pq41yNrdA4oG7DOua4Fs3aAirKJVWqlGOLPlxVQe2OtdcowMQ38AH1K7QjdUicNCHfYnICaDMrc04ud3Ez1y0Lii6KtECirTBOhjbw_HzE-iBmD--mqTe_RFSUk-Yg.png"
-        alt="">
+        <div id="mapa"></div>
+       
 
       <a class="" href="#"><button type="button" class="btn btn-light">permitir localização</button></a>
-
+</div>
 
     </section>
     <section class="sec-01 ">
@@ -176,7 +175,27 @@
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> 
+    <script>
+    
+          function inicializar() {
+            var coordenadas = {lat: -22.912869, lng: -43.228963};
+    
+            var mapa = new google.maps.Map(document.getElementById('mapa'), {
+              zoom: 15,
+              center: coordenadas 
+            });
+    
+            var marker = new google.maps.Marker({
+              position: coordenadas,
+              map: mapa,
+              title: 'Meu marcador'
+            });
+          }
+        </script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDI6sqzCaoeciImz8OHSiKIrcgrRFV15HQ&callback=inicializar">
+        </script>
 </body>
 
 </html>
