@@ -219,8 +219,8 @@ header {
   flex-direction: column;
 }
 
-#sec-ini h2 {
-  color: rgb(17, 83, 5)
+#sec-ini>h2 {
+  color: rgb(255, 255, 255)
 }
 
 label {
@@ -246,7 +246,7 @@ label span {
 
 
 
-.img-sec {
+.img-sec,.map {
   border: 2px solid #1313135d;
   border-radius: 10px;
   max-width: 100%;
@@ -263,28 +263,34 @@ label span {
   -webkit-box-shadow: 7px 5px 9px 1px rgba(0, 0, 0, 0.572);
   -moz-box-shadow: 7px 5px 9px 1px rgba(0, 0, 0, 0.554);
   box-shadow: 7px 5px 9px 1px rgba(0, 0, 0, 0.603);
-
+  
 
 }
 
 
 
-.img-maps{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  background-size: cover;
-  padding: 1rem;
+.text-map>p ,h2{
+  color: rgb(4, 65, 4);
+  font-weight: bolder;
 }
 
-.img-sec img {
+
+
+#agi,#eco,#tec {
   width: 30%;
   filter: invert(100%);
 
 }
 
+.work{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#work{
+  width: 60%;
+}
 
 .img-sec p {
   max-width: 100%;
