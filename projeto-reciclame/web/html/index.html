@@ -142,7 +142,7 @@
 
 
 
-        <div class="img-sec">
+        <div class="img-sec container-fluid">
           <label for="agi">
             <img class="img-fluid" src="../img/iteracao.png" alt="agilidade" id="agi"> <span>Mais agilidade na
               coleta</span></label>
@@ -151,7 +151,7 @@
           </p>
         </div>
 
-        <div class="img-sec">
+        <div class="img-sec container-fluid">
           <label for="eco">
             <img class="img-fluid" src="../img/eco.png" alt="eco" id="eco"><span>Aliado da natureza</span></label>
           <p>Para isso foram desenvolvidas lixeiras inteligentes voltadas para lixo reciclavel, ou seja o intuito e
@@ -160,7 +160,7 @@
           </p>
         </div>
 
-        <div class="img-sec">
+        <div class="img-sec container-fluid">
           <label for="tecb">
             <img class="img-fluid" src="../img/tecnologia.png" alt="tec" id="tec"><span>Portal Web com
               dashbord</span></label>
@@ -172,69 +172,79 @@
       </div>
     </section>
     <section class="sec-01 container-fluid" id="sec-ini">
-<div class="img-maps">
+      <h2 class="dysplay-4">Encontre a lixeira mais proxima de voce:</h2>
 
-  <div class="text-map">
-    <h2 class="dysplay-4">Encontre a lixeira mais proxima de voce:</h2>
+          <p class="lead">Basta clicar em permitir sua localização e pronto, nosso mapa ira te indicar as lixeiras mais
+            proximas da sua localização atual e também o estado delas podendo ser Cheio, Pela metade, ou vazias:</p>
+      <div class="img-maps">
 
-    <p class="lead">Basta clicar em permitir sua localização e pronto, nosso mapa ira te indicar as lixeiras mais
-      proximas da sua localização atual:</p>
-</div>
-    <section class="map">
-      <div id="map-container">
-        <div id="locations-panel">
-          <div id="locations-panel-list">
-            <div class="headermap">
-              <h1 class="search-title">
-                <img src="https://fonts.gstatic.com/s/i/googlematerialicons/place/v15/24px.svg" />
-                Find a location near you
-              </h1>
-              <div class="search-input">
-                <input id="location-search-input" placeholder="Enter your address or zip code">
-                <div id="search-overlay-search" class="search-input-overlay search">
-                  <button id="location-search-button">
-                    <img class="icon" src="https://fonts.gstatic.com/s/i/googlematerialicons/search/v11/24px.svg"
-                      alt="Search" />
-                  </button>
+        <div class="text-map container-fluid">
+          
+        </div>
+        <section class="map">
+          <div id="map-container">
+            <div id="locations-panel">
+              <div id="locations-panel-list">
+                <div class="headermap">
+                  <h1 class="search-title">
+                    <img src="https://fonts.gstatic.com/s/i/googlematerialicons/place/v15/24px.svg" />
+                    Find a location near you
+                  </h1>
+                  <div class="search-input">
+                    <input id="location-search-input" placeholder="Enter your address or zip code">
+                    <div id="search-overlay-search" class="search-input-overlay search">
+                      <button id="location-search-button">
+                        <img class="icon" src="https://fonts.gstatic.com/s/i/googlematerialicons/search/v11/24px.svg"
+                          alt="Search" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="section-name" id="location-results-section-name">
+                  All locations
+                </div>
+                <div class="results">
+                  <ul id="location-results-list"></ul>
                 </div>
               </div>
             </div>
-            <div class="section-name" id="location-results-section-name">
-              All locations
-            </div>
-            <div class="results">
-              <ul id="location-results-list"></ul>
-            </div>
+            <div id="gmp-map"></div>
+
           </div>
-        </div>
-        <div id="gmp-map"></div>
-   
-</div>  <script
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap&libraries=places,geometry&solution_channel=GMP_QB_locatorplus_v7_cABD"
-          async defer></script>
+          <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap&libraries=places,geometry&solution_channel=GMP_QB_locatorplus_v7_cABD"
+            async defer></script>
+
+
+        </section>
+
+        <a class="" href="#"><button type="button" class="btn btn-light">permitir localização</button></a>
+      </div>
+
+
+      <section class="sec-03 container-fluid">
+
+          <h2>Cadastro para Empresas parceiras:</h2>
           
+        <div class="work-sec container-fluid"> 
+          
+          <div>
+            
+              <p class="parawork">Esse cadastro é voltado para empreses que desejam utilizar dos dados gerados pelo
+                projeto, como peso, rotas,
+                localização e muito mais.</p>
+              <p class="parawork">Para se cadastrar <a href="cadastro.html">Clique aqui</a> e preencha os dados
+                necessarios</p>
+            </div>
        
-    </section>
+           
+            
+            <img id="work" src="../img/artigo2.webp" alt="">
 
-    <a class="" href="#"><button type="button" class="btn btn-light">permitir localização</button></a>
-    </div>
-
-
-    <section class="sec-01 ">
-
-
-        <div class="img-sec">
-          <div class="work">
-        <h2>Cadastro para Empresas parceiras:</h2>
-        
-        <p class="parawork">Esse cadastro é voltado para empreses que desejam utilizar dos dados gerados pelo projeto, como peso, rotas,
-          localização e muito mais.</p>
-          <img id="work" src="../img/artigo2.webp" alt="">
-        <p class="parawork">Para se cadastrar <a href="cadastro.html">Clique aqui</a> e preencha os dados necessarios</p>
-      </div>
-      </div>
       
-    </section>
+        </div>
+
+      </section>
 
 
   </main>
