@@ -54,7 +54,7 @@
     </script>
   <link rel="stylesheet" href="../style/style.css">
   <link href="../style/stylemap.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
   <title>Projeto</title>
@@ -63,7 +63,7 @@
 <body>
   <header>
     <div class="h1-logo">
-      <img src="img/Free_Sample_By_Wix__3_-removebg-preview.png" alt="">
+      <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt="">
     </div>
 
     <nav class="navbar navbar-expand-lg main-nav px-0">
@@ -100,9 +100,16 @@
 
   </header>
   <div class="dark-fade"></div>
-  <div class="car-text">
+  <div class="car-text" data-aos="fade-up"
+  data-aos-offset="200"
+  data-aos-delay="50"
+  data-aos-duration="1000"
+  data-aos-easing="ease-in-out"
+  data-aos-mirror="true"
+  data-aos-once="false"
+  data-aos-anchor-placement="top-center">
     <h1 class="">Seja-bem vindo</h1>
-    <p>Ao projeto Reciclame onde reciclar tem tudo haver com tecnologia</p>
+    <p class="lead">Ao projeto Reciclame onde reciclar tem tudo haver com tecnologia</p>
 
   </div>
   <div id="carouselExampleControls" class="img-fundo carousel slide" data-ride="carousel">
@@ -131,57 +138,93 @@
   <main class=" container-fluid">
 
 
-    <section class="sec-01 container-fluid" id="sec-ini">
+    <section class="sec-01 container-fluid" >
 
 
-      <div class="text flex-column">
-        <h2 class="dysplay-4">Conheça nosso projeto</h2>
+      <div class="text flex-column"data-aos="fade-down"
+        data-aos-offset="100"
+        data-aos-delay="50"
+        data-aos-duration="500"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="false"
+   >
+        <h2  >Conheça nosso projeto</h2>
+
+
+      </div>
 
 
 
-
-
-
-        <div class="img-sec container-fluid">
+        <div class="img-sec container-fluid" data-aos="fade-right"
+        data-aos-offset="200"
+        data-aos-delay="50"
+        data-aos-duration="500"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="true">
           <label for="agi">
             <img class="img-fluid" src="../img/iteracao.png" alt="agilidade" id="agi"> <span>Mais agilidade na
               coleta</span></label>
-          <p>Nosso projeto tem como objetivo, auxiliar a coleta seletiva de bairros e cidades, oferecendo dados que
+          <p class="lead">Nosso projeto tem como objetivo, auxiliar a coleta seletiva de bairros e cidades, oferecendo dados que
             poderam ser utilizados para melhorar rotas e economizar o tempo de quem cuida do nosso lixo no dia a dia.
           </p>
         </div>
 
-        <div class="img-sec container-fluid">
+        <div class="img-sec container-fluid" data-aos="fade-right"
+        data-aos-offset="200"
+        data-aos-delay="50"
+        data-aos-duration="500"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="true">
           <label for="eco">
             <img class="img-fluid" src="../img/eco.png" alt="eco" id="eco"><span>Aliado da natureza</span></label>
-          <p>Para isso foram desenvolvidas lixeiras inteligentes voltadas para lixo reciclavel, ou seja o intuito e
+          <p class="lead">Para isso foram desenvolvidas lixeiras inteligentes voltadas para lixo reciclavel, ou seja o intuito e
             gerar menos desperdicio e selecionar corretamente o que é reciclavel, ajudando tanto a cidade, as empresas,
             grupos de coleta e também o cidadão.
           </p>
         </div>
 
-        <div class="img-sec container-fluid">
+        <div class="img-sec container-fluid" data-aos="fade-right"
+        data-aos-offset="200"
+        data-aos-delay="50"
+        data-aos-duration="800"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="true">
           <label for="tecb">
             <img class="img-fluid" src="../img/tecnologia.png" alt="tec" id="tec"><span>Portal Web com
               dashbord</span></label>
-          <p>Nossas lixeiras serao equipadas com sensores que devolveram a nossa plataforma, imformações como,
+          <p class="lead">Nossas lixeiras serao equipadas com sensores que devolveram a nossa plataforma, imformações como,
             quantidade de lixo que foi armazenada e coletada nas lixeiras entre muitas outras.E o nosso principal
             atrativo é pode localizar as lixeiras maix proximas de você, utilizando a tecnologia do Google maps.</p>
 
         </div>
-      </div>
+      
     </section>
-    <section class="sec-01 container-fluid" id="sec-ini">
+    <section class="sec-02 container-fluid" data-aos="fade-down"
+    data-aos-offset="100"
+    data-aos-delay="50"
+    data-aos-duration="1000"
+    data-aos-easing="ease-in-out"
+    data-aos-mirror="true"
+    data-aos-once="false" >
       <h2 class="dysplay-4">Encontre a lixeira mais proxima de voce:</h2>
 
-          <p class="lead">Basta clicar em permitir sua localização e pronto, nosso mapa ira te indicar as lixeiras mais
-            proximas da sua localização atual e também o estado delas podendo ser Cheio, Pela metade, ou vazias:</p>
+     
       <div class="img-maps">
 
         <div class="text-map container-fluid">
-          
+
         </div>
-        <section class="map">
+        <section class="map"data-aos="zoom-in"
+        data-aos-offset="100"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="false" >
           <div id="map-container">
             <div id="locations-panel">
               <div id="locations-panel-list">
@@ -214,36 +257,51 @@
           <script
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap&libraries=places,geometry&solution_channel=GMP_QB_locatorplus_v7_cABD"
             async defer></script>
-
-
+      
         </section>
-
+ <div class="text-leg flex-column">
+            <p class="lead">Basta clicar em permitir sua localização e pronto, nosso mapa ira te indicar as lixeiras mais
+              proximas da sua localização atual e também o estado delas podendo ser Cheio, Pela metade, ou vazias:</p>      
+               <h3>Legenda</h3>
+               <div class="legenda ">
+          
+            <label for="leg1">
+                <span class="leg" id="leg1"></span>cheia</label>
+               <label for="leg2">
+                <span class="leg" id="leg2"></span>metade</label>
+                <label for="leg3">
+                <span class="leg" id="leg3"></span>vazia</label> 
+             
+              </div>
+</div>
         <a class="" href="#"><button type="button" class="btn btn-light">permitir localização</button></a>
       </div>
 
 
       <section class="sec-03 container-fluid">
 
-          <h2>Cadastro para Empresas parceiras:</h2>
-          
-        <div class="work-sec container-fluid"> 
-          
-          <div>
-            
-              <p class="parawork">Esse cadastro é voltado para empreses que desejam utilizar dos dados gerados pelo
-                projeto, como peso, rotas,
-                localização e muito mais.</p>
-              <p class="parawork">Para se cadastrar <a href="cadastro.html">Clique aqui</a> e preencha os dados
-                necessarios</p>
-            </div>
-       
-           
-            
-            <img id="work" src="../img/artigo2.webp" alt="">
+        <h2>Cadastro para Empresas parceiras:</h2>
 
-      
+        <div class="work-sec ">
+
+          <div class="parawork">
+
+            <p class="lead" >Esse cadastro é voltado para empreses que desejam utilizar dos dados gerados pelo
+              projeto, como peso, rotas,
+              localização e muito mais.</p>
+              
+            <p class="lead" >Para se cadastrar <a href="cadastro.html">Clique aqui</a> e preencha os dados
+              necessarios</p>
+
+          </div>
+     
+  <div id="work">
+
+            <img src="../img/artigo2.webp" alt="">
+          </div>
+
         </div>
-
+   
       </section>
 
 
@@ -259,6 +317,10 @@
     </div>
 
   </footer>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
