@@ -17,6 +17,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
   <script src="../javascript/maps.js"></script>
+
   <script>
     const CONFIGURATION = {
       "locations": [
@@ -260,8 +261,7 @@
       
         </section>
  <div class="text-leg flex-column">
-            <p>Basta clicar em permitir sua localização e pronto, nosso mapa ira te indicar as lixeiras mais
-              proximas da sua localização atual e também o estado delas podendo ser Cheio, Pela metade, ou vazias:</p>      
+            
                <h3>Legenda</h3>
                <div class="legenda ">
           
@@ -273,8 +273,15 @@
                 <span class="leg" id="leg3"></span>vazia</label> 
              
               </div>
+               <p>Basta clicar em permitir sua localização e pronto, nosso mapa ira te indicar as lixeiras mais
+              proximas da sua localização atual e também o estado delas podendo ser Cheio, Pela metade, ou vazias:</p>  
+                 
 </div>
-        <a class="" href="#"><button type="button" class="btn btn-light">permitir localização</button></a>
+<button class="btn btn-default" id="askButton">
+  Ask for location
+</button>
+
+<div id="target"></div>
       </div>
 
 

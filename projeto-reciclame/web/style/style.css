@@ -306,16 +306,31 @@ label span {
 }
 
 /*legenda*/
-.legenda{
-  display: flex;
-  width: 30rem;
-
+.text-leg{
 
 }
 
+.legenda{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+}
+
+.legenda label{
+  display: flex;
+  width: 10rem;
+  font-weight: bolder;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.572);
+  justify-content: center;
+  align-items: center;
+  
+  
+}
 #leg1{
   background-color: red;
-
+  
 }
 #leg2{
   background-color: yellow;
@@ -326,26 +341,27 @@ label span {
   background-color: rgb(35, 224, 6);
   
 }
-.legenda label{
-  display: flex;
-  flex-direction: row;
-  font-weight: bolder;
-  letter-spacing: 3px;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.572);
-  
-}
+
 .leg{
   width: 3rem;
+  height: 3rem;
   border: 3px solid black;
+  border-radius: 30rem;
 }
 
+
+.text-leg p{
+  width: 30rem;
+  text-align: center;
+}
 h2{
-  color: rgb(255, 255, 255);
+  color: rgb(28, 112, 31);
   font-weight: bolder;
-  font-size: 4em;
-  padding: 1rem;
+  font-size: 3em;
+  font-variant: small-caps;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.893);
 }
+
 .sec-02 p
   {
     color: rgb(255, 255, 255);
@@ -364,9 +380,14 @@ h3{
 
 .text-leg{
   display: flex;
-  width: 60rem;
+  justify-content: center;
+
   max-width: 100%;
   padding: 2rem;
+   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='250' preserveAspectRatio='none' viewBox='0 0 1440 250'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1033%26quot%3b)' fill='none'%3e%3crect width='1440' height='250' x='0' y='0' fill='rgba(1%2c 47%2c 9%2c 1)'%3e%3c/rect%3e%3cpath d='M35 250L285 0L475.5 0L225.5 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1034%26quot%3b)'%3e%3c/path%3e%3cpath d='M282.6 250L532.6 0L858.1 0L608.1 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1034%26quot%3b)'%3e%3c/path%3e%3cpath d='M485.20000000000005 250L735.2 0L864.2 0L614.2 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1034%26quot%3b)'%3e%3c/path%3e%3cpath d='M748.8000000000001 250L998.8000000000001 0L1225.3000000000002 0L975.3000000000001 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1034%26quot%3b)'%3e%3c/path%3e%3cpath d='M1427 250L1177 0L1015 0L1265 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1035%26quot%3b)'%3e%3c/path%3e%3cpath d='M1195.4 250L945.4000000000001 0L745.9000000000001 0L995.9000000000001 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1035%26quot%3b)'%3e%3c/path%3e%3cpath d='M920.8 250L670.8 0L433.79999999999995 0L683.8 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1035%26quot%3b)'%3e%3c/path%3e%3cpath d='M715.1999999999999 250L465.19999999999993 0L387.19999999999993 0L637.1999999999999 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1035%26quot%3b)'%3e%3c/path%3e%3cpath d='M1225.2779081198844 250L1440 35.27790811988433L1440 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1034%26quot%3b)'%3e%3c/path%3e%3cpath d='M0 250L214.72209188011567 250L 0 35.27790811988433z' fill='url(%26quot%3b%23SvgjsLinearGradient1035%26quot%3b)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1033'%3e%3crect width='1440' height='250' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='0%25' y1='100%25' x2='100%25' y2='0%25' id='SvgjsLinearGradient1034'%3e%3cstop stop-color='rgba(32%2c 183%2c 78%2c 0.12)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(32%2c 183%2c 78%2c 0.12)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='100%25' y1='100%25' x2='0%25' y2='0%25' id='SvgjsLinearGradient1035'%3e%3cstop stop-color='rgba(32%2c 183%2c 78%2c 0.12)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(32%2c 183%2c 78%2c 0.12)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
+   background-size: cover;
+   border-radius: 20px;
+   border: 5px outset rgba(16, 16, 16, 0.168);
 }
 
 #agi,#eco,#tec {
