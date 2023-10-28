@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sssssssiss", $nome, $cnpj, $email, $senha, $cidade, $estado, $endereco, $numero, $tel, $cep);
 
     if ($stmt->execute() === true) {
-        echo "<h4>Dados inseridos com sucesso!</h4>";
+        echo "<h4>cadastro realizado com sucesso inseridos com sucesso!</h4>";
     } else {
         echo "Erro ao inserir dados: " . $stmt->error;
     }
