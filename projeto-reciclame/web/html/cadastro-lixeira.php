@@ -28,7 +28,7 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="tipo">Tipo material</label>
-                <select name="tipo" class="form-control">
+                <select name="tipo" class="form-control" required>
                     <option selected>Escolher...</option>
                     <option value="Plastico">Plastico</option>
                     <option value="Papel">Papel</option>
@@ -38,7 +38,7 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="localizacao">Localização</label>
-                <input type="text" class="form-control" name="localizacao" placeholder=" Rua , Bairro , Cidade, País">
+                <input type="text" class="form-control" name="localizacao" placeholder=" Rua , Bairro , Cidade, País" required>
                 
             </div>
        
@@ -46,7 +46,7 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="peso">Capacidade de peso</label>
-                <select name="peso" class="form-control">
+                <select name="peso" class="form-control" required>
                     <option selected>Escolher...</option>
                     <option value="50">50 Kilos</option>
                     <option value="60">60 Kilos</option>
@@ -56,7 +56,7 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="volume">Volume</label>
-                <select name="volume" class="form-control">
+                <select name="volume" class="form-control" required>
                     <option selected>Escolher...</option>
                     <option value="50">50 Litros</option>
                     <option value="100">100 Litros</option>

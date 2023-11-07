@@ -2,6 +2,8 @@
 require_once '../classes/Lixeira.php';
 $lixeira = new Lixeira();
 $pontos = $lixeira->obterPontosParaMapa();
+$lixeira = new Lixeira();
+$lista = $lixeira->listar();
 $pontos_json = json_encode($pontos);
 ?>
 <!DOCTYPE html>
@@ -16,19 +18,21 @@ $pontos_json = json_encode($pontos);
         function initMap() {
             var map = new google.maps.Map(document.getElementById('mapa'), {
                 center: { lat: -22.4363, lng: -46.8222 },
-                zoom: 12
+                zoom: 15
             });
 
             // Recupera os pontos do PHP como um array JSON e adiciona marcadores no mapa
             var pontos = <?php echo $pontos_json; ?>;
-
+          
             pontos.forEach(function(ponto) {
                 var marker = new google.maps.Marker({
                     position: { lat: parseFloat(ponto.latitude), lng: parseFloat(ponto.longitude) },
                     map: map,
-                    title: 'LixeiraReciclame '
+                    title: 'Localização: ' + ponto.nome +  '/ Capacidade: ' + 'volume: ' + ponto.volume + ' e ' + 'Peso: ' + ponto.peso 
+                    
                 });
             });
+          
         }
     </script>
     <!-- Carregue a API do Google Maps com um retorno de chamada -->

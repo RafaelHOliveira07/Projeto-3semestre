@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
         // Prepara o endereço para a URL
         $enderecoFormatado = urlencode($localizacao);
-    
+        $nome = $localizacao;
         // Faz a requisição para a API de geocodificação do Google Maps
         $url = "https://maps.googleapis.com/maps/api/geocode/json?address={$enderecoFormatado}&key={$chaveAPI}";
         $resposta = file_get_contents($url);
@@ -45,11 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Por exemplo, você pode usar uma conexão com banco de dados para inserir os dados
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-             $query = "INSERT INTO tb_lixeiras (tipo, latitude, longitude, peso, volume) VALUES ('$tipo', '$latitude', '$longitude', '$peso', '$volume')";
+             $query = "INSERT INTO tb_lixeiras (tipo, latitude, longitude, peso, volume,nome) VALUES ('$tipo', '$latitude', '$longitude', '$peso', '$volume','$nome')";
              $conn->query($query);
     
             // A mensagem abaixo é apenas para demonstração
-            echo "Latitude: {$latitude}, Longitude: {$longitude} - Dados gravados com sucesso!";
+            echo "Dados gravados com sucesso!";
         } else {
             echo "Não foi possível encontrar as coordenadas para o endereço fornecido.";
         }

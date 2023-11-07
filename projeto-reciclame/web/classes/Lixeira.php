@@ -8,6 +8,7 @@ class Lixeira{
     public $volume;
     public $latitude;
     public $longitude;
+   public $nome;
 
 
 
@@ -48,6 +49,7 @@ public function carregar(){
     $this->volume = $linha['volume'];
     $this->latitude = $linha['latitude'];
     $this->longitude = $linha['longitude'];
+    $this->nome = $linha['nome'];
     
     
 }
@@ -63,7 +65,9 @@ public function obterPontosParaMapa(){
             'longitude' => $linha['longitude'],
             'tipo' => $linha['tipo'],
             'peso' => $linha['peso'],
-            'volume' => $linha['volume']
+            'volume' => $linha['volume'],
+            'nome' => $linha['nome']
+           
         ];
         $pontos[] = $ponto;
     }
