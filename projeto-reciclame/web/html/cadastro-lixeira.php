@@ -1,3 +1,10 @@
+
+<?php
+    require_once "../classes/Lixeira.php";
+    $lixeira = new Lixeira();
+    $lista = $lixeira->listar();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -16,6 +23,8 @@
 <main class=" container-fluid">
      <h4>Cadastro de Lixeiras</h4>
     <form action="gravar-lixeira.php" method="POST">
+        
+    
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="tipo">Tipo material</label>
@@ -29,8 +38,10 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="localizacao">Localização</label>
-                <input type="text" class="form-control" name="localizacao" placeholder="Local de instalação">
+                <input type="text" class="form-control" name="localizacao" placeholder=" Rua , Bairro , Cidade, País">
+                
             </div>
+       
         </div>
         <div class="form-row">
             <div class="form-group col-md-4">

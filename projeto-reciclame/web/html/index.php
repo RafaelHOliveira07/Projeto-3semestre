@@ -1,3 +1,9 @@
+<?php
+require_once '../classes/Lixeira.php';
+$lixeira = new Lixeira();
+$pontos = $lixeira->obterPontosParaMapa();
+$pontos_json = json_encode($pontos);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,54 +11,32 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Latest compiled and minified CSS -->
+  
+  <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('mapa'), {
+                center: { lat: -22.4363, lng: -46.8222 },
+                zoom: 12
+            });
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- jQuery library -->
+            // Recupera os pontos do PHP como um array JSON e adiciona marcadores no mapa
+            var pontos = <?php echo $pontos_json; ?>;
+
+            pontos.forEach(function(ponto) {
+                var marker = new google.maps.Marker({
+                    position: { lat: parseFloat(ponto.latitude), lng: parseFloat(ponto.longitude) },
+                    map: map,
+                    title: 'LixeiraReciclame '
+                });
+            });
+        }
+    </script>
+    <!-- Carregue a API do Google Maps com um retorno de chamada -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap" async defer></script>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/handlebars/4.7.7/handlebars.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
-  <script src="../javascript/maps.js"></script>
-
-  <script>
-    const CONFIGURATION = {
-      "locations": [
-        { "title": "Fatec Itapira - \"Dr. Ogari de Castro Pacheco\"", "address1": "R. Tereza Lera Paoletti", "address2": "590 - Bela Vista, Itapira - SP, 13974-080, Brasil", "coords": { "lat": -22.431013880399117, "lng": -46.83445436441803 }, "placeId": "ChIJ2_14zwf-yJQRwt03K-DmFl4" }
-      ],
-      "mapOptions": { "center": { "lat": 38.0, "lng": -100.0 }, "fullscreenControl": true, "mapTypeControl": false, "streetViewControl": false, "zoom": 4, "zoomControl": true, "maxZoom": 17, "mapId": "" },
-      "mapsApiKey": "AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk",
-      "capabilities": { "input": true, "autocomplete": true, "directions": false, "distanceMatrix": true, "details": false, "actions": false }
-    };
-
-    function initMap() {
-      new LocatorPlus(CONFIGURATION);
-    }
-  </script>
-  <script id="locator-result-items-tmpl" type="text/x-handlebars-template">
-      {{#each locations}}
-        <li class="location-result" data-location-index="{{index}}">
-          <button class="select-location">
-            <h2 class="name">{{title}}</h2>
-          </button>
-          <div class="address">{{address1}}<br>{{address2}}</div>
-          {{#if travelDistanceText}}
-            <div class="distance">{{travelDistanceText}}</div>
-          {{/if}}
-          <a class="directions-button" href="" target="_blank" title="Get directions to this location on Google Maps">
-            <svg width="34" height="34" viewBox="0 0 34 34"
-                  fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.5867 9.24375L17.9403 8.8902V8.8902L17.5867 9.24375ZM16.4117 9.24375L16.7653 9.59731L16.7675 9.59502L16.4117 9.24375ZM8.91172 16.7437L8.55817 16.3902L8.91172 16.7437ZM8.91172 17.9229L8.55817 18.2765L8.55826 18.2766L8.91172 17.9229ZM16.4117 25.4187H16.9117V25.2116L16.7652 25.0651L16.4117 25.4187ZM16.4117 25.4229H15.9117V25.63L16.0582 25.7765L16.4117 25.4229ZM25.0909 17.9229L25.4444 18.2765L25.4467 18.2742L25.0909 17.9229ZM25.4403 16.3902L17.9403 8.8902L17.2332 9.5973L24.7332 17.0973L25.4403 16.3902ZM17.9403 8.8902C17.4213 8.3712 16.5737 8.3679 16.0559 8.89248L16.7675 9.59502C16.8914 9.4696 17.1022 9.4663 17.2332 9.5973L17.9403 8.8902ZM16.0582 8.8902L8.55817 16.3902L9.26527 17.0973L16.7653 9.5973L16.0582 8.8902ZM8.55817 16.3902C8.0379 16.9105 8.0379 17.7562 8.55817 18.2765L9.26527 17.5694C9.13553 17.4396 9.13553 17.227 9.26527 17.0973L8.55817 16.3902ZM8.55826 18.2766L16.0583 25.7724L16.7652 25.0651L9.26517 17.5693L8.55826 18.2766ZM15.9117 25.4187V25.4229H16.9117V25.4187H15.9117ZM16.0582 25.7765C16.5784 26.2967 17.4242 26.2967 17.9444 25.7765L17.2373 25.0694C17.1076 25.1991 16.895 25.1991 16.7653 25.0694L16.0582 25.7765ZM17.9444 25.7765L25.4444 18.2765L24.7373 17.5694L17.2373 25.0694L17.9444 25.7765ZM25.4467 18.2742C25.9631 17.7512 25.9663 16.9096 25.438 16.3879L24.7354 17.0995C24.8655 17.2279 24.8687 17.4363 24.7351 17.5716L25.4467 18.2742Z" fill="#1967d2"/>
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M19 19.8333V17.75H15.6667V20.25H14V16.9167C14 16.4542 14.3708 16.0833 14.8333 16.0833H19V14L21.9167 16.9167L19 19.8333Z" fill="#1967d2"/>
-              <circle class="directions-button-background" cx="17" cy="17" r="16.5" stroke="#e0e0e0"/>
-            </svg>
-          </a>
-        </li>
-      {{/each}}
-    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../style/style.css">
   <link href="../style/stylemap.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -213,69 +197,19 @@
      
       <div class="img-maps">
 
-        <div class="text-map container-fluid">
-
-        </div>
-        <section class="map"data-aos="zoom-in"
-        data-aos-offset="100"
-        data-aos-delay="50"
-        data-aos-duration="1000"
-        data-aos-easing="ease-in-out"
-        data-aos-mirror="true"
-        data-aos-once="false" >
-          <div id="map-container">
-            <div id="locations-panel">
-              <div id="locations-panel-list">
-                <div class="headermap">
-                  <h1 class="search-title">
-                    <img src="https://fonts.gstatic.com/s/i/googlematerialicons/place/v15/24px.svg" />
-                    Find a location near you
-                  </h1>
-                  <div class="search-input">
-                    <input id="location-search-input" placeholder="Enter your address or zip code">
-                    <div id="search-overlay-search" class="search-input-overlay search">
-                      <button id="location-search-button">
-                        <img class="icon" src="https://fonts.gstatic.com/s/i/googlematerialicons/search/v11/24px.svg"
-                          alt="Search" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="section-name" id="location-results-section-name">
-                  All locations
-                </div>
-                <div class="results">
-                  <ul id="location-results-list"></ul>
-                </div>
-              </div>
-            </div>
-            <div id="gmp-map"></div>
-
-          </div>
-          <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap&libraries=places,geometry&solution_channel=GMP_QB_locatorplus_v7_cABD"
-            async defer></script>
+        <div id="mapa"></div>
       
-        </section>
- <div class="text-leg flex-column">
+       
+ <div class="text-leg 
+ ">
             
-               <h3>Legenda</h3>
-               <div class="legenda ">
-          
-            <label for="leg1">
-                <span class="leg" id="leg1"></span>cheia</label>
-               <label for="leg2">
-                <span class="leg" id="leg2"></span>metade</label>
-                <label for="leg3">
-                <span class="leg" id="leg3"></span>vazia</label> 
-             
-              </div>
+   
                <p>Basta clicar em permitir sua localização e pronto, nosso mapa ira te indicar as lixeiras mais
-              proximas da sua localização atual e também o estado delas podendo ser Cheio, Pela metade, ou vazias:</p>  
+              proximas da sua localização atual:</p>  
                  
 </div>
 
-
+ </section>
 <div id="target"></div>
       </div>
 
