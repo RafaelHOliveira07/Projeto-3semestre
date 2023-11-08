@@ -28,7 +28,11 @@ $pontos_json = json_encode($pontos);
                 var marker = new google.maps.Marker({
                     position: { lat: parseFloat(ponto.latitude), lng: parseFloat(ponto.longitude) },
                     map: map,
-                    title: 'Localização: ' + ponto.nome +  '/ Capacidade: ' + 'volume: ' + ponto.volume + ' e ' + 'Peso: ' + ponto.peso 
+                    title: 'Localização: ' + ponto.nome +  
+                    ' Capacidade: (' + ' Volume: '
+                     + ponto.volume + '  - ' 
+                     + ' Peso: ' + ponto.peso + ')' + 
+                      ' Tipo: ' + ponto.tipo 
                     
                 });
             });
