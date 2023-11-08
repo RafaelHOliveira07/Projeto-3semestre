@@ -5,6 +5,7 @@ $pontos = $lixeira->obterPontosParaMapa();
 $lixeira = new Lixeira();
 $lista = $lixeira->listar();
 $pontos_json = json_encode($pontos);
+require_once 'maps.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,31 +15,7 @@ $pontos_json = json_encode($pontos);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <script>
-        function initMap() {
-            var map = new google.maps.Map(document.getElementById('mapa'), {
-                center: { lat: -22.4363, lng: -46.8222 },
-                zoom: 15
-            });
-
-            // Recupera os pontos do PHP como um array JSON e adiciona marcadores no mapa
-            var pontos = <?php echo $pontos_json; ?>;
-          
-            pontos.forEach(function(ponto) {
-                var marker = new google.maps.Marker({
-                    position: { lat: parseFloat(ponto.latitude), lng: parseFloat(ponto.longitude) },
-                    map: map,
-                    title: 'Localização: ' + ponto.nome +  
-                    ' Capacidade: (' + ' Volume: '
-                     + ponto.volume + '  - ' 
-                     + ' Peso: ' + ponto.peso + ')' + 
-                      ' Tipo: ' + ponto.tipo 
-                    
-                });
-            });
-          
-        }
-    </script>
+ 
     <!-- Carregue a API do Google Maps com um retorno de chamada -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap" async defer></script>
 
@@ -208,12 +185,12 @@ $pontos_json = json_encode($pontos);
         <div id="mapa"></div>
       
        
- <div class="text-leg 
- ">
+ <div class="text-leg">
             
    
                <p>Basta clicar em permitir sua localização e pronto, nosso mapa ira te indicar as lixeiras mais
-              proximas da sua localização atual:</p>  
+              proximas da sua localização atual</p>  
+              <p>Também é possivel traçar rotas a partir da sua localização, basta clicar em qualquer icone das nossa lixeiras e pronto</p>
                  
 </div>
 

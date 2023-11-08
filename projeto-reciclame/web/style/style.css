@@ -188,6 +188,12 @@ padding: 3rem;
   background: #000;
 }
 
+.gm-style-iw-d>div{
+  color: #000;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 .main-header {
   position: fixed;
   top: 25px;
@@ -360,11 +366,6 @@ label span {
 
 
 
-
-.text-leg p{
-  width: 30rem;
-  text-align: center;
-}
 h2{
   color: rgb(7, 186, 13);
   font-weight: bolder;
@@ -392,6 +393,7 @@ h3{
 .text-leg{
   display: flex;
   justify-content: center;
+  flex-direction: column;
   max-width: 100%;
   padding: 2rem;
   backdrop-filter: blur(14px) saturate(180%);
