@@ -1,5 +1,6 @@
 
 <?php
+session_start();
 $email = $_POST["email"];
 $senhaLimpa = $_POST["senha"];
 $senha = hash("sha256", $senhaLimpa);
@@ -21,12 +22,11 @@ $linha = $resultado->fetch();
 $empresa_logado = $linha['email'];
 
 if ($empresa_logado == null) {
-	// Usuário ou senha inválida
-	echo "erro ao fazer login";
-} 
-else {
+    // Usuário ou senha inválida
+    echo "Erro ao fazer login. Credenciais inválidas.";
+} else {
+    $_SESSION['usuario_logado'] = $empresa_logado;
+    header('Location: index-logado.php');
 
-	$_SESSION['usuario_logado'] = $empresa_logado;
-	header('Location: index-logado.php');
 }
 ?>
