@@ -25,8 +25,8 @@ if ($empresa_logado == null) {
 	echo "erro ao fazer login";
 } 
 else {
-	session_start();
-	$_SESSION['empresa_logado'] = $empresa_logado;
-	header('Location: index.php');
+
+	$_SESSION['usuario_logado'] = $empresa_logado;
+	header('Location: index-logado.php');
 }
 ?>

@@ -2,7 +2,7 @@
 
 
 
-require_once 'empresa-verifica.php';
+
 require_once '../classes/Lixeira.php';
 $lixeira = new Lixeira();
 $pontos = $lixeira->obterPontosParaMapa();
@@ -53,42 +53,23 @@ require_once 'maps.php';
 
       </button>
       <div class="collapse navbar-collapse" id="mainMenu">
-  <!-- Se a empresa está logada, mostra o menu de navegação para empresa logada -->
-<?php if(!isset($_SESSION['empresa_logado'])){?>
-    
-   
 
-    <ul class="navbar-nav ml-auto text-uppercase f1">
+  <ul class="navbar-nav ml-auto text-uppercase f1">
+    <li>
+        <a href="#home">Início</a>
+    </li>
+    <li>
+        <a href="#sec-01">Sobre</a>
+    </li>
+
         <li>
-            <a href="#home">Início</a>
+            <a href="empresa-form.php">Entrar</a>
         </li>
         <li>
-            <a href="#sec-01">Sobre</a>
+            <a href="cadastro-empresa.html">Cadastrar-se</a>
         </li>
-        <li>
-            <a href="dashboard-empresa.php">Dashboard</a>
-        </li>
-        <li>
-            <a href="empresa-logout.php">Sair</a>
-        </li>
-    </ul>
-<?php } else { ?>
-    <!-- Se a empresa não está logada, mostra o menu de navegação padrão -->
-    <ul class="navbar-nav ml-auto text-uppercase f1">
-        <li>
-            <a href="#home">Início</a>
-        </li>
-        <li>
-            <a href="#sec-01">Sobre</a>
-        </li>
-        <li>
-            <a href="empresa-login.php">Entrar</a>
-        </li>
-        <li>
-            <a href="cadastro-empresa.html">Cadastrar</a>
-        </li>
-    </ul>
-<?php } ?>
+    
+</ul>
 
 </div>
 
@@ -119,164 +100,178 @@ require_once 'maps.php';
 
 
 
-
-
-
   <main class=" container-fluid">
 
 
-    <section class="sec-01 container-fluid" >
+<section class="sec-01 container-fluid" >
 
 
-      <div class="text flex-column"data-aos="fade-down"
-        data-aos-offset="100"
-        data-aos-delay="50"
-        data-aos-duration="500"
-        data-aos-easing="ease-in-out"
-        data-aos-mirror="true"
-        data-aos-once="false"
-   >
-        <h2 id="sec-01"  >Conheça nosso projeto</h2>
-
-
-      </div>
-
-
-
-        <div class="img-sec container-fluid" data-aos="fade-right"
-        data-aos-offset="200"
-        data-aos-delay="50"
-        data-aos-duration="500"
-        data-aos-easing="ease-in-out"
-        data-aos-mirror="true"
-        data-aos-once="true" >
-          <label for="agi">
-            <img class="img-fluid" src="../img/iteracao.png" alt="agilidade" id="agi"> <span>Mais agilidade na
-              coleta</span></label>
-              <div class="p">
-          <p>Nosso projeto tem como objetivo, auxiliar a coleta seletiva de bairros e cidades, oferecendo dados que
-            poderam ser utilizados para melhorar rotas e economizar o tempo de quem cuida do nosso lixo no dia a dia.
-          </p></div>
-        </div>
-
-        <div class="img-sec container-fluid" data-aos="fade-right"
-        data-aos-offset="200"
-        data-aos-delay="50"
-        data-aos-duration="500"
-        data-aos-easing="ease-in-out"
-        data-aos-mirror="true"
-        data-aos-once="true">
-          <label for="eco">
-            <img class="img-fluid" src="../img/eco.png" alt="eco" id="eco"><span>Aliado da natureza</span></label>
-            <div class="p">
-          <p>Para isso foram desenvolvidas lixeiras inteligentes voltadas para lixo reciclavel, ou seja o intuito e
-            gerar menos desperdicio e selecionar corretamente o que é reciclavel, ajudando tanto a cidade, as empresas,
-            grupos de coleta e também o cidadão.</p>
-          </div>
-          
-        </div>
-
-        <div class="img-sec container-fluid" data-aos="fade-right"
-        data-aos-offset="200"
-        data-aos-delay="50"
-        data-aos-duration="800"
-        data-aos-easing="ease-in-out"
-        data-aos-mirror="true"
-        data-aos-once="true">
-          <label for="tecb">
-            <img class="img-fluid" src="../img/tecnologia.png" alt="tec" id="tec"><span>Portal Web com
-              dashbord</span></label>
-              <div class="p">
-          <p >Nossas lixeiras serao equipadas com sensores que devolveram a nossa plataforma, imformações como,
-            quantidade de lixo que foi armazenada e coletada nas lixeiras entre muitas outras.E o nosso principal
-            atrativo é pode localizar as lixeiras maix proximas de você, utilizando a tecnologia do Google maps.</p>
-          </div>
-        </div>  
-      
-    </section>
-    <section class="sec-02 container-fluid" data-aos="fade-down"
+  <div class="text flex-column"data-aos="fade-down"
     data-aos-offset="100"
     data-aos-delay="50"
-    data-aos-duration="1000"
+    data-aos-duration="500"
     data-aos-easing="ease-in-out"
     data-aos-mirror="true"
-    data-aos-once="false" >
-      <h2 class="dysplay-4">Encontre a lixeira mais proxima de voce:</h2>
+    data-aos-once="true"
+>
+    <h2 id="sec-01"  >Conheça nosso projeto</h2>
 
-     
-      <div class="img-maps">
 
-        <div id="mapa"></div>
+  </div>
+
+
+
+    <div class="img-sec container-fluid" data-aos="fade-right"
+    data-aos-offset="200"
+    data-aos-delay="50"
+    data-aos-duration="500"
+    data-aos-easing="ease-in-out"
+    data-aos-mirror="true"
+    data-aos-once="true" >
+      <label for="agi">
+        <img class="img-fluid" src="../img/iteracao.png" alt="agilidade" id="agi"> <span>Mais agilidade na
+          coleta</span></label>
+          <div class="p">
+      <p>Nosso projeto tem como objetivo, auxiliar a coleta seletiva de bairros e cidades, oferecendo dados que
+        poderam ser utilizados para melhorar rotas e economizar o tempo de quem cuida do nosso lixo no dia a dia.
+      </p></div>
+    </div>
+
+    <div class="img-sec container-fluid" data-aos="fade-right"
+    data-aos-offset="200"
+    data-aos-delay="50"
+    data-aos-duration="500"
+    data-aos-easing="ease-in-out"
+    data-aos-mirror="true"
+    data-aos-once="true">
+      <label for="eco">
+        <img class="img-fluid" src="../img/eco.png" alt="eco" id="eco"><span>Aliado da natureza</span></label>
+        <div class="p">
+      <p>Para isso foram desenvolvidas lixeiras inteligentes voltadas para lixo reciclavel, ou seja o intuito e
+        gerar menos desperdicio e selecionar corretamente o que é reciclavel, ajudando tanto a cidade, as empresas,
+        grupos de coleta e também o cidadão.</p>
+      </div>
       
-       
- <div class="text-leg">
-            
+    </div>
+
+    <div class="img-sec container-fluid" data-aos="fade-right"
+    data-aos-offset="200"
+    data-aos-delay="50"
+    data-aos-duration="800"
+    data-aos-easing="ease-in-out"
+    data-aos-mirror="true"
+    data-aos-once="true">
+      <label for="tecb">
+        <img class="img-fluid" src="../img/tecnologia.png" alt="tec" id="tec"><span>Portal Web com
+          dashbord</span></label>
+          <div class="p">
+      <p >Nossas lixeiras serao equipadas com sensores que devolveram a nossa plataforma, imformações como,
+        quantidade de lixo que foi armazenada e coletada nas lixeiras entre muitas outras.E o nosso principal
+        atrativo é pode localizar as lixeiras maix proximas de você, utilizando a tecnologia do Google maps.</p>
+      </div>
+    </div>  
+  
+</section>
+<section class="sec-02 container-fluid" data-aos="fade-down"
+data-aos-offset="100"
+data-aos-delay="50"
+data-aos-duration="1000"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true" >
+  <h2 class="dysplay-4">Encontre a lixeira mais proxima de voce:</h2>
+
+ 
+  <div class="img-maps">
+
+    <div id="mapa"></div>
+  
    
-               <p>Basta clicar em permitir sua localização e pronto, nosso mapa ira te indicar as lixeiras mais
-              proximas da sua localização atual</p>  
-              <p>Também é possivel traçar rotas a partir da sua localização, basta clicar em qualquer icone das nossa lixeiras e pronto</p>
-                 
+<div class="text-leg">
+        
+
+           <p>Basta clicar em permitir sua localização e pronto, nosso mapa ira te indicar as lixeiras mais
+          proximas da sua localização atual</p>  
+          <p>Também é possivel traçar rotas a partir da sua localização, basta clicar em qualquer icone das nossa lixeiras e pronto</p>
+             
 </div>
 
- </section>
-<div id="target"></div>
+</section>
+
+
+
+  <section class="sec-03 ">
+
+    <h2>Cadastro para Empresas parceiras:</h2>
+
+    <div class="work-sec" >
+
+      <div class="parawork" >
+
+        <p data-aos="fade-right"
+data-aos-offset="200"
+data-aos-delay="100"
+data-aos-duration="1000"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true">Esse cadastro é voltado para empreses que desejam utilizar dos dados gerados pelo
+          projeto, como peso, rotas,
+          localização e muito mais.</p>
+          <p data-aos="fade-right"
+data-aos-offset="200"
+data-aos-delay="100"
+data-aos-duration="1100"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true">Para se cadastrar <a href="">Clique aqui</a> e preencha os dados
+          necessarios</p>
+          
+       
+
       </div>
+ 
+      <div id="work" data-aos="fade-left"
+data-aos-offset="200"
+data-aos-delay="1000"
+data-aos-duration="20000"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true">
 
-
-      <section class="sec-03 ">
-
-        <h2>Cadastro para Empresas parceiras:</h2>
-
-        <div class="work-sec ">
-
-          <div class="parawork">
-
-            <p>Esse cadastro é voltado para empreses que desejam utilizar dos dados gerados pelo
-              projeto, como peso, rotas,
-              localização e muito mais.</p>
-              <p>Para se cadastrar <a href="">Clique aqui</a> e preencha os dados
-              necessarios</p>
-              
-           
-
-          </div>
-     
-          <div id="work">
-
-            <img src="../img/artigo2.webp" alt="">
-            
-          </div>
-
-        </div>
-   
-      </section>
-
-
-  </main>
-
-  <footer>
-    <h3>Redes Sociais</h3>
-    <div class="redes">
-      <a href="#" class="fa fa-facebook"></a>
-      <a href="#" class="fa fa-twitter"></a>
-      <a href="#" class="fa fa-youtube"></a>
+        <img src="../img/artigo2.webp" alt="">
+        
+      </div>
 
     </div>
 
-  </footer>
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
+  </section>
+
+
+</main>
+
+<footer>
+<h3>Redes Sociais</h3>
+<div class="redes">
+  <a href="#" class="fa fa-facebook"></a>
+  <a href="#" class="fa fa-twitter"></a>
+  <a href="#" class="fa fa-youtube"></a>
+
+</div>
+
+</footer>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+AOS.init();
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+crossorigin="anonymous"></script>
 
 
 </body>
