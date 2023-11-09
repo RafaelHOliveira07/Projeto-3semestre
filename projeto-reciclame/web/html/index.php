@@ -1,4 +1,8 @@
 <?php
+
+
+
+require_once 'empresa-verifica.php';
 require_once '../classes/Lixeira.php';
 $lixeira = new Lixeira();
 $pontos = $lixeira->obterPontosParaMapa();
@@ -49,24 +53,44 @@ require_once 'maps.php';
 
       </button>
       <div class="collapse navbar-collapse" id="mainMenu">
-        <ul class="navbar-nav ml-auto text-uppercase f1">
-          <li>
-            <a href="#home">Inico</a>
-          </li>
-          <li>
-            <a href="#sec-01">Sobre</a>
-          </li>
-          <li>
-            <a href="#service">Entrar</a>
-          </li>
-          <li>
-            <a href="cadastro-empresa.html">Cadastra-se</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    </div>
+  <!-- Se a empresa está logada, mostra o menu de navegação para empresa logada -->
+<?php if(!isset($_SESSION['empresa_logado'])){?>
+    
+   
 
+    <ul class="navbar-nav ml-auto text-uppercase f1">
+        <li>
+            <a href="#home">Início</a>
+        </li>
+        <li>
+            <a href="#sec-01">Sobre</a>
+        </li>
+        <li>
+            <a href="dashboard-empresa.php">Dashboard</a>
+        </li>
+        <li>
+            <a href="empresa-logout.php">Sair</a>
+        </li>
+    </ul>
+<?php } else { ?>
+    <!-- Se a empresa não está logada, mostra o menu de navegação padrão -->
+    <ul class="navbar-nav ml-auto text-uppercase f1">
+        <li>
+            <a href="#home">Início</a>
+        </li>
+        <li>
+            <a href="#sec-01">Sobre</a>
+        </li>
+        <li>
+            <a href="empresa-login.php">Entrar</a>
+        </li>
+        <li>
+            <a href="cadastro-empresa.html">Cadastrar</a>
+        </li>
+    </ul>
+<?php } ?>
+
+</div>
 
   </header>
   <div class="dark-fade"></div>

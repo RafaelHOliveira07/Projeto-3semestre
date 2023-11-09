@@ -1,7 +1,6 @@
 <?php
-
-// Verifica se a solicitação é POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// Verifique se o formulário foi enviado
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Conecte-se ao seu banco de dados
     $servername = "localhost";
     $username = "root";
@@ -16,44 +15,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Erro na conexão com o banco de dados: " . $conn->connect_error);
     }
 
-
-    // Recupere e limpe os dados do formulário
-    $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
-    $cnpj = filter_input(INPUT_POST, 'cnpj', FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
-    $senha = filter_input(INPUT_POST, 'senha');
-    $cidade = filter_input(INPUT_POST, 'cidade', FILTER_SANITIZE_STRING);
-    $estado = filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_STRING);
-    $endereco = filter_input(INPUT_POST, 'endereco', FILTER_SANITIZE_STRING);
-    $numero = filter_input(INPUT_POST, 'numero', FILTER_VALIDATE_INT);
-    $tel = filter_input(INPUT_POST, 'tel', FILTER_SANITIZE_STRING);
-    $cep = filter_input(INPUT_POST, 'cep', FILTER_SANITIZE_STRING);
+    // Recupere os dados do formulário e limpe-os
+    $nome = $_POST["nome"];
+    $cnpj = $_POST["cnpj"];
+    $email = $_POST["email"];
+    $senha = $_POST["senha"];
+    $tel = $_POST["tel"];
+    $enderecoCompleto = $_POST["endereco"] . ", " . $_POST["numero"] . ", " . $_POST["cidade"] . ", " . $_POST["estado"] . ", " . $_POST["cep"];
 
     $senha = hash('sha256', $senha);
+    // Sua chave de API do Google Maps
+    $chaveAPI = 'AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk';
 
-    // Consulta SQL para inserir os dados na tabela usando declaração preparada
-    $sql = "INSERT INTO tb_empresas (nome, cnpj, email, senha, cidade, estado, endereco, numero, tel, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    // Prepara o endereço para a URL
+    $enderecoFormatado = urlencode($enderecoCompleto);
+    $url = "https://maps.googleapis.com/maps/api/geocode/json?address={$enderecoFormatado}&key={$chaveAPI}";
+    $resposta = file_get_contents($url);
+    $dados = json_decode($resposta);
 
-    // Preparar a declaração SQL
-    $stmt = $conn->prepare($sql);
+    // Verifica se a resposta da API é bem-sucedida
+    if ($dados->status === 'OK') {
+        // Obtém as coordenadas de latitude e longitude
+        $latitude = $dados->results[0]->geometry->location->lat;
+        $longitude = $dados->results[0]->geometry->location->lng;
+        $localizacao = $dados->results[0]->formatted_address;
 
-    if ($stmt === false) {
-        die("Erro na preparação da consulta: " . $conn->error);
-    }
+        // Monta a consulta SQL com os dados obtidos
+        $query = "INSERT INTO tb_empresas (nome, cnpj, email, senha, tel, latitude, longitude, localizacao) VALUES ('$nome', '$cnpj', '$email', '$senha', '$tel', '$latitude', '$longitude', '$localizacao')";
 
-    // Vincular os parâmetros e executar a consulta
-    $stmt->bind_param("sssssssiss", $nome, $cnpj, $email, $senha, $cidade, $estado, $endereco, $numero, $tel, $cep);
-
-    if ($stmt->execute() === true) {
-        echo "<h4>cadastro realizado com sucesso inseridos com sucesso!</h4>";
+        // Executa a consulta
+        if ($conn->query($query) === TRUE) {
+            echo "Empresa cadastrada com sucesso!";
+        } else {
+            echo "Erro ao cadastrar a empresa: " . $conn->error;
+        }
     } else {
-        echo "Erro ao inserir dados: " . $stmt->error;
+        echo "Erro ao obter coordenadas do endereço fornecido.";
     }
 
-    // Feche a declaração e a conexão
-    $stmt->close();
+    // Fecha a conexão com o banco de dados
     $conn->close();
-} else {
-    echo "Método de solicitação inválido. Use o método POST para enviar o formulário.";
 }
 ?>

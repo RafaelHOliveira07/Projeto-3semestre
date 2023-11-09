@@ -97,7 +97,7 @@
                     <input type="text" class="form-control" name="tel" placeholder="Telefone/Celular" required></label>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="cep">CEP
+                    <label for="cep">CEP:
                     <input type="text" class="form-control" name="cep" placeholder="CEP" required></label>
                 </div>
             </div>
