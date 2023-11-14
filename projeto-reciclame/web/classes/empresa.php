@@ -26,7 +26,7 @@ public function __construct($idEmpresa = false)
 
 public function listar(){
     $sql = "SELECT * FROM tb_empresas";
-    include_once "classes/conexao.php";
+    include_once "conexao.php";
     $resultado = $conexao->query($sql);
     $lista = $resultado->fetchAll();
     return $lista;
@@ -56,7 +56,26 @@ public function carregar(){
             $this->cep = $linha ['cep'];
 
         }
-
+        public function obterPontosParaMapa(){
+            $sql = "SELECT * FROM tb_empresas";
+            $conexao = new PDO('mysql:host=127.0.0.1;dbname=reciclame', 'root', '');
+            $resultado = $conexao->query($sql);
+            $pontos = [];
+        
+            foreach ($resultado as $linha) {
+                $ponto = [
+                    'latitude' => $linha['latitude'],
+                    'longitude' => $linha['longitude'],
+                    'nome' => $linha['nome'],
+           
+                
+                   
+                ];
+                $pontos[] = $ponto;
+            }
+        
+            return $pontos;
+        }
 }
 
 

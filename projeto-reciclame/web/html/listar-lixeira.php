@@ -1,7 +1,7 @@
 <?php
-    require_once "../classes/Empresa.php";
-    $empresa = new Empresa();
-    $lista = $empresa->listar();
+    require_once "../classes/Lixeira.php";
+    $lixeira = new Lixeira();
+    $lista = $lixeira->listar();
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
     <!-- jQuery library -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="../style/style-empresa-adm.css">
-    <title>Empresas Cadastradas</title>
+    <title>Lixeiras Cadastradas</title>
     
 </head>
 <body>
@@ -31,29 +31,32 @@
     </header>
     <main>
     <section class="table-sec">
-    <h1>Empresas Cadastradas</h1>
+    <h1>Lixeiras Cadastradas</h1>
 
 
     <table class="table table-bordered " >
     <thead class="thead-dark">
 
             <th scope="col">Código</th>
-            <th scope="col">Nome</th>
-            <th scope="col">cnpj</th>
-            <th scope="col">email</th>
+            <th scope="col">Material</th>
+            <th scope="col">peso.Max</th>
+            <th scope="col">vol.Max</th>
+        
+            <th scope="col">latitude</th>
+            <th scope="col">longitude</th>    
             <th scope="col">localizacao</th>
-            <th scope="col">tel</th>
-            <th scope="col">açôes</th>
+            <th scope="col">ações</th>
         </tr>
         <?php foreach ($lista as $linha):?>
         <tr class="table-light">
             
-            <td><?php echo $linha['idEmpresa']?></td>
+            <td><?php echo $linha['idLixeira']?></td>
+            <td><?php echo $linha['tipo']?></td>
+            <td><?php echo $linha['peso']?></td>
+            <td><?php echo $linha['volume']?>
+            <td><?php echo $linha['latitude']?></td>
+            <td><?php echo $linha['longitude']?></td>
             <td><?php echo $linha['nome']?></td>
-            <td><?php echo $linha['cnpj']?></td>
-            <td><?php echo $linha['email']?>
-            <td><?php echo $linha['localizacao']?></td>
-            <td><?php echo $linha['tel']?></td>
           
             <td class="act">
                 <a href="#">Atualizar</a>

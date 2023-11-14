@@ -66,7 +66,7 @@ require_once 'maps.php';
             <a href="empresa-form.php">Entrar</a>
         </li>
         <li>
-            <a href="cadastro-empresa.html">Cadastrar-se</a>
+            <a href="cadastro-empresa.php">Cadastrar-se</a>
         </li>
     
 </ul>
