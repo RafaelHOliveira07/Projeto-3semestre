@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Latest compiled and minified CSS -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- jQuery library -->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/handlebars/4.7.7/handlebars.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+  <script src="../javascript/maps.js"></script>
+
+  <script>
+    const CONFIGURATION = {
+      "locations": [
+        { "title": "Fatec Itapira - \"Dr. Ogari de Castro Pacheco\"", "address1": "R. Tereza Lera Paoletti", "address2": "590 - Bela Vista, Itapira - SP, 13974-080, Brasil", "coords": { "lat": -22.431013880399117, "lng": -46.83445436441803 }, "placeId": "ChIJ2_14zwf-yJQRwt03K-DmFl4" }
+      ],
+      "mapOptions": { "center": { "lat": 38.0, "lng": -100.0 }, "fullscreenControl": true, "mapTypeControl": false, "streetViewControl": false, "zoom": 4, "zoomControl": true, "maxZoom": 17, "mapId": "" },
+      "mapsApiKey": "AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk",
+      "capabilities": { "input": true, "autocomplete": true, "directions": false, "distanceMatrix": true, "details": false, "actions": false }
+    };
+
+    function initMap() {
+      new LocatorPlus(CONFIGURATION);
+    }
+  </script>
+  <script id="locator-result-items-tmpl" type="text/x-handlebars-template">
+      {{#each locations}}
+        <li class="location-result" data-location-index="{{index}}">
+          <button class="select-location">
+            <h2 class="name">{{title}}</h2>
+          </button>
+          <div class="address">{{address1}}<br>{{address2}}</div>
+          {{#if travelDistanceText}}
+            <div class="distance">{{travelDistanceText}}</div>
+          {{/if}}
+          <a class="directions-button" href="" target="_blank" title="Get directions to this location on Google Maps">
+            <svg width="34" height="34" viewBox="0 0 34 34"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5867 9.24375L17.9403 8.8902V8.8902L17.5867 9.24375ZM16.4117 9.24375L16.7653 9.59731L16.7675 9.59502L16.4117 9.24375ZM8.91172 16.7437L8.55817 16.3902L8.91172 16.7437ZM8.91172 17.9229L8.55817 18.2765L8.55826 18.2766L8.91172 17.9229ZM16.4117 25.4187H16.9117V25.2116L16.7652 25.0651L16.4117 25.4187ZM16.4117 25.4229H15.9117V25.63L16.0582 25.7765L16.4117 25.4229ZM25.0909 17.9229L25.4444 18.2765L25.4467 18.2742L25.0909 17.9229ZM25.4403 16.3902L17.9403 8.8902L17.2332 9.5973L24.7332 17.0973L25.4403 16.3902ZM17.9403 8.8902C17.4213 8.3712 16.5737 8.3679 16.0559 8.89248L16.7675 9.59502C16.8914 9.4696 17.1022 9.4663 17.2332 9.5973L17.9403 8.8902ZM16.0582 8.8902L8.55817 16.3902L9.26527 17.0973L16.7653 9.5973L16.0582 8.8902ZM8.55817 16.3902C8.0379 16.9105 8.0379 17.7562 8.55817 18.2765L9.26527 17.5694C9.13553 17.4396 9.13553 17.227 9.26527 17.0973L8.55817 16.3902ZM8.55826 18.2766L16.0583 25.7724L16.7652 25.0651L9.26517 17.5693L8.55826 18.2766ZM15.9117 25.4187V25.4229H16.9117V25.4187H15.9117ZM16.0582 25.7765C16.5784 26.2967 17.4242 26.2967 17.9444 25.7765L17.2373 25.0694C17.1076 25.1991 16.895 25.1991 16.7653 25.0694L16.0582 25.7765ZM17.9444 25.7765L25.4444 18.2765L24.7373 17.5694L17.2373 25.0694L17.9444 25.7765ZM25.4467 18.2742C25.9631 17.7512 25.9663 16.9096 25.438 16.3879L24.7354 17.0995C24.8655 17.2279 24.8687 17.4363 24.7351 17.5716L25.4467 18.2742Z" fill="#1967d2"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M19 19.8333V17.75H15.6667V20.25H14V16.9167C14 16.4542 14.3708 16.0833 14.8333 16.0833H19V14L21.9167 16.9167L19 19.8333Z" fill="#1967d2"/>
+              <circle class="directions-button-background" cx="17" cy="17" r="16.5" stroke="#e0e0e0"/>
+            </svg>
+          </a>
+        </li>
+      {{/each}}
+    </script>
+  <link rel="stylesheet" href="../style/style.css">
+  <link href="../style/stylemap.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  <title>Projeto</title>
+</head>
+
+<body>
+  <header>
+    <div class="h1-logo">
+      <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt="">
+    </div>
+
+    <nav class="navbar navbar-expand-lg main-nav px-0">
+
+
+
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu"
+        aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="burg" id="d1"></span>
+        <span class="burg" id="d2"></span>
+        <span class="burg" id="d3"></span>
+
+      </button>
+      <div class="collapse navbar-collapse" id="mainMenu">
+        <ul class="navbar-nav ml-auto text-uppercase f1">
+          <li>
+            <a href="#home">Inico</a>
+          </li>
+          <li>
+            <a href="#about">Sobre</a>
+          </li>
+          <li>
+            <a href="#service">Contatos</a>
+          </li>
+          <li>
+            <a href="#service">Cadastra-se</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    </div>
+
+
+  </header>
+  <div class="dark-fade"></div>
+  <div class="car-text" data-aos="fade-up"
+  data-aos-offset="200"
+  data-aos-delay="50"
+  data-aos-duration="1000"
+  data-aos-easing="ease-in-out"
+  data-aos-mirror="true"
+  data-aos-once="false"
+  data-aos-anchor-placement="top-center">
+    <h1 class="">Seja-bem vindo</h1>
+    <p class="lead">Ao projeto Reciclame onde reciclar tem tudo haver com tecnologia</p>
+
+  </div>
+  <div id="carouselExampleControls" class="img-fundo carousel slide" data-ride="carousel">
+
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="img/composicao-do-conceito-de-desperdicio-zero.jpg" alt="Primeiro Slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="img/post-id-dia-internacional-da-reciclagem-secretaria-municip.jpg"
+          alt="Segundo Slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="img/composicao-do-conceito-de-desperdicio-zero.jpg" alt="Terceiro Slide">
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <main class=" container-fluid">
+
+
+    <section class="sec-01 container-fluid" >
+
+
+      <div class="text flex-column"data-aos="fade-down"
+        data-aos-offset="100"
+        data-aos-delay="50"
+        data-aos-duration="500"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="false"
+   >
+        <h2  >Conheça nosso projeto</h2>
+
+
+      </div>
+
+
+
+        <div class="img-sec container-fluid" data-aos="fade-right"
+        data-aos-offset="200"
+        data-aos-delay="50"
+        data-aos-duration="500"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="true">
+          <label for="agi">
+            <img class="img-fluid" src="../img/iteracao.png" alt="agilidade" id="agi"> <span>Mais agilidade na
+              coleta</span></label>
+          <p>Nosso projeto tem como objetivo, auxiliar a coleta seletiva de bairros e cidades, oferecendo dados que
+            poderam ser utilizados para melhorar rotas e economizar o tempo de quem cuida do nosso lixo no dia a dia.
+          </p>
+        </div>
+
+        <div class="img-sec container-fluid" data-aos="fade-right"
+        data-aos-offset="200"
+        data-aos-delay="50"
+        data-aos-duration="500"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="true">
+          <label for="eco">
+            <img class="img-fluid" src="../img/eco.png" alt="eco" id="eco"><span>Aliado da natureza</span></label>
+          <p>Para isso foram desenvolvidas lixeiras inteligentes voltadas para lixo reciclavel, ou seja o intuito e
+            gerar menos desperdicio e selecionar corretamente o que é reciclavel, ajudando tanto a cidade, as empresas,
+            grupos de coleta e também o cidadão.
+          </p>
+        </div>
+
+        <div class="img-sec container-fluid" data-aos="fade-right"
+        data-aos-offset="200"
+        data-aos-delay="50"
+        data-aos-duration="800"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="true">
+          <label for="tecb">
+            <img class="img-fluid" src="../img/tecnologia.png" alt="tec" id="tec"><span>Portal Web com
+              dashbord</span></label>
+          <p >Nossas lixeiras serao equipadas com sensores que devolveram a nossa plataforma, imformações como,
+            quantidade de lixo que foi armazenada e coletada nas lixeiras entre muitas outras.E o nosso principal
+            atrativo é pode localizar as lixeiras maix proximas de você, utilizando a tecnologia do Google maps.</p>
+
+        </div>
+      
+    </section>
+    <section class="sec-02 container-fluid" data-aos="fade-down"
+    data-aos-offset="100"
+    data-aos-delay="50"
+    data-aos-duration="1000"
+    data-aos-easing="ease-in-out"
+    data-aos-mirror="true"
+    data-aos-once="false" >
+      <h2 class="dysplay-4">Encontre a lixeira mais proxima de voce:</h2>
+
+     
+      <div class="img-maps">
+
+        <div class="text-map container-fluid">
+
+        </div>
+        <section class="map"data-aos="zoom-in"
+        data-aos-offset="100"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="false" >
+          <div id="map-container">
+            <div id="locations-panel">
+              <div id="locations-panel-list">
+                <div class="headermap">
+                  <h1 class="search-title">
+                    <img src="https://fonts.gstatic.com/s/i/googlematerialicons/place/v15/24px.svg" />
+                    Find a location near you
+                  </h1>
+                  <div class="search-input">
+                    <input id="location-search-input" placeholder="Enter your address or zip code">
+                    <div id="search-overlay-search" class="search-input-overlay search">
+                      <button id="location-search-button">
+                        <img class="icon" src="https://fonts.gstatic.com/s/i/googlematerialicons/search/v11/24px.svg"
+                          alt="Search" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="section-name" id="location-results-section-name">
+                  All locations
+                </div>
+                <div class="results">
+                  <ul id="location-results-list"></ul>
+                </div>
+              </div>
+            </div>
+            <div id="gmp-map"></div>
+
+          </div>
+          <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap&libraries=places,geometry&solution_channel=GMP_QB_locatorplus_v7_cABD"
+            async defer></script>
+      
+        </section>
+ <div class="text-leg flex-column">
+            
+               <h3>Legenda</h3>
+               <div class="legenda ">
+          
+            <label for="leg1">
+                <span class="leg" id="leg1"></span>cheia</label>
+               <label for="leg2">
+                <span class="leg" id="leg2"></span>metade</label>
+                <label for="leg3">
+                <span class="leg" id="leg3"></span>vazia</label> 
+             
+              </div>
+               <p>Basta clicar em permitir sua localização e pronto, nosso mapa ira te indicar as lixeiras mais
+              proximas da sua localização atual e também o estado delas podendo ser Cheio, Pela metade, ou vazias:</p>  
+                 
+</div>
+<button class="btn btn-default" id="askButton">
+  Ask for location
+</button>
+
+<div id="target"></div>
+      </div>
+
+
+      <section class="sec-03 container-fluid">
+
+        <h2>Cadastro para Empresas parceiras:</h2>
+
+        <div class="work-sec ">
+
+          <div class="parawork">
+
+            <p>Esse cadastro é voltado para empreses que desejam utilizar dos dados gerados pelo
+              projeto, como peso, rotas,
+              localização e muito mais.</p>
+              
+            <p>Para se cadastrar <a href="cadastro.html">Clique aqui</a> e preencha os dados
+              necessarios</p>
+
+          </div>
+     
+  <div id="work">
+
+            <img src="../img/artigo2.webp" alt="">
+          </div>
+
+        </div>
+   
+      </section>
+
+
+  </main>
+
+  <footer>
+    <h3>Redes Sociais</h3>
+    <div class="redes">
+      <a href="#" class="fa fa-facebook"></a>
+      <a href="#" class="fa fa-twitter"></a>
+      <a href="#" class="fa fa-youtube"></a>
+
+    </div>
+
+  </footer>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
