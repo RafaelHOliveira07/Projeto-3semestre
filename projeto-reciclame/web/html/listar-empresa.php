@@ -15,18 +15,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="../style/style-empresa-adm.css">
     <title>Empresas Cadastradas</title>
-    
+
 </head>
 <body>
     <header>
-        <div class="img-adm-headar">  
-             <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt=""><h3>Area Administrativa </h3> 
+        <div class="img-adm-headar">
+             <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt=""><h3>Area Administrativa </h3>
             </div>
-     
-       
-        <nav><a href="#">Inicio</a> 
-            <a href="#">Empresas</a> 
-            <a href="">Lixeira</a> 
+
+
+        <nav><a href="#">Inicio</a>
+            <a href="listar-empresa.php">Empresas</a>
+            <a href="listar-lixeira.php">Lixeira</a>
             <a href="#">Sair</a></nav>
     </header>
     <main>
@@ -47,14 +47,14 @@
         </tr>
         <?php foreach ($lista as $linha):?>
         <tr class="table-light">
-            
+
             <td><?php echo $linha['idEmpresa']?></td>
             <td><?php echo $linha['nome']?></td>
             <td><?php echo $linha['cnpj']?></td>
             <td><?php echo $linha['email']?>
             <td><?php echo $linha['localizacao']?></td>
             <td><?php echo $linha['tel']?></td>
-          
+
             <td class="act">
                 <a href="#">Atualizar</a>
                 <a href="#">Excluir</a>
