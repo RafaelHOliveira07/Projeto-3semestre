@@ -1,5 +1,7 @@
 <?php
-// Verifica se a solicitação é POST
+session_start();
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Conecte-se ao seu banco de dados
     $servername = "localhost";
@@ -17,11 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Recupere os dados do formulário e limpe-os
         // Receber os dados do formulário
+
+        $idEmpresaLogada = $_POST['idEmpresa'];
+
         $tipo = $_POST['tipo'];
         $localizacao = $_POST['localizacao'];
         $peso = $_POST['peso'];
         $volume = $_POST['volume'];
-    
+
         // Sua chave de API do Google Maps
         $chaveAPI = 'AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk';
     
@@ -45,7 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Por exemplo, você pode usar uma conexão com banco de dados para inserir os dados
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-             $query = "INSERT INTO tb_lixeiras (tipo, latitude, longitude, peso, volume,nome) VALUES ('$tipo', '$latitude', '$longitude', '$peso', '$volume','$nome')";
+            $query = "INSERT INTO tb_lixeiras (tipo, latitude, longitude, peso, volume, nome, idEmpresa) VALUES ('$tipo', '$latitude', '$longitude', '$peso', '$volume', '$nome', '$idEmpresaLogada')";
+
              $conn->query($query);
     
             // A mensagem abaixo é apenas para demonstração

@@ -1,8 +1,10 @@
 
+
+
 <?php
-    require_once "../classes/Lixeira.php";
-    $lixeira = new Lixeira();
-    $lista = $lixeira->listar();
+
+   require_once 'empresa-verifica.php';
+   $idEmpresa = $_SESSION['idEmpresa'];
 ?>
 
 <!DOCTYPE html>
@@ -21,10 +23,23 @@
 </head>
 <body>
 <main class=" container-fluid">
-     <h4>Cadastro de Lixeiras</h4>
+     <h4>Cadastro de Ponstos de coleta persolizado:</h4>
+     <p>Aqui voce escolhe o local onde serao seus pontos de coleta, basta adicionar o endereço e selecionar as opções de tamanho que temos disponiveis(peso,volume e tipo).
+     
+
+     </p>   
+     <p>OBS:No caso do endeço ser privado, sera necessario autorização do proprietario para que possa ser realizada a instalacao de um novo ponto de coleta:</p>
+
+     <h5>Exemplo:</h5>
+     <p>Desejo instalar meu ponto em certo supermercado, então serei responsalvel por consguir a autorização do estabelecimento para a coleta.</p>
+
+
+
     <form action="gravar-lixeira.php" method="POST">
         
-    
+  
+    <input type="hidden" name="idEmpresa" value="<?php echo $idEmpresa; ?>">
+
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="tipo">Tipo material</label>
@@ -41,7 +56,7 @@
                 <input type="text" class="form-control" name="localizacao" placeholder=" Rua , Bairro , Cidade, País" required>
                 
             </div>
-       
+          
         </div>
         <div class="form-row">
             <div class="form-group col-md-4">
@@ -65,6 +80,7 @@
                 </select>
             </div>
         </div>
+        
         <button type="submit" class="btn btn-primary">Gravar</button>
     </form>
 </main>

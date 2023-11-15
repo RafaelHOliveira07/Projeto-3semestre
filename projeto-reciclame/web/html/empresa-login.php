@@ -5,8 +5,7 @@ $email = $_POST["email"];
 $senhaLimpa = $_POST["senha"];
 $senha = hash("sha256", $senhaLimpa);
 
-$sql = "SELECT * FROM tb_empresas WHERE
-        email = :user and senha = :passwd";
+$sql = "SELECT idEmpresa, email, senha FROM tb_empresas WHERE email = :user AND senha = :passwd";
         
 /* SLQ modificado apra evitar logim com a ( 'or'a'='a ) garantindo mais segurança, tratando como parametros e não valores */
 
@@ -20,13 +19,20 @@ $resultado ->execute();
 
 $linha = $resultado->fetch();
 $empresa_logado = $linha['email'];
-
+$idEmpresa = null;
 if ($empresa_logado == null) {
     // Usuário ou senha inválida
     echo "Erro ao fazer login. Credenciais inválidas.";
 } else {
     $_SESSION['usuario_logado'] = $empresa_logado;
+    echo "Empresa logada: " . $empresa_logado; // Adicione esta linha para depurar
+    echo "ID da Empresa: " . $linha['idEmpresa']; // Adicione esta linha para depurar
+    $_SESSION['usuario_logado'] = $empresa_logado;
+    $_SESSION['idEmpresa'] = $linha['idEmpresa']; // Definindo idEmpresa na sessão
     header('Location: index-logado.php');
+    exit(); // Importante encerrar a execução após redirecionamento
 
 }
+
+
 ?>

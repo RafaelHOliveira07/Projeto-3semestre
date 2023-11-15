@@ -13,6 +13,7 @@ class Empresa{
     public $numero;
     public $tel;
     public $cep;
+    public $cep;
 
 
 
