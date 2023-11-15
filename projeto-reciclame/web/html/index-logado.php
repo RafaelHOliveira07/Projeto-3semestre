@@ -1,8 +1,23 @@
 <?php
-
-
-
 require_once 'empresa-verifica.php';
+$idEmpresa = $_SESSION['idEmpresa'];
+
+// Inclua a classe Empresa
+include_once '../classes/Empresa.php';
+
+// Crie uma instância da classe Empresa
+$empresa = new Empresa();
+
+
+$pontos_empresa = $empresa-> obterPontoEmpresaParaMapa();
+
+$pontos_json_empresa = json_encode($pontos_empresa);
+
+
+
+
+
+
 
 require_once '../classes/Lixeira.php';
 $lixeira = new Lixeira();
@@ -10,7 +25,9 @@ $pontos = $lixeira->obterPontosParaMapa();
 $lixeira = new Lixeira();
 $lista = $lixeira->listar();
 $pontos_json = json_encode($pontos);
-require_once 'maps.php';
+
+require_once 'maps-empresa.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -27,10 +44,10 @@ require_once 'maps.php';
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../style/style.css">
+
   <link href="../style/stylemap.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
+  <link rel="stylesheet" href="../style/style.css">
 
   <title>Projeto</title>
 </head>
@@ -57,7 +74,7 @@ require_once 'maps.php';
 
   <ul class="navbar-nav ml-auto text-uppercase f1">
     <li>
-        <a href="#home">Início</a>
+        <a href="index-logado.php">Início</a>
     </li>
     <li>
         <a href="#sec-01">Sobre</a>
@@ -66,6 +83,7 @@ require_once 'maps.php';
         <li>
             <a href="#dashbord.php">Painel</a>
         </li>
+        
         <li>
             <a href="empresa-logout.php">Sair</a>
         </li>
@@ -218,17 +236,14 @@ require_once 'maps.php';
     data-aos-duration="1000"
     data-aos-easing="ease-in-out"
     data-aos-mirror="true"
-    data-aos-once="true">Esse cadastro é voltado para empreses que desejam utilizar dos dados gerados pelo
-              projeto, como peso, rotas,
-              localização e muito mais.</p>
+    data-aos-once="true">Para empresas ja cadastradas, oferecemos o serviço de pontos de coleta personalizados, podendo escolher o ponto, material e volume de acordo com seu negocio.</p>
               <p data-aos="fade-right"
     data-aos-offset="200"
     data-aos-delay="100"
     data-aos-duration="1100"
     data-aos-easing="ease-in-out"
     data-aos-mirror="true"
-    data-aos-once="true">Para se cadastrar <a href="">Clique aqui</a> e preencha os dados
-              necessarios</p>
+    data-aos-once="true">Para sabser mais <a href="cadastro-lixeira.php">Clique aqui</a></p>
               
            
 

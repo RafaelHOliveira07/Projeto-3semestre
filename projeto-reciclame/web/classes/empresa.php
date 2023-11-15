@@ -13,7 +13,7 @@ class Empresa{
     public $numero;
     public $tel;
     public $cep;
-    public $cep;
+    
 
 
 
@@ -57,26 +57,39 @@ public function carregar(){
             $this->cep = $linha ['cep'];
 
         }
-        public function obterPontosParaMapa(){
-            $sql = "SELECT * FROM tb_empresas";
-            $conexao = new PDO('mysql:host=127.0.0.1;dbname=reciclame', 'root', '');
-            $resultado = $conexao->query($sql);
-            $pontos = [];
+        public function obterPontoEmpresaParaMapa() {
+            // Verifique se o ID da empresa está definido na sessão
+            if (isset($_SESSION['idEmpresa'])) {
+                // Obtém o ID da empresa da sessão
+                $idEmpresa = $_SESSION['idEmpresa'];
         
-            foreach ($resultado as $linha) {
-                $ponto = [
-                    'latitude' => $linha['latitude'],
-                    'longitude' => $linha['longitude'],
-                    'nome' => $linha['nome'],
-           
-                
-                   
-                ];
-                $pontos[] = $ponto;
+                // Consulta SQL ajustada para obter os pontos apenas para a empresa específica
+                $sql = "SELECT latitude, longitude, nome FROM tb_empresas WHERE idEmpresa = $idEmpresa";
+        
+                $conexao = new PDO('mysql:host=127.0.0.1;dbname=reciclame', 'root', '');
+                $resultado = $conexao->query($sql);
+        
+                $ponto = [];
+        
+                foreach ($resultado as $linha) {
+                    $ponto = [
+                        'latitude' => $linha['latitude'],
+                        'longitude' => $linha['longitude'],
+                        'nome' => $linha['nome'],
+                    ];
+                }
+        
+                return $ponto;
+            } else {
+                // Se o ID da empresa não estiver definido na sessão, retorne algo adequado (você decide)
+                return null;
             }
-        
-            return $pontos;
         }
+        
+        
+        
+        
+        
 }
 
 

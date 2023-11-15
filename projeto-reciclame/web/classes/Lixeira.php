@@ -3,12 +3,13 @@
 class Lixeira{
 
     public $idLixeira;
+    public $idEmpresa;
     public $tipo;
     public $peso;
     public $volume;
     public $latitude;
     public $longitude;
-   public $nome;
+     public $nome;
 
 
 
@@ -61,6 +62,7 @@ public function obterPontosParaMapa(){
 
     foreach ($resultado as $linha) {
         $ponto = [
+            
             'latitude' => $linha['latitude'],
             'longitude' => $linha['longitude'],
             'tipo' => $linha['tipo'],

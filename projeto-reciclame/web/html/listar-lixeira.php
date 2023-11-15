@@ -51,6 +51,7 @@
         <tr class="table-light">
 
             <td><?php echo $linha['idLixeira']?></td>
+            <td><?php echo $linha['idEmpresa']?></td>
             <td><?php echo $linha['tipo']?></td>
             <td><?php echo $linha['peso']?></td>
             <td><?php echo $linha['volume']?>
