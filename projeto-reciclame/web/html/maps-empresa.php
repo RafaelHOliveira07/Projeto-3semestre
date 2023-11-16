@@ -8,15 +8,29 @@
         });
 
         // Recupera os pontos do PHP como um array JSON e adiciona marcadores no mapa
-        var pontos = <?php echo $pontos_json; ?>;
+        var pontosLixeira = <?php echo isset($pontosLixeira_json) ? $pontosLixeira_json : '[]'; ?>;
+        
+        if (Array.isArray(pontosLixeira)) {
+            pontosLixeira.forEach(function (pontoLixeira) {
+                adicionarMarcadorLixeira(map, pontoLixeira);
+            });
+        }
 
-        pontos.forEach(function (ponto) {
-            var marker = new google.maps.Marker({
-                position: { lat: parseFloat(ponto.latitude), lng: parseFloat(ponto.longitude) },
+        // Adiciona marcador para a empresa
+        var pontoEmpresa = <?php echo json_encode($empresa->obterPontoEmpresaParaMapa()); ?>;
+        adicionarMarcadorEmpresa(map, pontoEmpresa);
+    }
+
+    function adicionarMarcadorLixeira(map, pontoLixeira) {
+        // Verifica se há informações válidas sobre a lixeira
+        if (pontoLixeira.latitude && pontoLixeira.longitude && pontoLixeira.nome) {
+            // Adiciona o marcador da lixeira ao mapa
+            var markerLixeira = new google.maps.Marker({
+                position: { lat: parseFloat(pontoLixeira.latitude), lng: parseFloat(pontoLixeira.longitude) },
                 map: map,
-                title: 'Localização: ' + ponto.nome +
-                    ' Capacidade: (Volume: ' + ponto.volume + ' - Peso: ' + ponto.peso + ')' +
-                    ' Tipo: ' + ponto.tipo,
+                title: 'Localização: ' + pontoLixeira.nome +
+                    ' Capacidade: (Volume: ' + pontoLixeira.volume + ' - Peso: ' + pontoLixeira.peso + ')' +
+                    ' Tipo: ' + pontoLixeira.tipo,
                 icon: {
                     url: '../img/bin.png',
                     scaledSize: new google.maps.Size(40, 40),
@@ -24,15 +38,16 @@
                     anchor: new google.maps.Point(20, 40)
                 }
             });
-        });
 
-        // Adiciona marcador para a empresa
-        var pontoEmpresa = <?php echo json_encode($empresa->obterPontoEmpresaParaMapa()); ?>;
-        adicionarMarcadorEmpresa(map, pontoEmpresa);
+            // Adiciona um ouvinte de evento se desejar fazer algo ao clicar no marcador da lixeira
+            markerLixeira.addListener('click', function () {
+                // Seu código ao clicar no marcador da lixeira...
+            });
+        }
     }
 
     function adicionarMarcadorEmpresa(map, pontoEmpresa) {
-        // Verifica se há informações sobre a empresa
+        // Verifica se há informações válidas sobre a empresa
         if (pontoEmpresa.latitude && pontoEmpresa.longitude && pontoEmpresa.nome) {
             // Adiciona o marcador da empresa ao mapa
             var markerEmpresa = new google.maps.Marker({

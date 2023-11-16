@@ -9,7 +9,7 @@ class Lixeira{
     public $volume;
     public $latitude;
     public $longitude;
-     public $nome;
+    public $nome;
 
 
 
@@ -76,4 +76,40 @@ public function obterPontosParaMapa(){
 
     return $pontos;
 }
+public function obterPontosLixeiraParaMapa() {
+    // Verifique se o ID da empresa está definido na sessão
+    if (isset($_SESSION['idEmpresa'])) {
+        // Obtém o ID da empresa da sessão
+        $idEmpresa = $_SESSION['idEmpresa'];
+
+        // Consulta SQL ajustada para obter os pontos apenas para a empresa específica
+        $sql = "SELECT * FROM tb_lixeiras WHERE idEmpresa = $idEmpresa";
+
+        $conexao = new PDO('mysql:host=127.0.0.1;dbname=reciclame', 'root', '');
+        $resultado = $conexao->query($sql);
+
+        $pontos = [];
+
+        foreach ($resultado as $linha) {
+            $ponto = [
+                'latitude' => $linha['latitude'],
+                'longitude' => $linha['longitude'],
+                'tipo' => $linha['tipo'],
+                'peso' => $linha['peso'],
+                'volume' => $linha['volume'],
+                'nome' => $linha['nome']
+            ];
+
+            // Adicione cada ponto ao array de pontos
+            $pontos[] = $ponto;
+        }
+
+        return $pontos;
+    } else {
+        // Se o ID da empresa não estiver definido na sessão, retorne algo adequado (você decide)
+        return null;
+    }
 }
+
+}
+?>

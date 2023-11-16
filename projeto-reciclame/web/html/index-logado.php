@@ -21,10 +21,10 @@ $pontos_json_empresa = json_encode($pontos_empresa);
 
 require_once '../classes/Lixeira.php';
 $lixeira = new Lixeira();
-$pontos = $lixeira->obterPontosParaMapa();
+$pontos = $lixeira->obterPontosLixeiraParaMapa();
 $lixeira = new Lixeira();
-$lista = $lixeira->listar();
-$pontos_json = json_encode($pontos);
+
+$pontosLixeira_json = json_encode($pontos);
 
 require_once 'maps-empresa.php';
 
@@ -155,7 +155,8 @@ require_once 'maps-empresa.php';
               coleta</span></label>
               <div class="p">
           <p>Nosso projeto tem como objetivo, auxiliar a coleta seletiva de bairros e cidades, oferecendo dados que
-            poderam ser utilizados para melhorar rotas e economizar o tempo de quem cuida do nosso lixo no dia a dia.
+            poderam ser utilizados para melhorar rotas e economizar o tempo de quem cuida do nosso lixo no dia a dia.Para empresas parceiras,
+            oferecemos o serviço de pontos de coleta personalizado, cadastra-se e saiba mais.
           </p></div>
         </div>
 
@@ -171,7 +172,9 @@ require_once 'maps-empresa.php';
             <div class="p">
           <p>Para isso foram desenvolvidas lixeiras inteligentes voltadas para lixo reciclavel, ou seja o intuito e
             gerar menos desperdicio e selecionar corretamente o que é reciclavel, ajudando tanto a cidade, as empresas,
-            grupos de coleta e também o cidadão.</p>
+            grupos de coleta e também o cidadão.
+            Futuramente o projeto visa atender novos tipos de materiais para também atender necessidades dos difentes ramos de coleta.
+          </p>
           </div>
           
         </div>
@@ -187,9 +190,10 @@ require_once 'maps-empresa.php';
             <img class="img-fluid" src="../img/tecnologia.png" alt="tec" id="tec"><span>Portal Web com
               dashbord</span></label>
               <div class="p">
-          <p >Nossas lixeiras serao equipadas com sensores que devolveram a nossa plataforma, imformações como,
+          <p >Nossas lixeiras sero equipadas com sensores que enviaram para a nossa plataforma, informações como,
             quantidade de lixo que foi armazenada e coletada nas lixeiras entre muitas outras.E o nosso principal
-            atrativo é pode localizar as lixeiras maix proximas de você, utilizando a tecnologia do Google maps.</p>
+            atrativo é pode localizar as lixeiras maix proximas de você,  utilizando a tecnologia do Google maps.
+          </p>
           </div>
         </div>  
       
