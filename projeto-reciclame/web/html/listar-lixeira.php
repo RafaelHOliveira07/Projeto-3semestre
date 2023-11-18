@@ -2,6 +2,8 @@
     require_once "../classes/Lixeira.php";
     $lixeira = new Lixeira();
     $lista = $lixeira->listar();
+  
+ 
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +40,7 @@
     <thead class="thead-dark">
 
             <th scope="col">Código</th>
+            <th scope="col">propietario</th>
             <th scope="col">Material</th>
             <th scope="col">peso.Max</th>
             <th scope="col">vol.Max</th>
@@ -50,19 +53,26 @@
         <?php foreach ($lista as $linha):?>
         <tr class="table-light">
 
-            <td><?php echo $linha['idLixeira']?></td>
-            <td><?php echo $linha['idEmpresa']?></td>
+            <td><?php echo $linha['idLixeira']?></td>            
+            <td><?php echo $linha['nome_empresa']?></td>
             <td><?php echo $linha['tipo']?></td>
             <td><?php echo $linha['peso']?></td>
             <td><?php echo $linha['volume']?>
             <td><?php echo $linha['latitude']?></td>
             <td><?php echo $linha['longitude']?></td>
-            <td><?php echo $linha['nome']?></td>
+       <td><?php echo $linha['nome']?></td>
 
-            <td class="act">
-                <a href="#">Atualizar</a>
-                <a href="#">Excluir</a>
-            </td>
+ 
+               <!-- ... (seu código existente) ... -->
+
+<td class="act">
+    <a href="form-atualizar-lixeira.php?id=<?php echo $linha['idLixeira']; ?>">Atualizar</a>
+    <a href="ocultar-lixeira.php?id=<?php echo $linha['idLixeira']; ?>">Ocultar</a>
+</td>
+
+<!-- ... (seu código existente) ... -->
+
+            
         </tr>
         <?php endforeach ?>
     </table>

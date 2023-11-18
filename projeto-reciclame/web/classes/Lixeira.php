@@ -22,7 +22,9 @@ public function __construct($idLixeira = false)
 }
 
 public function listar(){
-    $sql = "SELECT * FROM tb_lixeiras";
+    $sql = "SELECT tb_lixeiras.*, tb_empresas.nome AS nome_empresa 
+            FROM tb_lixeiras 
+            JOIN tb_empresas ON tb_lixeiras.idEmpresa = tb_empresas.idEmpresa";
     
     $conexao = new PDO('mysql:host=127.0.0.1;dbname=reciclame', 'root', '');
 
@@ -54,6 +56,7 @@ public function carregar(){
     
     
 }
+
 public function obterPontosParaMapa(){
     $sql = "SELECT * FROM tb_lixeiras";
     $conexao = new PDO('mysql:host=127.0.0.1;dbname=reciclame', 'root', '');
