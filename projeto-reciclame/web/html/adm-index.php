@@ -24,7 +24,7 @@ require_once 'usuario-verifica.php';
             </div>
              
 
-        <nav><a href="#">Inicio</a>
+            <nav><a href="adm-index.php">Inicio</a>
             <a href="listar-empresa.php">Empresas</a>
             <a href="listar-lixeira.php">Lixeira</a>
             <a href="usuario-logout.php">Sair</a></nav>

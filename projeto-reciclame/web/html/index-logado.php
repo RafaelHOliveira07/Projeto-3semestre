@@ -1,32 +1,20 @@
 <?php
 require_once 'empresa-verifica.php';
 $idEmpresa = $_SESSION['idEmpresa'];
-
-// Inclua a classe Empresa
 include_once '../classes/Empresa.php';
-
-// Crie uma instância da classe Empresa
 $empresa = new Empresa();
-
-
 $pontos_empresa = $empresa-> obterPontoEmpresaParaMapa();
-
 $pontos_json_empresa = json_encode($pontos_empresa);
-
-
-
-
-
-
-
 require_once '../classes/Lixeira.php';
-$lixeira = new Lixeira();
-$pontos = $lixeira->obterPontosLixeiraParaMapa();
-$lixeira = new Lixeira();
 
-$pontosLixeira_json = json_encode($pontos);
+$lixeira = new Lixeira();
+$jsonPontosLixeira = $lixeira->obterPontosLixeiraParaMapa();
+
+// Se desejar imprimir o JSON, você pode fazer algo assim:
+
 
 require_once 'maps-empresa.php';
+
 
 ?>
 <!DOCTYPE html>

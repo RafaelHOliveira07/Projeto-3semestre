@@ -1,4 +1,5 @@
 <?php
+require_once 'usuario-verifica.php';
     require_once "../classes/Empresa.php";
     $empresa = new Empresa();
     $lista = $empresa->listar();
@@ -24,10 +25,10 @@
             </div>
 
 
-        <nav><a href="#">Inicio</a>
+            <nav><a href="adm-index.php">Inicio</a>
             <a href="listar-empresa.php">Empresas</a>
             <a href="listar-lixeira.php">Lixeira</a>
-            <a href="#">Sair</a></nav>
+            <a href="usuario-logout.php">Sair</a></nav>
     </header>
     <main>
     <section class="table-sec">
