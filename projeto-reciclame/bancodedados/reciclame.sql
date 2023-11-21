@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10-Nov-2023 às 02:12
+-- Tempo de geração: 21-Nov-2023 às 20:57
 -- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.1.12
+-- versão do PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,8 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tb_adm` (
   `idAdm` int(11) NOT NULL,
-  `nome` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `usuario` varchar(50) NOT NULL,
   `senha` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -38,8 +37,8 @@ CREATE TABLE `tb_adm` (
 -- Extraindo dados da tabela `tb_adm`
 --
 
-INSERT INTO `tb_adm` (`idAdm`, `nome`, `email`, `senha`) VALUES
-(1, 'admin', 'admin@reciclame.com.br', 'admin');
+INSERT INTO `tb_adm` (`idAdm`, `usuario`, `senha`) VALUES
+(2, 'admin', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5');
 
 -- --------------------------------------------------------
 
@@ -53,20 +52,20 @@ CREATE TABLE `tb_empresas` (
   `cnpj` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
   `senha` varchar(64) NOT NULL,
-  `tel` varchar(15) NOT NULL,
   `latitude` double NOT NULL,
   `longitude` double NOT NULL,
-  `localizacao` varchar(200) NOT NULL
+  `localizacao` varchar(255) NOT NULL,
+  `tel` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `tb_empresas`
 --
 
-INSERT INTO `tb_empresas` (`idEmpresa`, `nome`, `cnpj`, `email`, `senha`, `tel`, `latitude`, `longitude`, `localizacao`) VALUES
-(4, 'AJCS', '1002003000176', 'ajcs@gmail.com', '123', '35 34434070', 0, 0, ''),
-(11, 'Recicla-me', '11234567000198', 'reciclame@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', '19 9867 4599', 0, 0, ''),
-(12, 'Reciclada', '9999999999999999', 'matheus@gmail.com', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', '19 989594797', -22.439123, -46.8154088, 'R. do Cubatão, 404 - Cubatão, Itapira - SP, 13972-330, Brazil');
+INSERT INTO `tb_empresas` (`idEmpresa`, `nome`, `cnpj`, `email`, `senha`, `latitude`, `longitude`, `localizacao`, `tel`) VALUES
+(15, 'Kanksreciclagem', '9999999999999', 'rafaelhenriquetrooll@gmail.com', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', -22.4251541, -46.8301717, 'R. Carlos Venturini, 99 - Lot. Joao de Barros, Itapira - SP, 13976-145, Brazil', '(19) 45645-6654'),
+(16, 'ascorsi', '9999999999999', 'carlos05muringa@gmail.com', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', -22.4301964, -46.8254453, 'R. Sd. Constitucionalista, 98 - Jardim Soares, Itapira - SP, 13976-025, Brazil', '(19) 45645-6654'),
+(17, 'etevaldo', '9999999999999', 'adria.cruz@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', -22.4144207, -46.8188405, 'R. David Faraco, 153 - Jardim Galego, Itapira - SP, 13971-260, Brazil', '(19) 45645-6654');
 
 -- --------------------------------------------------------
 
@@ -81,18 +80,22 @@ CREATE TABLE `tb_lixeiras` (
   `volume` float NOT NULL,
   `latitude` double NOT NULL,
   `longitude` double NOT NULL,
-  `nome` varchar(255) NOT NULL
+  `nome` varchar(255) NOT NULL,
+  `idEmpresa` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `tb_lixeiras`
 --
 
-INSERT INTO `tb_lixeiras` (`idLixeira`, `tipo`, `peso`, `volume`, `latitude`, `longitude`, `nome`) VALUES
-(10, 'Vidro', 50, 200, 0, 0, ''),
-(11, 'Metal', 50, 50, 0, 0, ''),
-(12, 'Plastico', 50, 50, -22.4310436, -46.834593, 'R. Tereza Lera Paoletti, 590 - Bela Vista, Itapira'),
-(13, 'Plastico', 50, 50, -22.4255683, -46.8300221, 'rua carlos venturini, itapira');
+INSERT INTO `tb_lixeiras` (`idLixeira`, `tipo`, `peso`, `volume`, `latitude`, `longitude`, `nome`, `idEmpresa`) VALUES
+(39, 'Plastico', 50, 50, -22.4255683, -46.8300221, 'Carlos venturine, Della Rocha, itapira , brasil', 15),
+(41, 'Plastico', 50, 50, -22.4445997, -46.8187192, 'Av. dos Italianos, 2120 - Prados, Itapira - SP', 16),
+(43, 'Plastico', 50, 50, -22.4329607, -46.8319485, 'R. Tereza Lera Paoletti, Bela Vista, Itapira, brasil', 15),
+(44, 'Plastico', 50, 50, -22.4445997, -46.8187192, 'Av. dos Italianos, 2120 - Prados, Itapira - SP', 15),
+(45, 'Papel', 50, 50, -22.4155876, -46.8214036, 'R. David Faraco, 445 - Jardim Galego, Itapira - SP, 13971-260', 17),
+(46, 'Metal', 50, 50, -22.4255683, -46.8300221, 'Carlos venturine, Della Rocha, itapira , brasil', 17),
+(47, 'Papel', 50, 50, -22.4255683, -46.8300221, 'Carlos venturine, Della Rocha, itapira , brasil', 15);
 
 --
 -- Índices para tabelas despejadas
@@ -114,7 +117,8 @@ ALTER TABLE `tb_empresas`
 -- Índices para tabela `tb_lixeiras`
 --
 ALTER TABLE `tb_lixeiras`
-  ADD PRIMARY KEY (`idLixeira`);
+  ADD PRIMARY KEY (`idLixeira`),
+  ADD KEY `fk_idEmpresa` (`idEmpresa`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -124,19 +128,29 @@ ALTER TABLE `tb_lixeiras`
 -- AUTO_INCREMENT de tabela `tb_adm`
 --
 ALTER TABLE `tb_adm`
-  MODIFY `idAdm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idAdm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `tb_empresas`
 --
 ALTER TABLE `tb_empresas`
-  MODIFY `idEmpresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idEmpresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `tb_lixeiras`
 --
 ALTER TABLE `tb_lixeiras`
-  MODIFY `idLixeira` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idLixeira` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `tb_lixeiras`
+--
+ALTER TABLE `tb_lixeiras`
+  ADD CONSTRAINT `fk_idEmpresa` FOREIGN KEY (`idEmpresa`) REFERENCES `tb_empresas` (`idEmpresa`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
