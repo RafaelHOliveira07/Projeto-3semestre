@@ -29,7 +29,7 @@ function calcularRota(origemLat, origemLng, destinoLat, destinoLng) {
         destination: new google.maps.LatLng(destinoLat, destinoLng),
         travelMode: google.maps.TravelMode.DRIVING
     };
-
+b
     directionsService.route(request, function(response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
             directionsRenderer.setDirections(response);
@@ -86,7 +86,7 @@ function obterLocalizacaoAtual() {
 
 function carregarPontosECalcularDistancia(minhaLatitude, minhaLongitude) {
     // Recupera os pontos do PHP como um array JSON
-    var pontos = <?php echo $pontos_json; ?>;
+    var pontos = <?php echo $jsonPontosLixeira; ?>;
 
     var pontosOrdenados = [];
 
@@ -104,21 +104,25 @@ function initMap() {
         center: { lat: -22.4363, lng: -46.8222 },
         zoom: 16
     });
+    
     infoWindow = new google.maps.InfoWindow();
     directionsService = new google.maps.DirectionsService();
     directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
 
-    var pontos = <?php echo $pontos_json; ?>;
+    var pontos = <?php echo $jsonPontosLixeira; ?>;
+
+
     pontos.forEach(function(ponto) {
+    var corIcone = ponto.cor;
         var marker = new google.maps.Marker({
             position: { lat: parseFloat(ponto.latitude), lng: parseFloat(ponto.longitude) },
             map: map,
             title: 'Localização: ' + ponto.nome +
                     ' Capacidade: (Volume: ' + ponto.volume + ' - Peso: ' + ponto.peso + ')' +
                     ' Tipo: ' + ponto.tipo,
-            icon: {
-                url: '../img/bin.png',
-                scaledSize: new google.maps.Size(40, 40),
+                    icon: {
+                url: '../img/bin-' + corIcone + '.png', // Corrigido para usar a cor diretamente
+                scaledSize: new google.maps.Size(70, 70),
                 origin: new google.maps.Point(0, 0),
                 anchor: new google.maps.Point(20, 40)
             }
@@ -142,11 +146,9 @@ function initMap() {
             }
         });
     });
-
     // Chame a função para obter a localização atual
     obterLocalizacaoAtual();
 }
-
 function calcularRota(origemLat, origemLng, destinoLat, destinoLng) {
     var request = {
         origin: new google.maps.LatLng(origemLat, origemLng),

@@ -57,6 +57,37 @@ public function carregar(){
             $this->cep = $linha ['cep'];
 
         }
+        function excluir() {
+            if ($this->idLixeira) {
+                // Query SQL para excluir a lixeira com base no ID
+                $sql = "DELETE FROM tb_lixeiras WHERE idLixeira = :idLixeira";
+                
+                // Conexão com o banco de dados
+                $conexao = new PDO('mysql:host=127.0.0.1;dbname=reciclame', 'root', '');
+        
+                // Preparação da query
+                $stmt = $conexao->prepare($sql);
+        
+                // Bind do parâmetro
+                $stmt->bindParam(':idLixeira', $this->idLixeira, PDO::PARAM_INT);
+        
+                // Execução da query
+                $stmt->execute();
+        
+                // Verifique se a lixeira foi excluída com sucesso
+                if ($stmt->rowCount() > 0) {
+                    // Lixeira excluída com sucesso
+                    return true;
+                } else {
+                    // Falha ao excluir a lixeira
+                    return false;
+                }
+            } else {
+                // ID da lixeira não definido
+                return false;
+            }
+        }
+        
         public function obterPontoEmpresaParaMapa() {
             // Verifique se o ID da empresa está definido na sessão
             if (isset($_SESSION['idEmpresa'])) {

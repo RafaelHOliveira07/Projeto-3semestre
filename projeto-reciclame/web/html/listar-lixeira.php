@@ -61,14 +61,14 @@ require_once 'usuario-verifica.php';
             <td><?php echo $linha['volume']?>
             <td><?php echo $linha['latitude']?></td>
             <td><?php echo $linha['longitude']?></td>
-       <td><?php echo $linha['nome']?></td>
+            <td><?php echo $linha['nome']?></td>
 
  
                <!-- ... (seu código existente) ... -->
 
 <td class="act">
     <a href="form-atualizar-lixeira.php?id=<?php echo $linha['idLixeira']; ?>">Atualizar</a>
-    <a href="ocultar-lixeira.php?id=<?php echo $linha['idLixeira']; ?>">Ocultar</a>
+    <a href="excluir-lixeira.php?id=<?php echo $linha['idLixeira']; ?>">Excluir</a>
 </td>
 
 <!-- ... (seu código existente) ... -->

@@ -31,6 +31,7 @@ class Lixeira
         $lista = $resultado->fetchAll();
         return $lista;
     }
+  
 
     public function carregar()
     {
@@ -67,8 +68,41 @@ class Lixeira
             $pontos[] = $ponto;
         }
 
-        return $pontos;
-    }
+        // Adicione a cor associada a cada tipo de lixeira
+        $coresPorTipo = [
+            'Plastico' => 'vermelho',
+            'Papel' => 'azul',
+            'Vidro' => 'verde',
+            'Metal' => 'amarelo',
+            // Adicione mais tipos e cores conforme necessário
+        ];
+
+        $pontosLixeiraComCores = [];
+
+        foreach ($pontos as $ponto) {
+            $tipo = $ponto['tipo'];
+            $cor = isset($coresPorTipo[$tipo]) ? $coresPorTipo[$tipo] : 'padrao';
+
+            $pontosLixeiraComCores[] = [
+                'latitude' => $ponto['latitude'],
+                'longitude' => $ponto['longitude'],
+                'tipo' => $ponto['tipo'],
+                'peso' => $ponto['peso'],
+                'volume' => $ponto['volume'],
+                'nome' => $ponto['nome'],
+                'cor' => $cor,
+            ];
+        }
+
+        $pontosLixeira_json = json_encode($pontosLixeiraComCores);
+        
+        // Você pode retornar ou imprimir o JSON aqui, dependendo do seu uso
+        return $pontosLixeira_json;
+        return $pontos; 
+    } 
+
+    
+ 
 
     public function obterPontosLixeiraParaMapa()
     {
@@ -127,8 +161,8 @@ class Lixeira
             return null;
         }
     }
-}
 
+}
 // Você pode instanciar a classe e chamar o método obterPontosLixeiraParaMapa para obter o JSON
 
 

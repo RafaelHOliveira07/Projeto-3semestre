@@ -5,10 +5,11 @@
 
 require_once '../classes/Lixeira.php';
 $lixeira = new Lixeira();
-$pontos = $lixeira->obterPontosParaMapa();
+
 $lixeira = new Lixeira();
-$lista = $lixeira->listar();
-$pontos_json = json_encode($pontos);
+
+
+$jsonPontosLixeira = $lixeira->obterPontosParaMapa();
 require_once 'maps.php';
 ?>
 <!DOCTYPE html>
