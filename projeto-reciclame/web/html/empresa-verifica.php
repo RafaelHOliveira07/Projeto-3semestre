@@ -1,13 +1,13 @@
+
 <?php
 session_start();
-if ('usuario_logado' == null) {
-    // Usuário ou senha inválida
-    echo "Erro ao fazer login. Credenciais inválidas.";
-} else {
+
+// Verifique se $_SESSION['idEmpresa'] está definida
+if (isset($_SESSION['idEmpresa'])) {
     $idEmpresa = $_SESSION['idEmpresa'];
-    if(!isset($_SESSION['usuario_logado'])){
-      
-        header('Location: usuario-nao-logado-.php');
-    }
+
+    // Restante do seu código...
+} else {
+    // Lide com a situação em que idEmpresa não está definido na sessão
+    echo "ID da empresa não está definido na sessão.";
 }
-?>

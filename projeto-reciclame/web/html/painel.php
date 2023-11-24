@@ -2,13 +2,15 @@
 
     require_once "../classes/Lixeira.php";
     $lixeira = new Lixeira();
-    $lista = $lixeira->listar();
+    $lista = $lixeira->listar($idEmpresa);
   
 
 
 
    require_once 'empresa-verifica.php';
    $idEmpresa = $_SESSION['idEmpresa'];
+   
+
 ?>
 
 <!DOCTYPE html>
@@ -72,32 +74,33 @@
     </div>
     
       </header>
-    <script>
+      <script>
         var socket = new WebSocket("ws://localhost:1880/reciclame.com/ws");
-    
+
         socket.onopen = function (event) {
             console.log("Conexão WebSocket aberta.");
         };
-    
-       
-       
 
         socket.onmessage = function (event) {
             // Receba os dados do WebSocket e atualize o conteúdo conforme necessário
             var dados = JSON.parse(event.data);
-           
-  
+
+            // Adicione um log para verificar se os dados estão corretos
+            console.log(dados);
+
+            // Atualize o conteúdo da sua página com os dados recebidos
+            // Certifique-se de que idLixeira é o campo correto nos seus dados
+            // No código HTML
+            document.getElementById('http://127.0.0.1:1880/ui/#!/0?socketid=TzzAfH__q_OlG8zZAAAJ').innerText = dados.dados.idLixeira;
+
+
         };
 
         socket.onclose = function (event) {
             // Lide com o fechamento da conexão, se necessário
-        };
-
-    
-        socket.onclose = function (event) {
             console.log("Conexão WebSocket fechada.");
         };
-    
+
         socket.onerror = function (error) {
             console.error("Erro na conexão WebSocket:", error);
         };
