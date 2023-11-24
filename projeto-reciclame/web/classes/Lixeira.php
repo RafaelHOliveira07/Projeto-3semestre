@@ -10,6 +10,9 @@ class Lixeira
     public $latitude;
     public $longitude;
     public $nome;
+    public $volumeAtual = 50; // Definindo um valor padrão para evitar erros de variável indefinida
+    public $volumeMaximo ='volume';
+    
 
     public function __construct($idLixeira = false)
     {
@@ -47,6 +50,7 @@ class Lixeira
         $this->latitude = $linha['latitude'];
         $this->longitude = $linha['longitude'];
         $this->nome = $linha['nome'];
+        
     }
 
     public function obterPontosParaMapa()
@@ -103,7 +107,6 @@ class Lixeira
 
     
  
-
     public function obterPontosLixeiraParaMapa()
     {
         if (isset($_SESSION['idEmpresa'])) {
@@ -152,21 +155,81 @@ class Lixeira
             }
 
             $pontosLixeira_json = json_encode($pontosLixeiraComCores);
-            
+
             // Você pode retornar ou imprimir o JSON aqui, dependendo do seu uso
             return $pontosLixeira_json;
-            return $pontos; 
         } else {
             // Retorna null ou faz algo conforme necessário
             return null;
         }
     }
 
+   // Função para verificar se a lixeira está cheia (substitua pela sua lógica)
+
+
+   public function lixeiraCheia() {
+    return $this->volumeAtual >= $this->volumeMaximo;
 }
-// Você pode instanciar a classe e chamar o método obterPontosLixeiraParaMapa para obter o JSON
+
+public function obterNotificacoes() {
+    // Consulta SQL para obter os dados da lixeira (substitua pela sua consulta)
+    $sql = "SELECT * FROM tb_lixeiras";
+    $conexao = new PDO('mysql:host=127.0.0.1;dbname=reciclame', 'root', '');
+    $resultado = $conexao->query($sql);
+
+    // Verificar se há resultados
+    if ($resultado->rowCount() > 0) {
+        // Array para armazenar os objetos Lixeira
+        $lixeiras = array();
+        
+        // Array para armazenar notificações
+        $notificacoes = array();
+
+        // Loop através dos resultados e criar objetos Lixeira
+        while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
+            $lixeira = new Lixeira(
+                $row['idLixeira'],
+                $row['idEmpresa'],
+                $row['tipo'],
+                $row['peso'],
+                $row['volume'],
+                $row['latitude'],
+                $row['longitude'],
+                $row['nome']
+            );
+
+            // Adicionar a lixeira ao array
+            $lixeiras[] = $lixeira;
+
+            // Verificar se o volume atual é igual ao volume gravado no banco
+            if ($lixeira->volumeAtual == $lixeira->volumeMaximo) {
+               
+                $notificacao = "A lixeira {$lixeira->nome} está cheia!";
+                echo  $notificacao;
+                $notificacoes[] = $notificacao;
+            }
+        }
+
+        // Se houver notificações, imprimir ou retornar o array de notificações em formato JSON
+        if (!empty($notificacoes)) {
+            $jsonDataNotificacoes = json_encode($notificacoes);
+            echo $jsonDataNotificacoes;
+        }
+
+        // ... (seu código anterior)
+
+        // Converter o array de lixeiras para JSON
+        $jsonData = json_encode($lixeiras);
+
+        // Configurar cabeçalhos para indicar que o conteúdo é JSON
+        header('Content-Type: application/json');
+
+        // Retornar o JSON
+        echo $jsonData;
+    }
+}
 
 
-// Ou se precisar usar o JSON em JavaScript, você pode imprimir o JSON diretamente no seu script
-// echo '<script> var pontosLixeira = ' . $jsonPontosLixeira . ';</script>';
-
-?>
+  }
+   ?>
+   

@@ -1,19 +1,21 @@
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap" async defer></script>
+
 <?php
 require_once 'empresa-verifica.php';
 $idEmpresa = $_SESSION['idEmpresa'];
 include_once '../classes/Empresa.php';
 $empresa = new Empresa();
-$pontos_empresa = $empresa-> obterPontoEmpresaParaMapa();
+$pontos_empresa = $empresa->obterPontoEmpresaParaMapa();
 $pontos_json_empresa = json_encode($pontos_empresa);
-require_once '../classes/Lixeira.php';
 
+
+require_once '../classes/Lixeira.php';
 $lixeira = new Lixeira();
 $jsonPontosLixeira = $lixeira->obterPontosLixeiraParaMapa();
-
-// Se desejar imprimir o JSON, você pode fazer algo assim:
-
-
 require_once 'maps-empresa.php';
+
+
 
 
 ?>
@@ -27,7 +29,7 @@ require_once 'maps-empresa.php';
   
  
     <!-- Carregue a API do Google Maps com um retorno de chamada -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap" async defer></script>
+
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -65,11 +67,11 @@ require_once 'maps-empresa.php';
         <a href="index-logado.php">Início</a>
     </li>
     <li>
-        <a href="#sec-01">Sobre</a>
+    <a href="index-logado.php#sec-01">Sobre</a>
     </li>
 
         <li>
-            <a href="#dashbord.php">Painel</a>
+            <a href="painel.php">Painel</a>
         </li>
         
         <li>
