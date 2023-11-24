@@ -60,7 +60,7 @@ require_once 'maps.php';
         <a href="#home">Início</a>
     </li>
     <li>
-        <a href="#sec-01">Sobre</a>
+    <a href="index-logado.php#sec-01">Sobre</a>
     </li>
 
         <li>

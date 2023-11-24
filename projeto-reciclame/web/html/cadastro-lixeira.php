@@ -53,11 +53,11 @@
             <a href="index-logado.php">Início</a>
         </li>
         <li>
-            <a href="#sec-01">Sobre</a>
+        <a href="index-logado.php#sec-01">Sobre</a>
         </li>
     
             <li>
-                <a href="#dashbord.php">Painel</a>
+                <a href="painel.php">Painel</a>
             </li>
             <li>
                 <a href="empresa-logout.php">Sair</a>
@@ -132,6 +132,16 @@
 
 
 </main>
+<footer>
+    <h3>Redes Sociais</h3>
+    <div class="redes">
+      <a href="#" class="fa fa-facebook"></a>
+      <a href="#" class="fa fa-twitter"></a>
+      <a href="#" class="fa fa-youtube"></a>
+
+    </div>
+
+  </footer>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
   AOS.init();
