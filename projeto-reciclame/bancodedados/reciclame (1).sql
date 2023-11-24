@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Nov-2023 às 20:57
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.2.0
+-- Generation Time: Nov 24, 2023 at 09:29 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `reciclame`
+-- Database: `reciclame`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_adm`
+-- Table structure for table `tb_adm`
 --
 
 CREATE TABLE `tb_adm` (
@@ -34,7 +34,7 @@ CREATE TABLE `tb_adm` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `tb_adm`
+-- Dumping data for table `tb_adm`
 --
 
 INSERT INTO `tb_adm` (`idAdm`, `usuario`, `senha`) VALUES
@@ -43,7 +43,7 @@ INSERT INTO `tb_adm` (`idAdm`, `usuario`, `senha`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_empresas`
+-- Table structure for table `tb_empresas`
 --
 
 CREATE TABLE `tb_empresas` (
@@ -59,7 +59,7 @@ CREATE TABLE `tb_empresas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `tb_empresas`
+-- Dumping data for table `tb_empresas`
 --
 
 INSERT INTO `tb_empresas` (`idEmpresa`, `nome`, `cnpj`, `email`, `senha`, `latitude`, `longitude`, `localizacao`, `tel`) VALUES
@@ -70,7 +70,7 @@ INSERT INTO `tb_empresas` (`idEmpresa`, `nome`, `cnpj`, `email`, `senha`, `latit
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_lixeiras`
+-- Table structure for table `tb_lixeiras`
 --
 
 CREATE TABLE `tb_lixeiras` (
@@ -85,7 +85,7 @@ CREATE TABLE `tb_lixeiras` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `tb_lixeiras`
+-- Dumping data for table `tb_lixeiras`
 --
 
 INSERT INTO `tb_lixeiras` (`idLixeira`, `tipo`, `peso`, `volume`, `latitude`, `longitude`, `nome`, `idEmpresa`) VALUES
@@ -98,56 +98,56 @@ INSERT INTO `tb_lixeiras` (`idLixeira`, `tipo`, `peso`, `volume`, `latitude`, `l
 (47, 'Papel', 50, 50, -22.4255683, -46.8300221, 'Carlos venturine, Della Rocha, itapira , brasil', 15);
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `tb_adm`
+-- Indexes for table `tb_adm`
 --
 ALTER TABLE `tb_adm`
   ADD PRIMARY KEY (`idAdm`);
 
 --
--- Índices para tabela `tb_empresas`
+-- Indexes for table `tb_empresas`
 --
 ALTER TABLE `tb_empresas`
   ADD PRIMARY KEY (`idEmpresa`);
 
 --
--- Índices para tabela `tb_lixeiras`
+-- Indexes for table `tb_lixeiras`
 --
 ALTER TABLE `tb_lixeiras`
   ADD PRIMARY KEY (`idLixeira`),
   ADD KEY `fk_idEmpresa` (`idEmpresa`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `tb_adm`
+-- AUTO_INCREMENT for table `tb_adm`
 --
 ALTER TABLE `tb_adm`
   MODIFY `idAdm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de tabela `tb_empresas`
+-- AUTO_INCREMENT for table `tb_empresas`
 --
 ALTER TABLE `tb_empresas`
   MODIFY `idEmpresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT de tabela `tb_lixeiras`
+-- AUTO_INCREMENT for table `tb_lixeiras`
 --
 ALTER TABLE `tb_lixeiras`
   MODIFY `idLixeira` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
--- Restrições para despejos de tabelas
+-- Constraints for dumped tables
 --
 
 --
--- Limitadores para a tabela `tb_lixeiras`
+-- Constraints for table `tb_lixeiras`
 --
 ALTER TABLE `tb_lixeiras`
   ADD CONSTRAINT `fk_idEmpresa` FOREIGN KEY (`idEmpresa`) REFERENCES `tb_empresas` (`idEmpresa`);
