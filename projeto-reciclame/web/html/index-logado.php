@@ -39,7 +39,7 @@ require_once 'maps-empresa.php';
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="stylesheet" href="../style/style.css">
 
-  <title>Projeto</title>
+  <title>Projeto-Reciclame</title>
 </head>
 
 <body>
@@ -218,30 +218,25 @@ require_once 'maps-empresa.php';
 
       <section class="sec-03 ">
 
-        <h2>Cadastro para Empresas parceiras:</h2>
+        <h2>Pontos de Coleta personalizado:</h2>
 
         <div class="work-sec" >
 
-          <div class="parawork" >
-
-            <p data-aos="fade-right"
+          <div class="parawork" data-aos="fade-right"
     data-aos-offset="200"
     data-aos-delay="100"
     data-aos-duration="1000"
     data-aos-easing="ease-in-out"
     data-aos-mirror="true"
-    data-aos-once="true">Para empresas ja cadastradas, oferecemos o serviço de pontos de coleta personalizados, podendo escolher o ponto, material e volume de acordo com seu negocio.</p>
-              <p data-aos="fade-right"
-    data-aos-offset="200"
-    data-aos-delay="100"
-    data-aos-duration="1100"
-    data-aos-easing="ease-in-out"
-    data-aos-mirror="true"
-    data-aos-once="true">Para sabser mais <a href="cadastro-lixeira.php">Clique aqui</a></p>
-              
+    data-aos-once="true" >
+
+            <p >Para empresas ja cadastradas, oferecemos o serviço de pontos de coleta personalizados, podendo escolher o ponto, material e volume de acordo com seu negocio
+  
+        </div>
+   
            
 
-          </div>
+    
      
           <div id="work" data-aos="fade-left"
     data-aos-offset="200"
@@ -251,13 +246,23 @@ require_once 'maps-empresa.php';
     data-aos-mirror="true"
     data-aos-once="true">
 
-            <img src="../img/artigo2.webp" alt="">
+            <img src="../img/conceituando-ilustracao-de-design-isometrico-de-reciclagem-de-residuos_780482-37.avif" alt="">
             
           </div>
+        <div class="parawork" data-aos="fade-left"
+    data-aos-offset="200"
+    data-aos-delay="100"
+    data-aos-duration="1000"
+    data-aos-easing="ease-in-out"
+    data-aos-mirror="true"
+    data-aos-once="true" >
+  </p >
+    <p >Para saber como funciona e quais as opçés disponiveis acesse a pagina de cadastro de Pontos de Coleta Personalizados <a href="cadastro-lixeira.php">clicando aqui</a></p>
+        
+                  </div>
+      </section>
 
         </div>
-   
-      </section>
 
 
   </main>

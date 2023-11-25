@@ -26,7 +26,7 @@
   <link href="../style/stylemap.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
      <link rel="stylesheet" href="../style/cadastro.css">
-  <title>Ponto de Coleta</title>  
+  <title>Pontos de Coleta</title>  
 </head>
 <body>
     <header>

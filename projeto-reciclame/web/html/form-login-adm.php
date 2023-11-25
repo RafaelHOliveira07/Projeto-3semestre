@@ -14,8 +14,8 @@
 
   <!-- Estilos customizados para esse template -->
   <link href="https://getbootstrap.com.br/docs/4.1/examples/sign-in/signin.css" rel="stylesheet">
-  <link rel="stylesheet" href="../style/style-empresa-adm.css">
-  <link rel="stylesheet" href="../style/style-adm.css">
+
+
   <script type="text/javascript">
     function validaCampo() {
       if (document.login.usuario.value == "") {
@@ -29,7 +29,7 @@
         return true;
     }
   </script>
-
+   <link rel="stylesheet" href="../style/style-form.css">
 </head>
 
 <body class="text-center flex-column">
@@ -43,7 +43,7 @@
     <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha">
     <div class="checkbox mb-3">
   
-    <button class="btn btn-lg btn-dark btn-block" type="submit">Login</button>
+    <button class="btn btn-lg  btn-block" type="submit">Login</button>
   
   </form>
 </body>

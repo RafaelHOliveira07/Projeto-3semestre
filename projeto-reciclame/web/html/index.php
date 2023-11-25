@@ -32,7 +32,7 @@ require_once 'maps.php';
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
-  <title>Projeto</title>
+  <title>Projeto-reciclame</title>
 </head>
 
 <body>
@@ -60,7 +60,7 @@ require_once 'maps.php';
         <a href="#home">Início</a>
     </li>
     <li>
-    <a href="index-logado.php#sec-01">Sobre</a>
+    <a href="index.php#sec-01">Sobre</a>
     </li>
 
         <li>
