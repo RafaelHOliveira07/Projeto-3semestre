@@ -6,7 +6,7 @@
 require_once '../classes/Lixeira.php';
 $lixeira = new Lixeira();
 
-$lixeira = new Lixeira();
+
 
 
 $jsonPontosLixeira = $lixeira->obterPontosParaMapa();

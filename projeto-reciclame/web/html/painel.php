@@ -2,14 +2,14 @@
 
     require_once "../classes/Lixeira.php";
     $lixeira = new Lixeira();
-    $lista = $lixeira->listar($idEmpresa);
+    $lista = $lixeira->listarlogado($idEmpresa);
   
 
 
 
    require_once 'empresa-verifica.php';
    $idEmpresa = $_SESSION['idEmpresa'];
-   
+
 
 ?>
 

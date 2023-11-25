@@ -1,6 +1,11 @@
+
+
+
 <?php
-require_once 'empresa-verifica.php';
-$idEmpresa = $_SESSION['idEmpresa'];
+
+
+
+
 class Lixeira
 {
     public $idLixeira;
@@ -11,8 +16,7 @@ class Lixeira
     public $latitude;
     public $longitude;
     public $nome;
-    public $volumeAtual = 50; // Definindo um valor padrão para evitar erros de variável indefinida
-    public $volumeMaximo ='volume';
+ 
     
 
     public function __construct($idLixeira = false)
@@ -23,39 +27,51 @@ class Lixeira
         }
     }
 
-    public function listar($idEmpresa)
+    public function listar()
     {
-        try {
-            // Sua consulta SQL ajustada com uma consulta preparada
-            $sql = "SELECT tb_lixeiras.*, tb_empresas.nome AS nome_empresa 
-                    FROM tb_lixeiras 
-                    JOIN tb_empresas ON tb_lixeiras.idEmpresa = tb_empresas.idEmpresa 
-                    WHERE tb_lixeiras.idEmpresa = :idEmpresa";
-    
-            // Cria uma conexão com o banco de dados
-            $conexao = new PDO('mysql:host=127.0.0.1;dbname=reciclame', 'root', '');
-    
-            // Prepara a consulta SQL
-            $stmt = $conexao->prepare($sql);
-    
-            // Substitui o marcador de posição :idEmpresa pelo valor real
-            $stmt->bindParam(':idEmpresa', $idEmpresa, PDO::PARAM_INT);
-    
-            // Executa a consulta
-            $stmt->execute();
-    
-            // Obtém os resultados
-            $lista = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-            // Retorna a lista
-            return $lista;
-        } catch (PDOException $e) {
-            // Trate qualquer exceção do PDO aqui
-            echo "Erro: " . $e->getMessage();
-        }
-    }
-  
+        $sql = "SELECT tb_lixeiras.*, tb_empresas.nome AS nome_empresa 
+                FROM tb_lixeiras 
+                JOIN tb_empresas ON tb_lixeiras.idEmpresa = tb_empresas.idEmpresa";
 
+        $conexao = new PDO('mysql:host=127.0.0.1;dbname=reciclame', 'root', '');
+
+        $resultado = $conexao->query($sql);
+        $lista = $resultado->fetchAll();
+        return $lista;
+    }
+
+public function listarlogado($idEmpresa)
+{require_once 'empresa-verifica.php';
+$idEmpresa = $_SESSION['idEmpresa'];
+    try {
+        // Sua consulta SQL ajustada com uma consulta preparada
+        $sql = "SELECT tb_lixeiras.*, tb_empresas.nome AS nome_empresa 
+                FROM tb_lixeiras 
+                JOIN tb_empresas ON tb_lixeiras.idEmpresa = tb_empresas.idEmpresa 
+                WHERE tb_lixeiras.idEmpresa = :idEmpresa";
+
+        // Cria uma conexão com o banco de dados
+        $conexao = new PDO('mysql:host=127.0.0.1;dbname=reciclame', 'root', '');
+
+        // Prepara a consulta SQL
+        $stmt = $conexao->prepare($sql);
+
+        // Substitui o marcador de posição :idEmpresa pelo valor real
+        $stmt->bindParam(':idEmpresa', $idEmpresa, PDO::PARAM_INT);
+
+        // Executa a consulta
+        $stmt->execute();
+
+        // Obtém os resultados
+        $lista = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Retorna a lista
+        return $lista;
+    } catch (PDOException $e) {
+        // Trate qualquer exceção do PDO aqui
+        echo "Erro: " . $e->getMessage();
+    }
+}
     public function carregar()
     {
         $sql = "SELECT * FROM tb_lixeiras WHERE idLixeira=" . $this->idLixeira;
