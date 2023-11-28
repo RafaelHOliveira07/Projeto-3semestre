@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="pt-br">
 
@@ -19,22 +18,47 @@
   <script type="text/javascript">
     function validaCampo() {
       if (document.login.usuario.value == "") {
+        function emailMask(email) {
+          var maskedEmail = email.replace(/([^@\.])/g, "*").split('');
+          var previous = "";
+          for (i = 0; i < maskedEmail.length; i++) {
+            if (i <= 1 || previous == "." || previous == "@") {
+              maskedEmail[i] = email[i];
+            }
+            previous = email[i];
+          }
+          return maskedEmail.join('');
+        }
         alert("O campo usuário é obrigatório!");
         return false;
       }
       if (document.login.senha.value == "") {
+        var password = document.getElementById("senha")
+  ,;
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Senhas diferentes!");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
         alert("O campo senha é obrigatório!");
         return false;
       } else
         return true;
     }
   </script>
-   <link rel="stylesheet" href="../style/style-form.css">
+  <link rel="stylesheet" href="../style/style-form.css">
 </head>
 
 <body class="text-center flex-column">
   <h1 class="font-weight-bold text-dark"></h1>
-  <form action="adm-login.php" method="post" class="form-signin" name="login" onsubmit="return validaCampo(); return false;">
+  <form action="adm-login.php" method="post" class="form-signin" name="login"
+    onsubmit="return validaCampo(); return false;">
     <h1 class="h3 mb-3 font-weight-normal">Login</h1>
 
     <label for="usuario" class="sr-only">Usuario</label>
@@ -42,9 +66,9 @@
     <label for="senha" class="sr-only">Senha</label>
     <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha">
     <div class="checkbox mb-3">
-  
-    <button class="btn btn-lg  btn-block" type="submit">Login</button>
-  
+
+      <button class="btn btn-lg  btn-block" type="submit">Login</button>
+
   </form>
 </body>
 

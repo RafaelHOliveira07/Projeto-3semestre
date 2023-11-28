@@ -1,6 +1,6 @@
 <?php
 
-try{
+try {
     $usuario = $_POST["usuario"];
 
 
@@ -19,9 +19,7 @@ try{
     echo "<h3>Registro gravado com suscesso</h3>";
     echo "<a href='usuario-login.php'>Fazer login</a>";
 
-}
-
-catch (Exception $erro) {
+} catch (Exception $erro) {
     //habilitar o codigo abaixo para depurar o erro
     //echo $erro->getMessage();
     echo "Ocorreu um erro. Por favor, tente novamente mais tarde.";

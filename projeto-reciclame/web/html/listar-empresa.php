@@ -1,12 +1,13 @@
 <?php
 require_once 'usuario-verifica.php';
-    require_once "../classes/Empresa.php";
-    $empresa = new Empresa();
-    $lista = $empresa->listar();
+require_once "../classes/Empresa.php";
+$empresa = new Empresa();
+$lista = $empresa->listar();
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,52 +19,67 @@ require_once 'usuario-verifica.php';
     <title>Empresas Cadastradas</title>
 
 </head>
+
 <body>
     <header>
         <div class="img-adm-headar">
-             <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt=""><h3>Area Administrativa </h3>
-            </div>
+            <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt="">
+            <h3>Area Administrativa </h3>
+        </div>
 
 
-            <nav><a href="adm-index.php">Inicio</a>
+        <nav><a href="adm-index.php">Inicio</a>
             <a href="listar-empresa.php">Empresas</a>
             <a href="listar-lixeira.php">Lixeira</a>
-            <a href="usuario-logout.php">Sair</a></nav>
+            <a href="usuario-logout.php">Sair</a>
+        </nav>
     </header>
     <main>
-    <section class="table-sec">
-    <h1>Empresas Cadastradas</h1>
+        <section class="table-sec">
+            <h1>Empresas Cadastradas</h1>
 
 
-    <table class="table table-bordered " >
-    <thead class="thead-dark">
+            <table class="table table-bordered ">
+                <thead class="thead-dark">
 
-            <th scope="col">Código</th>
-            <th scope="col">Nome</th>
-            <th scope="col">cnpj</th>
-            <th scope="col">email</th>
-            <th scope="col">localizacao</th>
-            <th scope="col">tel</th>
-            <th scope="col">açôes</th>
-        </tr>
-        <?php foreach ($lista as $linha):?>
-        <tr class="table-light">
+                    <th scope="col">Código</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">cnpj</th>
+                    <th scope="col">email</th>
+                    <th scope="col">localizacao</th>
+                    <th scope="col">tel</th>
+                    <th scope="col">açôes</th>
+                    </tr>
+                    <?php foreach ($lista as $linha): ?>
+                        <tr class="table-light">
 
-            <td><?php echo $linha['idEmpresa']?></td>
-            <td><?php echo $linha['nome']?></td>
-            <td><?php echo $linha['cnpj']?></td>
-            <td><?php echo $linha['email']?>
-            <td><?php echo $linha['localizacao']?></td>
-            <td><?php echo $linha['tel']?></td>
+                            <td>
+                                <?php echo $linha['idEmpresa'] ?>
+                            </td>
+                            <td>
+                                <?php echo $linha['nome'] ?>
+                            </td>
+                            <td>
+                                <?php echo $linha['cnpj'] ?>
+                            </td>
+                            <td>
+                                <?php echo $linha['email'] ?>
+                            <td>
+                                <?php echo $linha['localizacao'] ?>
+                            </td>
+                            <td>
+                                <?php echo $linha['tel'] ?>
+                            </td>
 
-            <td class="act">
-                <a href="#">Atualizar</a>
-                <a href="#">Excluir</a>
-            </td>
-        </tr>
-        <?php endforeach ?>
-    </table>
-</section>
-</main>
+                            <td class="act">
+                                <a href="#">Atualizar</a>
+                                <a href="#">Excluir</a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+            </table>
+        </section>
+    </main>
 </body>
+
 </html>

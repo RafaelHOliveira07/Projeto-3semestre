@@ -1,6 +1,3 @@
-
-
-
 <?php
 
 
@@ -16,13 +13,13 @@ class Lixeira
     public $latitude;
     public $longitude;
     public $nome;
- 
-    
+
+
 
     public function __construct($idLixeira = false)
     {
         if ($idLixeira) {
-            $this->idLixeira  = $idLixeira;
+            $this->idLixeira = $idLixeira;
             $this->carregar();
         }
     }
@@ -40,38 +37,39 @@ class Lixeira
         return $lista;
     }
 
-public function listarlogado($idEmpresa)
-{require_once 'empresa-verifica.php';
-$idEmpresa = $_SESSION['idEmpresa'];
-    try {
-        // Sua consulta SQL ajustada com uma consulta preparada
-        $sql = "SELECT tb_lixeiras.*, tb_empresas.nome AS nome_empresa 
+    public function listarlogado($idEmpresa)
+    {
+        require_once 'empresa-verifica.php';
+        $idEmpresa = $_SESSION['idEmpresa'];
+        try {
+            // Sua consulta SQL ajustada com uma consulta preparada
+            $sql = "SELECT tb_lixeiras.*, tb_empresas.nome AS nome_empresa 
                 FROM tb_lixeiras 
                 JOIN tb_empresas ON tb_lixeiras.idEmpresa = tb_empresas.idEmpresa 
                 WHERE tb_lixeiras.idEmpresa = :idEmpresa";
 
-        // Cria uma conexão com o banco de dados
-        $conexao = new PDO('mysql:host=127.0.0.1;dbname=reciclame', 'root', '');
+            // Cria uma conexão com o banco de dados
+            $conexao = new PDO('mysql:host=127.0.0.1;dbname=reciclame', 'root', '');
 
-        // Prepara a consulta SQL
-        $stmt = $conexao->prepare($sql);
+            // Prepara a consulta SQL
+            $stmt = $conexao->prepare($sql);
 
-        // Substitui o marcador de posição :idEmpresa pelo valor real
-        $stmt->bindParam(':idEmpresa', $idEmpresa, PDO::PARAM_INT);
+            // Substitui o marcador de posição :idEmpresa pelo valor real
+            $stmt->bindParam(':idEmpresa', $idEmpresa, PDO::PARAM_INT);
 
-        // Executa a consulta
-        $stmt->execute();
+            // Executa a consulta
+            $stmt->execute();
 
-        // Obtém os resultados
-        $lista = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            // Obtém os resultados
+            $lista = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Retorna a lista
-        return $lista;
-    } catch (PDOException $e) {
-        // Trate qualquer exceção do PDO aqui
-        echo "Erro: " . $e->getMessage();
+            // Retorna a lista
+            return $lista;
+        } catch (PDOException $e) {
+            // Trate qualquer exceção do PDO aqui
+            echo "Erro: " . $e->getMessage();
+        }
     }
-}
     public function carregar()
     {
         $sql = "SELECT * FROM tb_lixeiras WHERE idLixeira=" . $this->idLixeira;
@@ -86,7 +84,7 @@ $idEmpresa = $_SESSION['idEmpresa'];
         $this->latitude = $linha['latitude'];
         $this->longitude = $linha['longitude'];
         $this->nome = $linha['nome'];
-        
+
     }
 
     public function obterPontosParaMapa()
@@ -135,14 +133,14 @@ $idEmpresa = $_SESSION['idEmpresa'];
         }
 
         $pontosLixeira_json = json_encode($pontosLixeiraComCores);
-        
+
         // Você pode retornar ou imprimir o JSON aqui, dependendo do seu uso
         return $pontosLixeira_json;
-        return $pontos; 
-    } 
+   
+    }
 
-    
- 
+
+
     public function obterPontosLixeiraParaMapa()
     {
         if (isset($_SESSION['idEmpresa'])) {
@@ -200,72 +198,7 @@ $idEmpresa = $_SESSION['idEmpresa'];
         }
     }
 
-   // Função para verificar se a lixeira está cheia (substitua pela sua lógica)
+    // Função para verificar se a lixeira está cheia (substitua pela sua lógica)
 
 
-   public function lixeiraCheia() {
-    return $this->volumeAtual >= $this->volumeMaximo;
 }
-
-public function obterNotificacoes() {
-    // Consulta SQL para obter os dados da lixeira (substitua pela sua consulta)
-    $sql = "SELECT * FROM tb_lixeiras";
-    $conexao = new PDO('mysql:host=127.0.0.1;dbname=reciclame', 'root', '');
-    $resultado = $conexao->query($sql);
-
-    // Verificar se há resultados
-    if ($resultado->rowCount() > 0) {
-        // Array para armazenar os objetos Lixeira
-        $lixeiras = array();
-        
-        // Array para armazenar notificações
-        $notificacoes = array();
-
-        // Loop através dos resultados e criar objetos Lixeira
-        while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
-            $lixeira = new Lixeira(
-                $row['idLixeira'],
-                $row['idEmpresa'],
-                $row['tipo'],
-                $row['peso'],
-                $row['volume'],
-                $row['latitude'],
-                $row['longitude'],
-                $row['nome']
-            );
-
-            // Adicionar a lixeira ao array
-            $lixeiras[] = $lixeira;
-
-            // Verificar se o volume atual é igual ao volume gravado no banco
-            if ($lixeira->volumeAtual == $lixeira->volumeMaximo) {
-               
-                $notificacao = "A lixeira {$lixeira->nome} está cheia!";
-                echo  $notificacao;
-                $notificacoes[] = $notificacao;
-            }
-        }
-
-        // Se houver notificações, imprimir ou retornar o array de notificações em formato JSON
-        if (!empty($notificacoes)) {
-            $jsonDataNotificacoes = json_encode($notificacoes);
-            echo $jsonDataNotificacoes;
-        }
-
-        // ... (seu código anterior)
-
-        // Converter o array de lixeiras para JSON
-        $jsonData = json_encode($lixeiras);
-
-        // Configurar cabeçalhos para indicar que o conteúdo é JSON
-        header('Content-Type: application/json');
-
-        // Retornar o JSON
-        echo $jsonData;
-    }
-}
-
-
-  }
-   ?>
-   

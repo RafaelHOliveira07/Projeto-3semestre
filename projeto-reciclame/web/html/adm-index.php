@@ -1,11 +1,12 @@
 <?php
 require_once 'usuario-verifica.php';
-  
- 
+
+
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,25 +18,30 @@ require_once 'usuario-verifica.php';
     <title>Adm-Inicio</title>
 
 </head>
+
 <body>
     <header>
         <div class="img-adm-headar">
-             <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt=""><h3>Area Administrativa </h3>
-            </div>
-             
+            <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt="">
+            <h3>Area Administrativa </h3>
+        </div>
 
-            <nav><a href="adm-index.php">Inicio</a>
+
+        <nav><a href="adm-index.php">Inicio</a>
             <a href="listar-empresa.php">Empresas</a>
             <a href="listar-lixeira.php">Lixeira</a>
-            <a href="usuario-logout.php">Sair</a></nav>
+            <a href="usuario-logout.php">Sair</a>
+        </nav>
     </header>
     <main>
-    <section class="table-sec" style="color: #fff;">
-        <h2>Seja bem vindo ao painel administrativo do Projeto reciclame</h2>        <p>Selecione as opcoes que desejar no menu ao lado</p>
-        <img src="../img/slogan.jpg" alt="">
+        <section class="table-sec" style="color: #fff;">
+            <h2>Seja bem vindo ao painel administrativo do Projeto reciclame</h2>
+            <p>Selecione as opcoes que desejar no menu ao lado</p>
+            <img src="../img/slogan.jpg" alt="">
 
 
-</section>
-</main>
+        </section>
+    </main>
 </body>
+
 </html>

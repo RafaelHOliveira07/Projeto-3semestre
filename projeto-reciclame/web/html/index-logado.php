@@ -259,12 +259,12 @@ require_once 'maps-empresa.php';
   </p >
     <p >Para saber como funciona e quais as opçés disponiveis acesse a pagina de cadastro de Pontos de Coleta Personalizados <a href="cadastro-lixeira.php">clicando aqui</a></p>
         
-                  </div>
+            </div>
+
+
+   </div>
+
       </section>
-
-        </div>
-
-
   </main>
 
   <footer>

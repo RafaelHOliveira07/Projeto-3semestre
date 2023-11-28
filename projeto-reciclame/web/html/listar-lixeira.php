@@ -1,14 +1,15 @@
 <?php
 require_once 'usuario-verifica.php';
-    require_once "../classes/Lixeira.php";
-    $lixeira = new Lixeira();
-    $lista = $lixeira->listar();
-  
- 
+require_once "../classes/Lixeira.php";
+$lixeira = new Lixeira();
+$lista = $lixeira->listar();
+
+
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,64 +21,83 @@ require_once 'usuario-verifica.php';
     <title>Lixeiras Cadastradas</title>
 
 </head>
+
 <body>
     <header>
         <div class="img-adm-headar">
-             <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt=""><h3>Area Administrativa </h3>
-            </div>
+            <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt="">
+            <h3>Area Administrativa </h3>
+        </div>
 
 
         <nav><a href="adm-index.php">Inicio</a>
             <a href="listar-empresa.php">Empresas</a>
             <a href="listar-lixeira.php">Lixeira</a>
-            <a href="usuario-logout.php">Sair</a></nav>
+            <a href="usuario-logout.php">Sair</a>
+        </nav>
     </header>
     <main>
-    <section class="table-sec">
-    <h1>Lixeiras Cadastradas</h1>
+        <section class="table-sec">
+            <h1>Lixeiras Cadastradas</h1>
 
 
-    <table class="table table-bordered " >
-    <thead class="thead-dark">
+            <table class="table table-bordered ">
+                <thead class="thead-dark">
 
-            <th scope="col">Código</th>
-            <th scope="col">propietario</th>
-            <th scope="col">Material</th>
-            <th scope="col">peso.Max</th>
-            <th scope="col">vol.Max</th>
+                    <th scope="col">Código</th>
+                    <th scope="col">propietario</th>
+                    <th scope="col">Material</th>
+                    <th scope="col">peso.Max</th>
+                    <th scope="col">vol.Max</th>
 
-            <th scope="col">latitude</th>
-            <th scope="col">longitude</th>
-            <th scope="col">localizacao</th>
-            <th scope="col">ações</th>
-        </tr>
-        <?php foreach ($lista as $linha):?>
-        <tr class="table-light">
+                    <th scope="col">latitude</th>
+                    <th scope="col">longitude</th>
+                    <th scope="col">localizacao</th>
+                    <th scope="col">ações</th>
+                    </tr>
+                    <?php foreach ($lista as $linha): ?>
+                        <tr class="table-light">
 
-            <td><?php echo $linha['idLixeira']?></td>            
-            <td><?php echo $linha['nome_empresa']?></td>
-            <td><?php echo $linha['tipo']?></td>
-            <td><?php echo $linha['peso']?></td>
-            <td><?php echo $linha['volume']?>
-            <td><?php echo $linha['latitude']?></td>
-            <td><?php echo $linha['longitude']?></td>
-            <td><?php echo $linha['nome']?></td>
+                            <td>
+                                <?php echo $linha['idLixeira'] ?>
+                            </td>
+                            <td>
+                                <?php echo $linha['nome_empresa'] ?>
+                            </td>
+                            <td>
+                                <?php echo $linha['tipo'] ?>
+                            </td>
+                            <td>
+                                <?php echo $linha['peso'] ?>
+                            </td>
+                            <td>
+                                <?php echo $linha['volume'] ?>
+                            <td>
+                                <?php echo $linha['latitude'] ?>
+                            </td>
+                            <td>
+                                <?php echo $linha['longitude'] ?>
+                            </td>
+                            <td>
+                                <?php echo $linha['nome'] ?>
+                            </td>
 
- 
-               <!-- ... (seu código existente) ... -->
 
-<td class="act">
-    <a href="form-atualizar-lixeira.php?id=<?php echo $linha['idLixeira']; ?>">Atualizar</a>
-    <a href="excluir-lixeira.php?id=<?php echo $linha['idLixeira']; ?>">Excluir</a>
-</td>
+                            <!-- ... (seu código existente) ... -->
 
-<!-- ... (seu código existente) ... -->
+                            <td class="act">
+                                <a href="form-atualizar-lixeira.php?id=<?php echo $linha['idLixeira']; ?>">Atualizar</a>
+                                <a href="excluir-lixeira.php?id=<?php echo $linha['idLixeira']; ?>">Excluir</a>
+                            </td>
 
-            
-        </tr>
-        <?php endforeach ?>
-    </table>
-</section>
-</main>
+                            <!-- ... (seu código existente) ... -->
+
+
+                        </tr>
+                    <?php endforeach ?>
+            </table>
+        </section>
+    </main>
 </body>
+
 </html>

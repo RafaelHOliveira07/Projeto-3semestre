@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="pt-br">
 
@@ -33,16 +32,17 @@
 
 <body class="text-center flex-column">
   <h1 class="font-weight-bold text-dark">Cadastrar adm</h1>
-  <form action="user-inserir.php" method="post" class="form-signin" name="login" onsubmit="return validaCampo(); return false;">
+  <form action="user-inserir.php" method="post" class="form-signin" name="login"
+    onsubmit="return validaCampo(); return false;">
     <h1 class="h3 mb-3 font-weight-normal">Login</h1>
     <label for="usuario" class="sr-only">Usuário</label>
     <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuário">
     <label for="senha" class="sr-only">Senha</label>
     <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha">
     <div class="checkbox mb-3">
-  
-    <button type="submit">Cadastrar</button>
-    <p class="mt-5 mb-3 text-muted">&copy; Area adminstrativa Projeto Portal - Canada 2023</p>
+
+      <button type="submit">Cadastrar</button>
+      <p class="mt-5 mb-3 text-muted">&copy; Area adminstrativa Projeto Portal - Canada 2023</p>
   </form>
 </body>
 

@@ -8,7 +8,7 @@ $sql = "SELECT * FROM tb_adm WHERE usuario = :user AND senha = :passwd";
 
 try {
     $conexao = new PDO('mysql:host=127.0.0.1;dbname=reciclame', 'root', '');
-    
+
     $resultado = $conexao->prepare($sql);
     $resultado->bindParam(':user', $usuario);
     $resultado->bindParam(':passwd', $senha);
