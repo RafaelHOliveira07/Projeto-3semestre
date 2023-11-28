@@ -224,7 +224,7 @@
         "type": "function",
         "z": "07dac06b72663873",
         "name": "lixeira1",
-        "func": "\nif (msg.topic === \"inject\") {\n    // Chama a função de consulta\n    gerarDadosSimulados();\n}\n\n\n\n\n\n\n\nvar idLixeira = \"01\";\nvar idEmpresa = \"02\";\nvar intervaloDeTempo = 2000; // Tempo em milissegundos (por exemplo, a cada 5 segundos)\nvar limiteMaximoVolume = 90; // Substitua com o seu limite máximo de volume\n\n// Variáveis para acumular o volume e o peso\nvar volumeTotal = 0;\nvar pesoTotal = 0;\n\n// Função para gerar dados simulados\nfunction gerarDadosSimulados() {\n    // Gere dados de volume e peso aleatórios (substitua com a lógica real)\nvar volume = Math.round(Math.random() * 10) + 1; // Valor entre 1 e 10 (arredondado para o inteiro mais próximo)\n    var peso = Math.round(Math.random() * 2) + 1; // Valor entre 1 e 2 (arredondado para o inteiro mais próximo)\n\n    // Adicione um timestamp simulado (data e hora atual)\n    var timestamp = new Date();\n\n    // Verifique se os dados excedem os limites máximos\n    if ((volumeTotal + volume) <= limiteMaximoVolume) {\n        // Some o volume e o peso aos totais\n        volumeTotal += volume;\n        pesoTotal += peso;\n\n        // Crie o objeto de dados\n        var dados = {\n            idLixeira: idLixeira,\n            idEmpresa: idEmpresa,\n            volumeTotal: volumeTotal, // Volume acumulado até agora\n            pesoTotal: pesoTotal, // Peso acumulado até agora\n            timestamp: timestamp, // Adiciona um timestamp simulado\n            isFinal: false // Indica se estes são os últimos dados\n        };\n\n        // Se ambos os limites foram atingidos, marque como final\n        if (volumeTotal >= limiteMaximoVolume - 10) {\n            dados.isFinal = true;\n            console.log(\"Volume máximo atingido. Marcar como final.\");\n        }\n\n        // Envie os dados para o tópico MQTT\n        node.send({ payload: dados, topic: \"lixeira\" });\n        console.log(dados);\n\n        // Se não for o último conjunto de dados, agende a próxima geração\n        if (!dados.isFinal) {\n            setTimeout(gerarDadosSimulados, intervaloDeTempo);\n        }\n    } else {\n        console.log(\"Dados excedem os limites máximos. Não enviando para o MQTT.\");\n    }\n}\n\n// Inicie o processo de geração de dados\ngerarDadosSimulados();\n\nreturn null; // Não envie nada para a saída, pois a execução é controlada internamente\n//O código adicionado aqui será executado uma vez\n// sempre que o nó for iniciado.\n\nreturn msg;",
+        "func": "if (msg.topic === \"inject\") {\n    // Chama a função de consulta\n    gerarDadosSimulados();\n}\n\nvar idLixeira = \"01\";\nvar idEmpresa = \"02\";\nvar tipo = \"papel\";\nvar intervaloDeTempo = 5000; // Tempo em milissegundos (por exemplo, a cada 5 segundos)\nvar limiteMaximoVolume = 80; // Substitua com o seu limite máximo de volume\n\nvar volumeTotal = 0;\nvar pesoTotal = 0;\n\nfunction gerarDadosSimulados() {\n    var volume = Math.round(Math.random() * 10) + 1;\n    var peso = Math.round(Math.random() * 2) + 1;\n    var timestamp = new Date();\n\n    if ((volumeTotal + volume) <= limiteMaximoVolume) {\n        volumeTotal += volume;\n        pesoTotal += peso;\n\n        var dados = {\n            idLixeira: idLixeira,\n            idEmpresa: idEmpresa,\n            volumeTotal: volumeTotal,\n            pesoTotal: pesoTotal,\n            timestamp: timestamp,\n            isFinal: false\n        };\n\n        if (volumeTotal >= limiteMaximoVolume - 10) {\n            dados.isFinal = true;\n            console.log(\"Volume máximo atingido. Marcar como final.\");\n\n            // Se isFinal for verdadeiro, envie o sinal para o nó Trigger\n            if (dados.isFinal) {\n                node.send({ payload:dados.isFinal });\n            }\n        }\n\n        node.send({ payload: dados, topic: \"lixeira\" });\n        console.log(dados);\n\n        if (!dados.isFinal) {\n            setTimeout(gerarDadosSimulados, intervaloDeTempo);\n        }\n    } else {\n        console.log(\"Dados excedem os limites máximos. Não enviando para o MQTT.\");\n    }\n}\n\n// Inicie o processo de geração de dados\ngerarDadosSimulados();\n\nreturn null;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -235,7 +235,8 @@
         "y": 360,
         "wires": [
             [
-                "2430cdbd20a2960f"
+                "2430cdbd20a2960f",
+                "e2b1a4e2dcafcdd2"
             ]
         ]
     },
@@ -311,9 +312,7 @@
         "x": 580,
         "y": 560,
         "wires": [
-            [
-                "597b55e219cf4937"
-            ]
+            []
         ]
     },
     {
@@ -333,7 +332,7 @@
         "nodata": "",
         "dot": false,
         "ymin": "0",
-        "ymax": "100",
+        "ymax": "80",
         "removeOlder": 1,
         "removeOlderPoints": "",
         "removeOlderUnit": "3600",
@@ -365,7 +364,7 @@
         "type": "function",
         "z": "07dac06b72663873",
         "name": "lixeira2",
-        "func": "\nif (msg.topic === \"inject\") {\n    // Chama a função de consulta\n    gerarDadosSimulados();\n}\n\n\n\n\n\n\n\nvar idLixeira = \"02\";\nvar idEmpresa = \"02\";\nvar intervaloDeTempo = 2000; // Tempo em milissegundos (por exemplo, a cada 5 segundos)\nvar limiteMaximoVolume = 90; // Substitua com o seu limite máximo de volume\n\n// Variáveis para acumular o volume e o peso\nvar volumeTotal = 0;\nvar pesoTotal = 0;\n\n// Função para gerar dados simulados\nfunction gerarDadosSimulados() {\n    // Gere dados de volume e peso aleatórios (substitua com a lógica real)\nvar volume = Math.round(Math.random() * 10) + 1; // Valor entre 1 e 10 (arredondado para o inteiro mais próximo)\n    var peso = Math.round(Math.random() * 2) + 1; // Valor entre 1 e 2 (arredondado para o inteiro mais próximo)\n\n    // Adicione um timestamp simulado (data e hora atual)\n    var timestamp = new Date();\n\n    // Verifique se os dados excedem os limites máximos\n    if ((volumeTotal + volume) <= limiteMaximoVolume) {\n        // Some o volume e o peso aos totais\n        volumeTotal += volume;\n        pesoTotal += peso;\n\n        // Crie o objeto de dados\n        var dados = {\n            idLixeira: idLixeira,\n            idEmpresa: idEmpresa,\n            volumeTotal: volumeTotal, // Volume acumulado até agora\n            pesoTotal: pesoTotal, // Peso acumulado até agora\n            timestamp: timestamp, // Adiciona um timestamp simulado\n            isFinal2: false // Indica se estes são os últimos dados\n        };\n\n        // Se ambos os limites foram atingidos, marque como final\n        if (volumeTotal >= limiteMaximoVolume - 10) {\n            dados.isFinal2 = true;\n            console.log(\"Volume máximo atingido. Marcar como final.\");\n        }\n\n        // Envie os dados para o tópico MQTT\n        node.send({ payload: dados, topic: \"lixeira\" });\n        console.log(dados);\n\n        // Se não for o último conjunto de dados, agende a próxima geração\n        if (!dados.isFinal) {\n            setTimeout(gerarDadosSimulados, intervaloDeTempo);\n        }\n    } else {\n        console.log(\"Dados excedem os limites máximos. Não enviando para o MQTT.\");\n    }\n}\n\n// Inicie o processo de geração de dados\ngerarDadosSimulados();\n\nreturn null; // Não envie nada para a saída, pois a execução é controlada internamente\n//O código adicionado aqui será executado uma vez\n// sempre que o nó for iniciado.\n\nreturn msg;",
+        "func": "if (msg.topic === \"inject\") {\n    // Chama a função de consulta\n    gerarDadosSimulados();\n}\n\nvar idLixeira = \"02\";\nvar idEmpresa = \"02\";\nvar tipo = \"plastico\"\nvar intervaloDeTempo = 2000; // Tempo em milissegundos (por exemplo, a cada 5 segundos)\nvar limiteMaximoVolume = 100; // Substitua com o seu limite máximo de volume\n\nvar volumeTotal = 0;\nvar pesoTotal = 0;\n\nfunction gerarDadosSimulados() {\n    var volume = Math.round(Math.random() * 10) + 1;\n    var peso = Math.round(Math.random() * 2) + 1;\n    var timestamp = new Date();\n\n    if ((volumeTotal + volume) <= limiteMaximoVolume) {\n        volumeTotal += volume;\n        pesoTotal += peso;\n\n        var dados = {\n            idLixeira: idLixeira,\n            idEmpresa: idEmpresa,\n            tipo: tipo,\n            volumeTotal: volumeTotal,\n            pesoTotal: pesoTotal,\n            timestamp: timestamp,\n            isFinal2: false\n        };\n\n        if (volumeTotal >= limiteMaximoVolume - 10) {\n            dados.isFinal2 = true;\n            console.log(\"Volume máximo atingido. Marcar como final.\");\n\n            // Se isFinal for verdadeiro, envie o sinal para o nó Trigger\n            if (dados.isFinal2) {\n                node.send({ payload:dados.isFinal2 });\n            }\n        }\n\n        node.send({ payload: dados, topic: \"lixeira\" });\n        console.log(dados);\n\n        if (!dados.isFinal2) {\n            setTimeout(gerarDadosSimulados, intervaloDeTempo);\n        }\n    } else {\n        console.log(\"Dados excedem os limites máximos. Não enviando para o MQTT.\");\n    }\n}\n\n// Inicie o processo de geração de dados\ngerarDadosSimulados();\n\nreturn null;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -376,7 +375,8 @@
         "y": 720,
         "wires": [
             [
-                "5d65a41811af3794"
+                "5d65a41811af3794",
+                "2aa7c6fc1dfde0d4"
             ]
         ]
     },
@@ -449,8 +449,8 @@
         "name": "",
         "server": "",
         "client": "f3d3f6a10e0494fa",
-        "x": 420,
-        "y": 900,
+        "x": 360,
+        "y": 940,
         "wires": [
             []
         ]
@@ -472,7 +472,7 @@
         "nodata": "",
         "dot": false,
         "ymin": "0",
-        "ymax": "100",
+        "ymax": "110",
         "removeOlder": 1,
         "removeOlderPoints": "",
         "removeOlderUnit": "3600",
@@ -497,6 +497,148 @@
         "y": 720,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "2aa7c6fc1dfde0d4",
+        "type": "trigger",
+        "z": "07dac06b72663873",
+        "name": "",
+        "op1": "",
+        "op2": "1",
+        "op1type": "pay",
+        "op2type": "str",
+        "duration": "0",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "true",
+        "bytopic": "topic",
+        "topic": "lixeira",
+        "outputs": 1,
+        "x": 550,
+        "y": 840,
+        "wires": [
+            [
+                "c406ee68558ad19b"
+            ]
+        ]
+    },
+    {
+        "id": "d97c17504f739917",
+        "type": "ui_toast",
+        "z": "07dac06b72663873",
+        "position": "dialog",
+        "displayTime": "5",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "ok",
+        "cancel": "",
+        "raw": false,
+        "className": "Lixeira 2",
+        "topic": "Sua lixeira 2 esta pronta para a coleta",
+        "name": "Lixeira02",
+        "x": 980,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c406ee68558ad19b",
+        "type": "delay",
+        "z": "07dac06b72663873",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 740,
+        "y": 840,
+        "wires": [
+            [
+                "d97c17504f739917"
+            ]
+        ]
+    },
+    {
+        "id": "e2b1a4e2dcafcdd2",
+        "type": "trigger",
+        "z": "07dac06b72663873",
+        "name": "",
+        "op1": "",
+        "op2": "1",
+        "op1type": "pay",
+        "op2type": "str",
+        "duration": "0",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "true",
+        "bytopic": "all",
+        "topic": "lixeira",
+        "outputs": 1,
+        "x": 470,
+        "y": 480,
+        "wires": [
+            [
+                "3f0accb78e1f6780"
+            ]
+        ]
+    },
+    {
+        "id": "c4140a70277f09ea",
+        "type": "ui_toast",
+        "z": "07dac06b72663873",
+        "position": "dialog",
+        "displayTime": "5",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "ok",
+        "cancel": "",
+        "raw": false,
+        "className": "Lixeira 2",
+        "topic": "Sua lixeira 1 esta pronta para a coleta",
+        "name": "Lixeira01",
+        "x": 900,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3f0accb78e1f6780",
+        "type": "delay",
+        "z": "07dac06b72663873",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 660,
+        "y": 480,
+        "wires": [
+            [
+                "c4140a70277f09ea"
+            ]
         ]
     },
     {
@@ -714,7 +856,7 @@
         "type": "function",
         "z": "50cd7bd7627ea43f",
         "name": "CONSULTA BANCO",
-        "func": "// Verifica se a mensagem é originária do nó \"inject\"\nif (msg.topic === \"inject\") {\n    // Chama a função de consulta\n    documentos();\n}\n\n// Retorna a mensagem para passar para o próximo nó\nreturn msg;\n\n\nvar processedDocs = [];\n\n// Verifique se a resposta do banco de dados contém a propriedade \"ops\"\nif (msg.payload && msg.payload.ops) {\n    // Extraia os documentos da propriedade \"ops\"\n    var documentos = msg.payload.ops;\n\n    // Itera sobre cada documento\n    documentos.forEach(function(doc) {\n        // Faça qualquer processamento adicional aqui, se necessário\n        // ...\n\n        // Adiciona o documento ao array\n        processedDocs.push(doc);\n    });\n\n    // Imprima os documentos para verificar\n    console.log(processedDocs);\n\n    // Agora, você pode usar o array de documentos como desejar\n    // Por exemplo, atribuir a uma variável global ou enviar para outro nó\n\n    return { payload: processedDocs };\n} else {\n    // Caso não encontre a propriedade \"ops\", algo pode ter dado errado\n    console.error(\"A propriedade 'ops' não encontrada na resposta do banco de dados.\");\n    return msg; // Ou retorne algo apropriado para o seu caso\n}\n",
+        "func": "// Verifica se a mensagem é originária do nó \"inject\"\nif (msg.topic === \"inject\") {\n    // Chama a função de consulta\n    documentos();\n}\n\n// Retorna a mensagem para passar para o próximo nó\nreturn msg;\n\n\n// Variável para armazenar o último documento com isFinal2 true\nvar ultimoDocumento = null;\nvar ultimoTimestamp = 0;\n\n// Verifique se a resposta do banco de dados contém a propriedade \"ops\"\nif (msg.payload && msg.payload.ops) {\n    // Extraia os documentos da propriedade \"ops\"\n    var documentos = msg.payload.ops;\n\n    // Itera sobre cada documento\n    documentos.forEach(function (doc) {\n        // Verifique se o documento é definido e se tem a propriedade isFinal2 com valor true\n        if (doc && doc.isFinal2 === true) {\n            // Verifique se o timestamp é mais recente\n            if (doc.timestamp > ultimoTimestamp) {\n                // Atualize o último documento e timestamp\n                ultimoDocumento = doc;\n                ultimoTimestamp = doc.timestamp;\n            }\n        }\n    });\n\n    // Imprima o último documento para verificar\n    console.log(ultimoDocumento);\n\n    // Agora, você pode usar o último documento como desejar\n    // Por exemplo, atribuir a uma variável global ou enviar para outro nó\n\n    return { payload: ultimoDocumento };\n} else {\n    // Caso não encontre a propriedade \"ops\", algo pode ter dado errado\n    console.error(\"A propriedade 'ops' não encontrada na resposta do banco de dados.\");\n    return msg; // Ou retorne algo apropriado para o seu caso\n}\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -726,31 +868,6 @@
         "wires": [
             [
                 "70aa2e734b8de4fb"
-            ]
-        ]
-    },
-    {
-        "id": "921d9eddcc3d2015",
-        "type": "inject",
-        "z": "50cd7bd7627ea43f",
-        "name": "",
-        "props": [
-            {
-                "p": "topic",
-                "v": "inject",
-                "vt": "msg"
-            }
-        ],
-        "repeat": "10",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 240,
-        "y": 820,
-        "wires": [
-            [
-                "55b20290f6aff91e"
             ]
         ]
     },
@@ -838,7 +955,7 @@
         "name": "",
         "server": "",
         "client": "f3d3f6a10e0494fa",
-        "x": 900,
+        "x": 400,
         "y": 1040,
         "wires": [
             []
@@ -853,7 +970,7 @@
         "order": 1,
         "width": 0,
         "height": 0,
-        "format": "<style>\n    circle {\nfill: #FF1616  !important;\n\n}\npath {\n    fill: #FF1616 !important;\n    }\n\n    </style>",
+        "format": "<style>\n    circle {\nfill: #FF1616  !important;\nborder-color: #FF1616 !important;\n\n}\n\n\n    </style>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
@@ -876,7 +993,7 @@
         "order": 1,
         "width": 0,
         "height": 0,
-        "format": "<style>\n    circle {\nfill: #429DE3 !important;\n\n}\npath {\n    fill: #429DE3 !important;\n    }\n\n\n    </style>",
+        "format": "<style>\n    circle {\nfill: #429DE3 !important;\n\n}\n\n\n\n    </style>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
@@ -887,6 +1004,31 @@
         "wires": [
             [
                 "90f86e9ec214eaa8"
+            ]
+        ]
+    },
+    {
+        "id": "921d9eddcc3d2015",
+        "type": "inject",
+        "z": "50cd7bd7627ea43f",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "v": "inject",
+                "vt": "msg"
+            }
+        ],
+        "repeat": "10",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 240,
+        "y": 820,
+        "wires": [
+            [
+                "55b20290f6aff91e"
             ]
         ]
     },
