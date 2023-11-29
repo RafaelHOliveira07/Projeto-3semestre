@@ -24,7 +24,7 @@ socket.onmessage = function (event) {
                 Notification.requestPermission().then(function (permission) {
                     if (permission === 'granted') {
                         // Cria uma nova notificação com as informações da lixeira
-                        var notificacao = new Notification('Ponto de coleta 01:', {
+                        var notificacao = new Notification('Lixeira cheia:', {
                             body: 'volume máximo atingido, realize a coleta'+ '\n' +
                                     'ID: ' + lixeiraEncontrada.idLixeira + '\n' +
                                   'Tipo: ' + lixeiraEncontrada.tipo + '\n' +
