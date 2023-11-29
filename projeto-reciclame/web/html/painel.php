@@ -3,7 +3,7 @@
 require_once 'empresa-verifica.php';
 $idEmpresa = $_SESSION['idEmpresa'];
 
-require_once "../classes/lixeira.php";
+require_once "../classes/Lixeira.php";
 $lixeira = new Lixeira();
 $lista = $lixeira->listarlogado($idEmpresa);
 

@@ -1,5 +1,4 @@
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap" async defer></script>
 
 <?php
 require_once 'empresa-verifica.php';
@@ -10,7 +9,7 @@ $pontos_empresa = $empresa->obterPontoEmpresaParaMapa();
 $pontos_json_empresa = json_encode($pontos_empresa);
 
 
-require_once '../classes/lixeira.php';
+require_once '../classes/Lixeira.php';
 $lixeira = new Lixeira();
 $jsonPontosLixeira = $lixeira->obterPontosLixeiraParaMapa();
 require_once 'maps-empresa.php';
@@ -34,6 +33,7 @@ require_once '../javascript/web.php'
   
  
     <!-- Carregue a API do Google Maps com um retorno de chamada -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap" async defer></script>
 
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
