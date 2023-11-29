@@ -1,6 +1,6 @@
 <?php
 require_once 'usuario-verifica.php';
-require_once "../classes/Empresa.php";
+require_once "../classes/empresa.php";
 $empresa = new Empresa();
 $lista = $empresa->listar();
 ?>

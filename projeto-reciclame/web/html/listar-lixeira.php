@@ -1,6 +1,6 @@
 <?php
 require_once 'usuario-verifica.php';
-require_once "../classes/Lixeira.php";
+require_once "../classes/lixeira.php";
 $lixeira = new Lixeira();
 $lista = $lixeira->listar();
 

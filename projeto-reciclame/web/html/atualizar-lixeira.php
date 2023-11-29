@@ -1,7 +1,7 @@
 <?php
 // formulario-atualizar-lixeira.php
 
-require_once "../classes/Lixeira.php";
+require_once "../classes/lixeira.php";
 
 // Verifica se o ID foi fornecido na URL
 if (isset($_GET['id'])) {

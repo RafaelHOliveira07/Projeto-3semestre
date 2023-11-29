@@ -2,6 +2,14 @@
 
 require_once 'empresa-verifica.php';
 $idEmpresa = $_SESSION['idEmpresa'];
+
+
+require_once '../classes/lixeira.php';
+$lixeira = new Lixeira();
+$lista = $lixeira->listarlogado($idEmpresa);
+
+$listaJson = json_encode($lista);
+require_once '../javascript/web.php'
 ?>
 
 <!DOCTYPE html>
@@ -148,6 +156,9 @@ $idEmpresa = $_SESSION['idEmpresa'];
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
+  </script>
+    <script>
+    var socket = new WebSocket("ws://localhost:1880/reciclame.com/ws");
   </script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

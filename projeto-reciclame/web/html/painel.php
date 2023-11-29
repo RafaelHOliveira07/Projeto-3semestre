@@ -3,11 +3,13 @@
 require_once 'empresa-verifica.php';
 $idEmpresa = $_SESSION['idEmpresa'];
 
-require_once "../classes/Lixeira.php";
+require_once "../classes/lixeira.php";
 $lixeira = new Lixeira();
 $lista = $lixeira->listarlogado($idEmpresa);
 
-$resposta = json_encode(['dados' => $lista]);
+$listaJson = json_encode($lista);
+require_once '../javascript/web.php'
+
 
 ?>
 
@@ -73,35 +75,7 @@ $resposta = json_encode(['dados' => $lista]);
       </div>
 
   </header>
-  <script>
-    var resposta = {resposta};
 
-var socket = new WebSocket("ws://localhost:1880/reciclame.com/ws");
-
-socket.onopen = function (event) {
-  console.log("Conexão WebSocket aberta.");
-
-};
-
-socket.onmessage = function (event) {
-  // Receba os dados do WebSocket, se necessário
-  var dadosRecebidos = JSON.parse(event.data);
-
-  // Faça qualquer processamento necessário com os dados recebidos do Node-RED
-  console.log(dadosRecebidos);
-};
-
-socket.onclose = function (event) {
-  // Lide com o fechamento da conexão, se necessário
-  console.log("Conexão WebSocket fechada.");
-};
-
-socket.onerror = function (error) {
-  console.error("Erro na conexão WebSocket:", error);
-};
-
-
-  </script>
 
   <iframe src="http://127.0.0.1:1880/ui/#!/0?socketid=TzzAfH__q_OlG8zZAAAJ"> </iframe>
   <main>
@@ -165,6 +139,7 @@ socket.onerror = function (error) {
   <script>
     AOS.init();
   </script>
+  <script src=""></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
