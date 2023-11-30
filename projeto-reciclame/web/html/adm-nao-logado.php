@@ -8,6 +8,7 @@
     <link href="https://getbootstrap.com.br/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Estilos customizados para esse template -->
   <link href="https://getbootstrap.com.br/docs/4.1/examples/sign-in/signin.css" rel="stylesheet">
+  <link rel="shortcut icon" href="../img/bin-verde.png" type="image/x-icon">
 </head>
 <body class="text-center flex-column">
     <h1 class="font-weight-bold text-dark">Acesso Negado</h1>

@@ -14,7 +14,7 @@
 
 <body class="text-center flex-column">
   <h1 class="font-weight-bold text-dark">Acesso Negado</h1>
-  <h3 class="h3 mb-4 font-weight-normal">Usuário Não Logado</h3>
+  <h3 class="h3 mb-4 font-weight-normal">Usuário ou senha incorretos</h3>
   <a class="btn btn-lg btn-dark px-5 mt-3" href="empresa-form.php">Logar</a>
 </body>
 

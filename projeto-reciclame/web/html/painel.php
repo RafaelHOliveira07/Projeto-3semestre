@@ -29,7 +29,7 @@ require_once '../javascript/web.php'
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="stylesheet" href="../style/style.css">
   <link rel="stylesheet" href="../style/style-painel.css">
-
+  <link rel="shortcut icon" href="../img/bin-verde.png" type="image/x-icon">
 </head>
 
 

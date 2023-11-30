@@ -22,7 +22,7 @@ $empresa_logado = $linha['email'];
 $idEmpresa = null;
 if ($empresa_logado == null) {
     // Usuário ou senha inválida
-    echo "Erro ao fazer login. Credenciais inválidas.";
+    header('Location: usuario-erro-logado-.php');
 } else {
     $_SESSION['usuario_logado'] = $empresa_logado;
     echo "Empresa logada: " . $empresa_logado; // Adicione esta linha para depurar

@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Reciclame-login</title>
-
+  <link rel="shortcut icon" href="../img/bin-verde.png" type="image/x-icon">
   <!-- Principal CSS do Bootstrap -->
   <link href="https://getbootstrap.com.br/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -34,7 +34,7 @@
       }
       if (document.login.senha.value == "") {
         var password = document.getElementById("senha")
-  ,;
+  ;
 
 function validatePassword(){
   if(password.value != confirm_password.value) {
@@ -56,10 +56,11 @@ confirm_password.onkeyup = validatePassword;
 </head>
 
 <body class="text-center flex-column">
-  <h1 class="font-weight-bold text-dark"></h1>
+  <h1 class="font-weight-bold">Área adminstraviva</h1>
   <form action="adm-login.php" method="post" class="form-signin" name="login"
     onsubmit="return validaCampo(); return false;">
-    <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+    <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt="">
+    <h1 class="h3 mb-3 font-weight-normal">Login </h1>
 
     <label for="usuario" class="sr-only">Usuario</label>
     <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuário">
