@@ -5,11 +5,12 @@ require_once 'empresa-verifica.php';
 $idEmpresa = $_SESSION['idEmpresa'];
 include_once '../classes/empresa.php';
 $empresa = new Empresa();
+
 $pontos_empresa = $empresa->obterPontoEmpresaParaMapa();
 $pontos_json_empresa = json_encode($pontos_empresa);
 
 
-require_once '../classes/Lixeira.php';
+require_once '../classes/lixeira.php';
 $lixeira = new Lixeira();
 $jsonPontosLixeira = $lixeira->obterPontosLixeiraParaMapa();
 require_once 'maps-empresa.php';
@@ -71,9 +72,6 @@ require_once '../javascript/web.php'
     <li>
         <a href="index-logado.php">Início</a>
     </li>
-    <li>
-    <a href="index-logado.php#sec-01">Sobre</a>
-    </li>
 
         <li>
             <a href="painel.php">Painel</a>
@@ -98,7 +96,7 @@ require_once '../javascript/web.php'
   data-aos-once="false"
   data-aos-anchor-placement="top-center">
     <h1 class="fancy">Seja-bem vindo</h1>
-    <p class="fancy-p">Ao projeto Reciclame onde reciclar tem tudo haver com tecnologia</p>
+    <p class="fancy-p"></p>
 
   </div>
   <div id="carouselExampleControls" class="img-fundo carousel slide" data-ride="carousel">
@@ -120,79 +118,56 @@ require_once '../javascript/web.php'
   <main class=" container-fluid">
 
 
-    <section class="sec-01 container-fluid" >
+    <section class="sec-03 ">
 
+      <h2>Pontos de Coleta personalizado:</h2>
 
-      <div class="text flex-column"data-aos="fade-down"
-        data-aos-offset="100"
-        data-aos-delay="50"
-        data-aos-duration="500"
-        data-aos-easing="ease-in-out"
-        data-aos-mirror="true"
-        data-aos-once="true"
-   >
-        <h2 id="sec-01"  >Conheça nosso projeto</h2>
+      <div class="work-sec" >
 
+        <div class="parawork" data-aos="fade-right"
+  data-aos-offset="200"
+  data-aos-delay="100"
+  data-aos-duration="1000"
+  data-aos-easing="ease-in-out"
+  data-aos-mirror="true"
+  data-aos-once="true" >
+
+          <p >Para empresas já cadastradas, oferecemos o serviço de pontos de coleta personalizados, podendo escolher o ponto, material e volume de acordo com seu negócio</p>
 
       </div>
+ 
+         
 
+  
+   
+        <div id="work" data-aos="fade-left"
+  data-aos-offset="200"
+  data-aos-delay="1000"
+  data-aos-duration="20000"
+  data-aos-easing="ease-in-out"
+  data-aos-mirror="true"
+  data-aos-once="true">
 
-
-        <div class="img-sec container-fluid" data-aos="fade-right"
-        data-aos-offset="200"
-        data-aos-delay="50"
-        data-aos-duration="500"
-        data-aos-easing="ease-in-out"
-        data-aos-mirror="true"
-        data-aos-once="true" >
-          <label for="agi">
-            <img class="img-fluid" src="../img/iteracao.png" alt="agilidade" id="agi"> <span>Mais agilidade na
-              coleta</span></label>
-              <div class="p">
-          <p>Nosso projeto tem como objetivo, auxiliar a coleta seletiva de bairros e cidades, oferecendo dados que
-            poderam ser utilizados para melhorar rotas e economizar o tempo de quem cuida do nosso lixo no dia a dia.Para empresas parceiras,
-            oferecemos o serviço de pontos de coleta personalizado, cadastra-se e saiba mais.
-          </p></div>
-        </div>
-
-        <div class="img-sec container-fluid" data-aos="fade-right"
-        data-aos-offset="200"
-        data-aos-delay="50"
-        data-aos-duration="500"
-        data-aos-easing="ease-in-out"
-        data-aos-mirror="true"
-        data-aos-once="true">
-          <label for="eco">
-            <img class="img-fluid" src="../img/eco.png" alt="eco" id="eco"><span>Aliado da natureza</span></label>
-            <div class="p">
-          <p>Para isso foram desenvolvidas lixeiras inteligentes voltadas para lixo reciclavel, ou seja o intuito e
-            gerar menos desperdicio e selecionar corretamente o que é reciclavel, ajudando tanto a cidade, as empresas,
-            grupos de coleta e também o cidadão.
-            Futuramente o projeto visa atender novos tipos de materiais para também atender necessidades dos difentes ramos de coleta.
-          </p>
-          </div>
+          <img src="../img/conceituando-ilustracao-de-design-isometrico-de-reciclagem-de-residuos_780482-37.avif" alt="">
           
         </div>
+      <div class="parawork" data-aos="fade-left"
+  data-aos-offset="200"
+  data-aos-delay="100"
+  data-aos-duration="1000"
+  data-aos-easing="ease-in-out"
+  data-aos-mirror="true"
+  data-aos-once="true" >
 
-        <div class="img-sec container-fluid" data-aos="fade-right"
-        data-aos-offset="200"
-        data-aos-delay="50"
-        data-aos-duration="800"
-        data-aos-easing="ease-in-out"
-        data-aos-mirror="true"
-        data-aos-once="true">
-          <label for="tecb">
-            <img class="img-fluid" src="../img/tecnologia.png" alt="tec" id="tec"><span>Portal Web com
-              dashbord</span></label>
-              <div class="p">
-          <p >Nossas lixeiras sero equipadas com sensores que enviaram para a nossa plataforma, informações como,
-            quantidade de lixo que foi armazenada e coletada nas lixeiras entre muitas outras.E o nosso principal
-            atrativo é pode localizar as lixeiras maix proximas de você,  utilizando a tecnologia do Google maps.
-          </p>
-          </div>
-        </div>  
+  <p >Para saber como funciona e quais as opções disponíveis acesse a página de cadastro de Pontos de Coleta Personalizados <a href="cadastro-lixeira.php">clicando aqui</a></p>
       
+          </div>
+
+
+ </div>
+
     </section>
+  
     <section class="sec-02 container-fluid" data-aos="fade-down"
     data-aos-offset="100"
     data-aos-delay="50"
@@ -200,7 +175,7 @@ require_once '../javascript/web.php'
     data-aos-easing="ease-in-out"
     data-aos-mirror="true"
     data-aos-once="true" >
-      <h2 class="dysplay-4">Encontre a lixeira mais proxima de voce:</h2>
+      <h2 class="dysplay-4">Meus pontos de coleta no Mapa:</h2>
 
      
       <div class="img-maps">
@@ -210,70 +185,30 @@ require_once '../javascript/web.php'
        
  <div class="text-leg">
             
-   
-               <p>Basta clicar em permitir sua localização e pronto, nosso mapa ira te indicar as lixeiras mais
-              proximas da sua localização atual</p>  
-              <p>Também é possivel traçar rotas a partir da sua localização, basta clicar em qualquer icone das nossa lixeiras e pronto</p>
-                 
+  <p>Legenda</p>
+  <p>Cada cor representa um tipo de lixo em nossos ícones siga a legenda a baixo se necessário</p>
+
+               <div class="leg"> 
+                <label for="">Vidro
+                <span class="cube" id="green"></span></label>
+                <label for="">Papel
+                <span class="cube" id="blue"></span></label>
+                <label for="">Metal
+                <span class="cube" id="yellow"></span></label>
+                <label for="">Plastico
+                <span class="cube" id="red"></span></label>
+              </div>
+    
 </div>
 
  </section>
 
 
 
-      <section class="sec-03 ">
-
-        <h2>Pontos de Coleta personalizado:</h2>
-
-        <div class="work-sec" >
-
-          <div class="parawork" data-aos="fade-right"
-    data-aos-offset="200"
-    data-aos-delay="100"
-    data-aos-duration="1000"
-    data-aos-easing="ease-in-out"
-    data-aos-mirror="true"
-    data-aos-once="true" >
-
-            <p >Para empresas ja cadastradas, oferecemos o serviço de pontos de coleta personalizados, podendo escolher o ponto, material e volume de acordo com seu negocio
-  
-        </div>
-   
-           
-
-    
-     
-          <div id="work" data-aos="fade-left"
-    data-aos-offset="200"
-    data-aos-delay="1000"
-    data-aos-duration="20000"
-    data-aos-easing="ease-in-out"
-    data-aos-mirror="true"
-    data-aos-once="true">
-
-            <img src="../img/conceituando-ilustracao-de-design-isometrico-de-reciclagem-de-residuos_780482-37.avif" alt="">
-            
-          </div>
-        <div class="parawork" data-aos="fade-left"
-    data-aos-offset="200"
-    data-aos-delay="100"
-    data-aos-duration="1000"
-    data-aos-easing="ease-in-out"
-    data-aos-mirror="true"
-    data-aos-once="true" >
-  </p >
-    <p >Para saber como funciona e quais as opçés disponiveis acesse a pagina de cadastro de Pontos de Coleta Personalizados <a href="cadastro-lixeira.php">clicando aqui</a></p>
-        
-            </div>
-
-
-   </div>
-
-      </section>
   </main>
 
   <footer>
-    <h3>Redes Sociais</h3>
+    <h3>Redes-Sociais</h3>
     <div class="redes">
       <a href="#" class="fa fa-facebook"></a>
       <a href="#" class="fa fa-twitter"></a>

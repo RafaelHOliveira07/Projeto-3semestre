@@ -35,8 +35,8 @@ require_once 'usuario-verifica.php';
     </header>
     <main>
         <section class="table-sec" style="color: #fff;">
-            <h2>Seja bem vindo ao painel administrativo do Projeto reciclame</h2>
-            <p>Selecione as opcoes que desejar no menu ao lado</p>
+            <h2>Seja-bem vindo ao painel administrativo do Projeto recicla-me</h2>
+            <p>Selecione as opções que desejar no menu ao lado</p>
             <img src="../img/slogan.jpg" alt="">
 
 

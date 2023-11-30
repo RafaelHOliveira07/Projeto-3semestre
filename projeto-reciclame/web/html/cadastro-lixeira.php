@@ -59,9 +59,6 @@ require_once '../javascript/web.php'
           <li>
             <a href="index-logado.php">Início</a>
           </li>
-          <li>
-            <a href="index-logado.php#sec-01">Sobre</a>
-          </li>
 
           <li>
             <a href="painel.php">Painel</a>

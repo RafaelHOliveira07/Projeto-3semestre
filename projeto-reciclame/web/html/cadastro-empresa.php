@@ -7,9 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Latest compiled and minified CSS -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- jQuery library -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+ 
    
     <link rel="shortcut icon" href="../img/bin-verde.png" type="image/x-icon">
    
@@ -34,9 +32,9 @@ const phoneMask = (value) => {
 }
     </script>
     <main class=" ">
-
+            <h1>Cadastro de Empresas/Parceiros</h1>
+ <p>Preencha os formulario abaixo corretamente e se torne um novo parceiro recicla-me</p>
         <form action="gravar-empresa.php" method="POST">
-            <h2>Cadastro de Empresas/Parceiros</h2>
 
             <div class="form-row panel">
                 <div class="form-group col-md-6">
@@ -123,10 +121,10 @@ const phoneMask = (value) => {
             <div class="button">
                 <button type="submit" class="">Cadastrar</button>
             </div>
-            <span>voltar para o <a href="index.php">inicio</a></span>
+           
         </form>
 
-
+ <span>voltar para o <a href="index.php">inicio</a></span>
         
     </main>
 

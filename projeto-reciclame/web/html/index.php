@@ -80,7 +80,7 @@ require_once 'maps.php';
   <div class="car-text" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000"
     data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false" data-aos-anchor-placement="top-center">
     <h1 class="fancy">Seja-bem vindo</h1>
-    <p class="fancy-p">Ao projeto Reciclame onde reciclar tem tudo haver com tecnologia</p>
+    <p class="fancy-p">AO PROJETO RECICLA-ME ONDE RECICLAR TEM TUDO A VER COM TECNOLOGIA</p>
 
   </div>
   <div id="carouselExampleControls" class="img-fundo carousel slide" data-ride="carousel">
@@ -117,8 +117,8 @@ require_once 'maps.php';
           <img class="img-fluid" src="../img/iteracao.png" alt="agilidade" id="agi"> <span>Mais agilidade na
             coleta</span></label>
         <div class="p">
-          <p>Nosso projeto tem como objetivo, auxiliar a coleta seletiva de bairros e cidades, oferecendo dados que
-            poderam ser utilizados para melhorar rotas e economizar o tempo de quem cuida do nosso lixo no dia a dia.
+          <p>Nosso projeto visa, auxiliar a coleta seletiva de bairros e cidades, oferecendo dados que
+            poderão ser utilizados para melhorar rotas e economizar o tempo de quem cuida do nosso lixo no dia a dia.
           </p>
         </div>
       </div>
@@ -128,9 +128,9 @@ require_once 'maps.php';
         <label for="eco">
           <img class="img-fluid" src="../img/eco.png" alt="eco" id="eco"><span>Aliado da natureza</span></label>
         <div class="p">
-          <p>Para isso foram desenvolvidas lixeiras inteligentes voltadas para lixo reciclavel, ou seja o intuito e
-            gerar menos desperdicio e selecionar corretamente o que é reciclavel, ajudando tanto a cidade, as empresas,
-            grupos de coleta e também o cidadão.</p>
+          <p>Para isso foram desenvolvidas lixeiras inteligentes voltadas para lixo reciclável, ou seja, o intuito e
+                        gerar menos desperdício e selecionar corretamente o que é reciclável, ajudando tanto a cidade, as empresas,
+                        grupos de coleta e também o cidadão.</p>
         </div>
 
       </div>
@@ -141,16 +141,16 @@ require_once 'maps.php';
           <img class="img-fluid" src="../img/tecnologia.png" alt="tec" id="tec"><span>Portal Web com
             dashbord</span></label>
         <div class="p">
-          <p>Nossas lixeiras serao equipadas com sensores que devolveram a nossa plataforma, imformações como,
-            quantidade de lixo que foi armazenada e coletada nas lixeiras entre muitas outras.E o nosso principal
-            atrativo é pode localizar as lixeiras maix proximas de você, utilizando a tecnologia do Google maps.</p>
+          <p>Nossas lixeiras serão equipadas com sensores que devolveram a nossa plataforma, informações como,
+            quantidade de lixo que foi armazenada e coletada nas lixeiras, entre muitas outras. E o nosso principal
+            atrativo é pode localizar as lixeiras mais próximas de você, utilizando a tecnologia do Google maps.</p>
         </div>
       </div>
 
     </section>
     <section class="sec-02 container-fluid" data-aos="fade-down" data-aos-offset="100" data-aos-delay="50"
       data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="true">
-      <h2 class="dysplay-4">Encontre a lixeira mais proxima de voce:</h2>
+      <h2 class="dysplay-4">Encontre a lixeira mais próxima de você:</h2>
 
 
       <div class="img-maps">
@@ -161,11 +161,22 @@ require_once 'maps.php';
         <div class="text-leg">
 
 
-          <p>Basta clicar em permitir sua localização e pronto, nosso mapa ira te indicar as lixeiras mais
-            proximas da sua localização atual</p>
-          <p>Também é possivel traçar rotas a partir da sua localização, basta clicar em qualquer icone das nossa
-            lixeiras e pronto</p>
+         
+            <p>Legenda</p>
+                        <p>Cada cor representa um tipo de lixo em nossos ícones siga a legenda a baixo se necessário</p>
 
+            <div class="leg"> 
+             <label for="">Vidro
+             <span class="cube" id="green"></span></label>
+             <label for="">Papel
+             <span class="cube" id="blue"></span></label>
+             <label for="">Metal
+             <span class="cube" id="yellow"></span></label>
+             <label for="">Plastico
+             <span class="cube" id="red"></span></label>
+           </div>
+           <p>Basta clicar em permitir sua localização e pronto, nosso mapa ira te indicar as lixeiras mais
+            próximas da sua localização atual</p>
         </div>
 
     </section>
@@ -178,26 +189,29 @@ require_once 'maps.php';
 
 
 
-      <h2>Cadastro para Empresas parceiras:</h2>
+    
 
-      <div class="work-sec">
+      <div class="work-sec">     
+       
         <div class="parawork">
 
           <p data-aos="fade-right" data-aos-offset="200" data-aos-delay="100" data-aos-duration="1000"
             data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="true">Esse cadastro é voltado para
             empreses que desejam utilizar dos dados gerados pelo
             projeto, como peso, rotas,
-            localização e muito mais.Para se cadastrar <a href="">Clique aqui</a> e preencha os dados
-            necessarios</p>
+            localização e muito mais.</p>
+  <div id="work" data-aos="fade-left" data-aos-offset="200" data-aos-delay="1000" data-aos-duration="20000"
+          data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="true" style="margin: auto; padding: 2rem;">
+   <img src="../img/artigo2.webp" alt="">
+       
 
         </div>
-
-        <div id="work" data-aos="fade-left" data-aos-offset="200" data-aos-delay="1000" data-aos-duration="20000"
-          data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="true">
-
-          <img src="../img/artigo2.webp" alt="">
-
+<p data-aos="fade-right" data-aos-offset="200" data-aos-delay="100" data-aos-duration="1000"
+data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="true">Para se cadastrar <a href="">Clique aqui</a> e preencha os dados
+necessários</p>
         </div>
+
+  
       </div>
 
     </section>
@@ -206,7 +220,7 @@ require_once 'maps.php';
   </main>
 
   <footer>
-    <h3>Redes Sociais</h3>
+    <h3>Redes-Sociais</h3>
     <div class="redes">
       <a href="#" class="fa fa-facebook"></a>
       <a href="#" class="fa fa-twitter"></a>

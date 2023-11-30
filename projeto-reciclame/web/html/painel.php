@@ -58,10 +58,7 @@ require_once '../javascript/web.php'
           <li>
             <a href="index-logado.php">Início</a>
           </li>
-          <li>
-            <a href="index-logado.php#sec-01">Sobre</a>
-          </li>
-
+     
           <li>
             <a href="painel.php">Painel</a>
           </li>
@@ -139,7 +136,7 @@ require_once '../javascript/web.php'
   <script>
     AOS.init();
   </script>
-  <script src=""></script>
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
