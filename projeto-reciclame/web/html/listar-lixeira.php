@@ -1,6 +1,6 @@
 <?php
 require_once 'usuario-verifica.php';
-require_once "../classes/Lixeira.php";
+require_once "../classes/lixeira.php";
 $lixeira = new Lixeira();
 $lista = $lixeira->listar();
 
@@ -37,7 +37,7 @@ $lista = $lixeira->listar();
         </nav>
     </header>
     <main>
-        <section class="table-sec">
+        <section class="table-sec container-fluid">
             <h1>Lixeiras Cadastradas</h1>
 
 
