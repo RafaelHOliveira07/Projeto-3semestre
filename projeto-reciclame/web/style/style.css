@@ -394,9 +394,9 @@ h3{
   justify-content: center;
   flex-direction: column;
   max-width: 100%;
-  padding: 2rem;
+  padding: 1rem;
   backdrop-filter: blur(14px) saturate(180%);
-
+  margin-top: 1rem;
   background-color: rgba(45, 95, 4, 0.741);
   border-radius: 12px;
   

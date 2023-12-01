@@ -64,10 +64,19 @@ select option{
 }
 
 
-button{
-    background-color: rgb(77, 208, 37);
-    padding: 0.5rem;
-    width: 30rem;
-    margin-top: 2rem;
   
-}
+button {
+    width: 10rem;
+    border: none;
+    outline: none;
+    background-color: rgb(60, 177, 37);
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transform: .3s ease;
+  }
+  
+  button:hover {
+    background-color: rgb(43, 127, 34);
+  }

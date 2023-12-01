@@ -59,10 +59,13 @@ require_once '../javascript/web.php'
           <li>
             <a href="index-logado.php">Início</a>
           </li>
-
+       
           <li>
             <a href="painel.php">Painel</a>
-          </li>
+          </li>  
+           <li>
+            <a href="cadastro-lixeira.php">Novo ponta de Coleta</a>
+        </li>
           <li>
             <a href="empresa-logout.php">Sair</a>
           </li>
