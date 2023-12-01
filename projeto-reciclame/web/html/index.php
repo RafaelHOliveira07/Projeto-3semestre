@@ -12,6 +12,7 @@ $lixeira = new Lixeira();
 $jsonPontosLixeira = $lixeira->obterPontosParaMapa();
 require_once 'maps.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -87,10 +88,8 @@ require_once 'maps.php';
 
     <div class="carousel-inner">
 
+
       <div class="carousel-item active">
-        <img class="d-block w-100" src="../img/recycle-background-with-woman-holding-box.jpg" alt="Primeiro Slide">
-      </div>
-      <div class="carousel-item">
         <img class="d-block w-100" src="../img/post-id-dia-internacional-da-reciclagem-secretaria-municip.jpg" alt="Primeiro Slide">
       </div>
     </div>
@@ -210,7 +209,7 @@ require_once 'maps.php';
 
         </div>
 <p data-aos="fade-right" data-aos-offset="200" data-aos-delay="100" data-aos-duration="1000"
-data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="true">Para se cadastrar <a href="">Clique aqui</a> e preencha os dados
+data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="true">Para se cadastrar <a href="cadastro-empresa.php">Clique aqui</a> e preencha os dados
 necessários</p>
         </div>
 

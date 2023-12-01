@@ -57,6 +57,21 @@ public function carregar(){
             $this->cep = $linha ['cep'];
 
         }
+     
+        public function obterNomeEmpresaDaSessao()
+        {
+            // Verifica se a sessão está iniciada e se a variável de nome está definida
+            if (session_status() == PHP_SESSION_ACTIVE && isset($_SESSION['nome'])) {
+                return $_SESSION['nome'];
+            } else {
+                return null; // Ou qualquer valor padrão que você preferir
+            }
+        }
+
+// Exemplo de uso
+
+
+
         function excluir() {
             if ($this->idLixeira) {
                 // Query SQL para excluir a lixeira com base no ID

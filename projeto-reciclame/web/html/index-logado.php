@@ -6,6 +6,7 @@ $idEmpresa = $_SESSION['idEmpresa'];
 include_once '../classes/empresa.php';
 $empresa = new Empresa();
 
+
 $pontos_empresa = $empresa->obterPontoEmpresaParaMapa();
 $pontos_json_empresa = json_encode($pontos_empresa);
 
@@ -98,17 +99,35 @@ require_once '../javascript/web.php'
   data-aos-once="false"
   data-aos-anchor-placement="top-center">
     <h1 class="fancy">Seja-bem vindo</h1>
-    <p class="fancy-p"></p>
+    <?php
+    if (!empty($lista)) {
+    // Obtém o nome da empresa da primeira linha (assumindo que o nome é o mesmo para todas as lixeiras)
+    $nomeDaEmpresa = $lista[0]['nome_empresa'];
 
+    // Loop foreach para exibir as lixeiras
+ 
+    $nomeDaEmpresaExibido = false;
+    
+    foreach ($lista as $linha) {
+        if (!$nomeDaEmpresaExibido) {
+            echo "<h3 class='fancy-p'>$nomeDaEmpresa</h3>";
+            $nomeDaEmpresaExibido = true;
+        }
+    
+        // Aqui você também pode exibir outras informações da lixeira, se necessário
+    }
+    
+} else {
+    echo "NOME NÃO DISPONÍVEL!";
+}
+?>
   </div>
   <div id="carouselExampleControls" class="img-fundo carousel slide" data-ride="carousel">
 
     <div class="carousel-inner">
 
+     
       <div class="carousel-item active">
-        <img class="d-block w-100" src="../img/recycle-background-with-woman-holding-box.jpg" alt="Primeiro Slide">
-      </div>
-      <div class="carousel-item">
         <img class="d-block w-100" src="../img/post-id-dia-internacional-da-reciclagem-secretaria-municip.jpg" alt="Primeiro Slide">
       </div>
     </div>

@@ -45,7 +45,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Executa a consulta
         if ($conn->query($query) === TRUE) {
-            echo "Empresa cadastrada com sucesso!";
+            $mensagemCadastro = "Empresa cadastrada com sucesso!";
+    // Redirecione para a página desejada após o cadastro
+
+            header('Location: index.php');
+            if (isset($mensagemCadastro)) {
+                ?>
+                <script>
+                    alert("<?php echo $mensagemCadastro; ?>");
+                </script>
+                <?php
+              }
         } else {
             echo "Erro ao cadastrar a empresa: " . $conn->error;
         }

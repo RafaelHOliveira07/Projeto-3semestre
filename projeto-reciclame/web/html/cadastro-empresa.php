@@ -39,7 +39,7 @@ const phoneMask = (value) => {
             <div class="form-row panel">
                 <div class="form-group col-md-6">
                     <label for="nome">Nome da Empresa
-                        <input type="text" class="form-control" name="nome" placeholder="Razão Social" required></label>
+                        <input type="text" class="form-control" name="nome" placeholder="Nome da empresa/instituição/coletivo" required></label>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="cnpj">CNPJ da empresa
