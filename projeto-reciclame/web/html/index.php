@@ -90,6 +90,9 @@ require_once 'maps.php';
       <div class="carousel-item active">
         <img class="d-block w-100" src="../img/recycle-background-with-woman-holding-box.jpg" alt="Primeiro Slide">
       </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="../img/post-id-dia-internacional-da-reciclagem-secretaria-municip.jpg" alt="Primeiro Slide">
+      </div>
     </div>
 
   </div>

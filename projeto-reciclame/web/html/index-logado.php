@@ -76,7 +76,9 @@ require_once '../javascript/web.php'
         <li>
             <a href="painel.php">Painel</a>
         </li>
-        
+        <li>
+            <a href="cadastro-lixeira.php">Novo ponta de Coleta</a>
+        </li>
         <li>
             <a href="empresa-logout.php">Sair</a>
         </li>
@@ -105,6 +107,9 @@ require_once '../javascript/web.php'
 
       <div class="carousel-item active">
         <img class="d-block w-100" src="../img/recycle-background-with-woman-holding-box.jpg" alt="Primeiro Slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="../img/post-id-dia-internacional-da-reciclagem-secretaria-municip.jpg" alt="Primeiro Slide">
       </div>
     </div>
 
@@ -185,7 +190,7 @@ require_once '../javascript/web.php'
        
  <div class="text-leg">
             
-  <p>Legenda</p>
+  <h3 style="font-variant: small-caps;">Legenda</h3>
   <p>Cada cor representa um tipo de lixo em nossos ícones siga a legenda a baixo se necessário</p>
 
                <div class="leg"> 
