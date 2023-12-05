@@ -71,6 +71,7 @@ confirm_password.onkeyup = validatePassword;
       <button class="btn btn-lg  btn-block" type="submit">Login</button>
 
   </form>
+   
 </body>
 
 </html>

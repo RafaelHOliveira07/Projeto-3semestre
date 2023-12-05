@@ -17,20 +17,7 @@
 
 <body>
     
-    <script>
-        const handlePhone = (event) => {
-  let input = event.target
-  input.value = phoneMask(input.value)
-}
 
-const phoneMask = (value) => {
-  if (!value) return ""
-  value = value.replace(/\D/g,'')
-  value = value.replace(/(\d{2})(\d)/,"($1) $2")
-  value = value.replace(/(\d)(\d{4})$/,"$1-$2")
-  return value
-}
-    </script>
     <main class=" ">
             <h1>Cadastro de Empresas/Parceiros</h1>
  <p>Preencha os formulario abaixo corretamente e se torne um novo parceiro recicla-me</p>
@@ -115,7 +102,7 @@ const phoneMask = (value) => {
                 </div>
                 <div class="form-group col-md-4">
                     <label for="cep">CEP:
-                        <input type="text" class="form-control" name="cep" placeholder="CEP" required></label>
+                        <input type="text" class="form-control" name="cep" placeholder="CEP" maxlength="9" required onkeyup="handleZipCode(event)"></label>
                 </div>
             </div>
             <div class="button">
@@ -141,7 +128,35 @@ const phoneMask = (value) => {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
       integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
       crossorigin="anonymous"></script>
-  
+      <script>
+        const handlePhone = (event) => {
+  let input = event.target
+  input.value = phoneMask(input.value)
+}
+
+const phoneMask = (value) => {
+  if (!value) return ""
+  value = value.replace(/\D/g,'')
+  value = value.replace(/(\d{2})(\d)/,"($1) $2")
+  value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+  return value
+}
+document.getElementById('cnpj').addEventListener('input', function (e) {
+      var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
+      e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x[4] + (x[5] ? '-' + x[5] : '');
+    });
+    const handleZipCode = (event) => {
+  let input = event.target
+  input.value = zipCodeMask(input.value)
+}
+
+const zipCodeMask = (value) => {
+  if (!value) return ""
+  value = value.replace(/\D/g,'')
+  value = value.replace(/(\d{5})(\d)/,'$1-$2')
+  return value
+}
+    </script>
 
 </body>
 

@@ -66,7 +66,7 @@
                 title: 'Localização da Empresa: ' + pontoEmpresa.nome,
                 icon: {
                     url: '../img/construcao.png',
-                    scaledSize: new google.maps.Size(40, 40),
+                    scaledSize: new google.maps.Size(90, 80),
                     origin: new google.maps.Point(0, 0),
                     anchor: new google.maps.Point(20, 40)
                 }
