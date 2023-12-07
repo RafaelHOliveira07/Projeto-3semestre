@@ -99,8 +99,9 @@ header nav a:hover{
     align-items: center;
     flex-direction: column;
     border-radius: 5px;
-
+padding: 20rem;
     gap: 3rem;
+    margin-bottom: 10rem;
 }
 
 .table-sec h1{
