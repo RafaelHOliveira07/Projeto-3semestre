@@ -17,7 +17,7 @@
 
 <body>
 
-    <section class="titulo"><h1>Cadastro Recicla-me</h1></section>
+   
     <main class=" ">
         <h1>Cadastro de Empresas/Parceiros</h1>
         <p>Preencha os formulario abaixo corretamente e se torne um novo parceiro recicla-me</p>
