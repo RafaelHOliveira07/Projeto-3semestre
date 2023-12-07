@@ -19,7 +19,7 @@ try {
 
     if ($usuario_logado == null) {
         // Usuário ou senha inválida
-        header('Location: usuario-erro.php');
+        header('Location: adm-erro-logado.php');
         exit();
     } else {
         $_SESSION['usuario_logado'] = $usuario_logado;

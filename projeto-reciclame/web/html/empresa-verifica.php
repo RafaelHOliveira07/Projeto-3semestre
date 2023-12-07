@@ -5,7 +5,7 @@ session_start();
 // Verifica se a variável de sessão 'usuario_logado' existe e está definida
 if (!isset($_SESSION['usuario_logado'])) {
     // Usuário não logado, redireciona para a página de login
-    header('Location: usuario-nao-logado.php');
+    header('Location: usuario-nao-logado-.php');
     exit(); // Certifique-se de sair após o redirecionamento
 } else {
     // Se 'usuario_logado' existe, verifica se 'idEmpresa' também está definido

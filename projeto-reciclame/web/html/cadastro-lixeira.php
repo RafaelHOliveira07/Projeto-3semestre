@@ -10,7 +10,7 @@ $lista = $lixeira->listarlogado($idEmpresa);
 
 $listaJson = json_encode($lista);
 require_once '../javascript/web.php'
-?>
+  ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -59,13 +59,13 @@ require_once '../javascript/web.php'
           <li>
             <a href="index-logado.php">Início</a>
           </li>
-       
+
           <li>
             <a href="painel.php">Painel</a>
-          </li>  
-           <li>
+          </li>
+          <li>
             <a href="cadastro-lixeira.php">Novo ponta de Coleta</a>
-        </li>
+          </li>
           <li>
             <a href="empresa-logout.php">Sair</a>
           </li>
@@ -157,7 +157,7 @@ require_once '../javascript/web.php'
   <script>
     AOS.init();
   </script>
-    <script>
+  <script>
     var socket = new WebSocket("ws://localhost:1880/reciclame.com/ws");
   </script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

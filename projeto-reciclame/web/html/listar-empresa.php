@@ -48,7 +48,7 @@ $lista = $empresa->listar();
                     <th scope="col">email</th>
                     <th scope="col">localizacao</th>
                     <th scope="col">tel</th>
-                    <th scope="col">açôes</th>
+                    <th scope="col">ações</th>
                     </tr>
                     <?php foreach ($lista as $linha): ?>
                         <tr class="table-light">

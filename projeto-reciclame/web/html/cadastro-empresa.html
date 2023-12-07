@@ -7,26 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Latest compiled and minified CSS -->
 
- 
-   
+
+
     <link rel="shortcut icon" href="../img/bin-verde.png" type="image/x-icon">
-   
- <link rel="stylesheet" href="../style/style-cadas.css"!important>
+
+    <link rel="stylesheet" href="../style/style-cadas.css" !important>
     <title>Cadstro-Empresas</title>
 </head>
 
 <body>
-    
+
 
     <main class=" ">
-            <h1>Cadastro de Empresas/Parceiros</h1>
- <p>Preencha os formulario abaixo corretamente e se torne um novo parceiro recicla-me</p>
+        <h1>Cadastro de Empresas/Parceiros</h1>
+        <p>Preencha os formulario abaixo corretamente e se torne um novo parceiro recicla-me</p>
         <form action="gravar-empresa.php" method="POST">
 
             <div class="form-row panel">
                 <div class="form-group col-md-6">
                     <label for="nome">Nome da Empresa
-                        <input type="text" class="form-control" name="nome" placeholder="Nome da empresa/instituição/coletivo" required></label>
+                        <input type="text" class="form-control" name="nome"
+                            placeholder="Nome da empresa/instituição/coletivo" required></label>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="cnpj">CNPJ da empresa
@@ -97,65 +98,66 @@
             <div class="form-row panel">
                 <div class="form-group col-md-6">
                     <label for="tel">Telefone:
-                        <input type="tel" class="form-control" name="tel" placeholder="Telefone/Celular"
-                            required onkeyup="handlePhone(event)"></label>
+                        <input type="tel" class="form-control" name="tel" placeholder="Telefone/Celular" required
+                            onkeyup="handlePhone(event)"></label>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="cep">CEP:
-                        <input type="text" class="form-control" name="cep" placeholder="CEP" maxlength="9" required onkeyup="handleZipCode(event)"></label>
+                        <input type="text" class="form-control" name="cep" placeholder="CEP" maxlength="9" required
+                            onkeyup="handleZipCode(event)"></label>
                 </div>
             </div>
             <div class="button">
                 <button type="submit" class="">Cadastrar</button>
             </div>
-           
+
         </form>
 
- <span>voltar para o <a href="index.php">inicio</a></span>
-        
+        <span>voltar para o <a href="index.php">inicio</a></span>
+
     </main>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      AOS.init();
+        AOS.init();
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script>
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"></script>
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"></script>
-      <script>
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script>
         const handlePhone = (event) => {
-  let input = event.target
-  input.value = phoneMask(input.value)
-}
+            let input = event.target
+            input.value = phoneMask(input.value)
+        }
 
-const phoneMask = (value) => {
-  if (!value) return ""
-  value = value.replace(/\D/g,'')
-  value = value.replace(/(\d{2})(\d)/,"($1) $2")
-  value = value.replace(/(\d)(\d{4})$/,"$1-$2")
-  return value
-}
-document.getElementById('cnpj').addEventListener('input', function (e) {
-      var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
-      e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x[4] + (x[5] ? '-' + x[5] : '');
-    });
-    const handleZipCode = (event) => {
-  let input = event.target
-  input.value = zipCodeMask(input.value)
-}
+        const phoneMask = (value) => {
+            if (!value) return ""
+            value = value.replace(/\D/g, '')
+            value = value.replace(/(\d{2})(\d)/, "($1) $2")
+            value = value.replace(/(\d)(\d{4})$/, "$1-$2")
+            return value
+        }
+        document.getElementById('cnpj').addEventListener('input', function (e) {
+            var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
+            e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x[4] + (x[5] ? '-' + x[5] : '');
+        });
+        const handleZipCode = (event) => {
+            let input = event.target
+            input.value = zipCodeMask(input.value)
+        }
 
-const zipCodeMask = (value) => {
-  if (!value) return ""
-  value = value.replace(/\D/g,'')
-  value = value.replace(/(\d{5})(\d)/,'$1-$2')
-  return value
-}
+        const zipCodeMask = (value) => {
+            if (!value) return ""
+            value = value.replace(/\D/g, '')
+            value = value.replace(/(\d{5})(\d)/, '$1-$2')
+            return value
+        }
     </script>
 
 </body>

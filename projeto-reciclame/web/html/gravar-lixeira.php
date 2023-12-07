@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conn->query($query);
 
         // A mensagem abaixo é apenas para demonstração
-        echo "Dados gravados com sucesso!";
+        
     } else {
         echo "Não foi possível encontrar as coordenadas para o endereço fornecido.";
     }
