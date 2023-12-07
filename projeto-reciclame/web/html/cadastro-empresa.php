@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="../img/bin-verde.png" type="image/x-icon">
 
     <link rel="stylesheet" href="../style/style-cadas.css" !important>
-    <title>Cadstro-Empresas</title>
+    <title>Cadastro-Empresas</title>
 </head>
 
 <body>
