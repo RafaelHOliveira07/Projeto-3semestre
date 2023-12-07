@@ -53,8 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $query = "INSERT INTO tb_lixeiras (tipo, latitude, longitude, peso, volume, nome, idEmpresa) VALUES ('$tipo', '$latitude', '$longitude', '$peso', '$volume', '$nome', '$idEmpresaLogada')";
 
         $conn->query($query);
-
-        // A mensagem abaixo é apenas para demonstração
+        header('Location: index-logado.php');
         
     } else {
         echo "Não foi possível encontrar as coordenadas para o endereço fornecido.";
