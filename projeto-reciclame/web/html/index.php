@@ -131,8 +131,8 @@ require_once 'maps.php';
           <img class="img-fluid" src="../img/eco.png" alt="eco" id="eco"><span>Aliado da natureza</span></label>
         <div class="p">
           <p>Para isso foram desenvolvidas lixeiras inteligentes voltadas para lixo reciclável, ou seja, o intuito e
-                        gerar menos desperdício e selecionar corretamente o que é reciclável, ajudando tanto a cidade, as empresas,
-                        grupos de coleta e também o cidadão.</p>
+            gerar menos desperdício e selecionar corretamente o que é reciclável, ajudando tanto a cidade, as empresas,
+             grupos de coleta e também o cidadão.</p>
         </div>
 
       </div>
@@ -165,7 +165,7 @@ require_once 'maps.php';
 
          
             <p>Legenda</p>
-                        <p>Cada cor representa um tipo de lixo em nossos ícones siga a legenda a baixo se necessário</p>
+       <p>Cada cor representa um tipo de lixo em nossos ícones siga a legenda a baixo se necessário</p>
 
             <div class="leg"> 
              <label for="">Vidro
