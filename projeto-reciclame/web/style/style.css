@@ -29,17 +29,18 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #01010189;
+  background-color: #010101a1;
   backdrop-filter: blur(15px);
-  border-bottom: 1px solid #ffffff3a;
+  border-bottom: 1px solid #ffffff48;
   width: 100%;
   height: 4rem;
   z-index: 3;
-  padding: 0rem 2rem 0rem 0rem;
+  padding: 0rem 2rem 0.3rem 0rem;
 
 }/*LOGO DO HEADER*/
 .h1-logo {
   max-width: 100%;
+
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -53,7 +54,7 @@ header {
 
   
   margin-top: 0.5rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
   z-index: 0;
  
 }
@@ -75,7 +76,7 @@ header {
 
 .dark-fade {
   width: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.737), rgba(0, 0, 0, 0.408));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.913), rgba(0, 0, 0, 0.297));
   position: absolute;
   z-index: 1;
 
@@ -378,7 +379,7 @@ h2{
     color: rgb(255, 255, 255);
     max-width: 100%;
     font-weight: bolder;
-    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.572);
+
 }
 
 h3{
@@ -398,10 +399,10 @@ h3{
   padding: 1rem;
   backdrop-filter: blur(14px) saturate(180%);
   margin-top: 1rem;
-  background-color: rgba(45, 95, 4, 0.741);
-  border-radius: 12px;
+  background-color: #4b5a43;
+
   
-   border-radius: 20px;
+  
 
 }
 .leg{
@@ -437,7 +438,9 @@ h3{
 /*fim do mapa*/
 /*FIM DA SEC02*/
 .sec-03{
-  margin-top: 5rem;
+  background-color: #152a10;
+  margin-top: 2rem;
+  padding: 3rem 0rem 3rem 0rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -447,43 +450,76 @@ h3{
 
 
 }
-
-.work-sec{
+.parca{
+  color: #fff;
+  font-size: 3em;
+  letter-spacing: 4px;
+  border-bottom: 2px solid white;
+  padding: 1rem;
+}
+.flex-coluna{
   display: flex;
+  flex-direction: column;
+ 
+   align-items: center;
+   padding: 1rem;
+   backdrop-filter: blur(80px);
+}
+.work-sec{
 
-  justify-content: center;
+  display: flex;
+  
+  justify-content: space-around;
   align-items: center;
-  padding: 5rem;
+  padding: 1rem;
+
+
 
 
 }
 
 .text-cad{
-  width: 40rem;
+  width: 56rem;
+
   max-width: 100%;
-  padding: 5rem;
+  padding: 3rem 0rem 3rem 0rem;
+  padding-right: 0;
   display: flex;
  
+
   align-items: center;
   flex-direction: column;
 }
-.text-cad>p{
-  color: rgb(13, 44, 10);
+.text-cad> p{
+  color: rgb(255, 255, 255);
   font-weight: bolder;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 2em;
-  gap: 3rem;
-text-align: center;
+  font-variant: small-caps;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 5em;
+  gap: 2rem;
+  text-align: center;
   z-index: 10;
   padding-bottom: 1rem;
+  letter-spacing: 1px; 
+
+
+}
+.text-cad>.min-p{
+  font-size:12px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  border: none;
 }
 
 
 #work>img{
   max-width: 100%;
-  width: 50rem;
-  object-fit: cover;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.412);
+  width: 35rem;
+  
+  filter: drop-shadow(5px 3px 3px rgb(0, 0, 0)) ; 
+
+
 
   
   
@@ -491,28 +527,30 @@ text-align: center;
 
 
 
-button {
+.bt-cadas {
   cursor: pointer;
   font-weight: 700;
   font-family: Helvetica,"sans-serif";
   transition: all .2s;
   padding: 10px 20px;
   border-radius: 100px;
-  background: #049a01;
+  background: #21722a;
+ 
   border: 1px solid transparent;
   display: flex;
   align-items: center;
   font-size: 15px;
   width: 10rem;
   z-index: 10;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.335);
   
   
 }
 
 
 
-button:hover {
-  background: #02d917;
+.bt-cadas:hover {
+  background: #1e9e15;
   
 }
 button>span>a{text-decoration: none; color: #ffff;}
