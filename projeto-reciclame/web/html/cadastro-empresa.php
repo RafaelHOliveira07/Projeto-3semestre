@@ -20,7 +20,7 @@
    
     <main class=" ">
         <h1>Cadastro de Empresas/Parceiros</h1>
-        <p>Preencha o formulario abaixo corretamente e se torne um novo parceiro recicla-me</p>
+        <p>Preencha o formulario abaixo corretamente e nos envie, breve entramos em contato.</p>
         <form action="gravar-empresa.php" method="POST">
 
             <div class="form-row panel">
@@ -28,11 +28,6 @@
                     <label for="nome">Nome da Empresa
                         <input type="text" class="form-control" name="nome"
                             placeholder="Nome da empresa/instituição/coletivo" required></label>
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="cnpj">CNPJ da empresa
-                        <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="CNPJ"
-                            required></label>
                 </div>
             </div>
             <div class="form-row panel">
@@ -108,7 +103,7 @@
                 </div>
             </div>
             <div class="button">
-                <button type="submit" class="">Cadastrar</button>
+                <button type="submit" class="">Enviar</button>
             </div>
 
         </form>
