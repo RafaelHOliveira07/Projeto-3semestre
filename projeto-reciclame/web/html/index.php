@@ -121,12 +121,8 @@ require_once 'maps.php';
           <img class="img-fluid" src="../img/iteracao.png" alt="agilidade" id="agi"> <span>Mais agilidade na
             coleta</span></label>
         <div class="p">
-<<<<<<< HEAD
-          <p>Nosso projeto visa, auxiliar a coleta seletiva de bairros e cidades e tambem para empresas privadas, oferecendo monitoria em tempo rela de cada ponto de coleta inteligente, alem dos dados gerados(Peso, Volume, Material) facilitando e agilizando a coleta de maneira inteligente.
-=======
           <p>Nosso projeto visa, auxiliar a coleta seletiva de Empresas Públicas e Empresas Privadas, oferecendo dados que
             poderão ser utilizados para saber a quantidade de recicláveis gerado, a localização do Ponto de Coleta Inteligente e notificações para efetuar a coleta.
->>>>>>> c6a507d68915074b519f777bec9ea0f350cf27d8
           </p>
         </div>
       </div>
