@@ -44,53 +44,39 @@ require_once '../javascript/web.php'
     <link rel="shortcut icon" href="../img/bin-verde.png" type="image/x-icon">
   <link href="../style/stylemap.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="../style/style.css">
+  <link rel="stylesheet" href="../style/style-log.css">
 
   <title>Projeto-Reciclame</title>
 </head>
 
 <body>
+  <main>
   <header>
     <div class="h1-logo">
       <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt="">
     </div>
 
-    <nav class="navbar navbar-expand-lg main-nav px-0">
+    <nav>
 
-
-
-
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu"
-        aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="burg" id="d1"></span>
-        <span class="burg" id="d2"></span>
-        <span class="burg" id="d3"></span>
-
-      </button>
-      <div class="collapse navbar-collapse" id="mainMenu">
-
-  <ul class="navbar-nav ml-auto text-uppercase f1">
-    <li>
-        <a href="index-logado.php">Início</a>
-    </li>
-
+      <ul>
         <li>
-            <a href="painel.php">Painel</a>
+          <a href="">Inico</a>
         </li>
         <li>
-            <a href="cadastro-lixeira.php">Novo ponta de Coleta</a>
+          <a href="">Meus Pontos de Coleta</a>
         </li>
         <li>
-            <a href="empresa-logout.php">Sair</a>
+          <a href="">Novo Ponto de Coleta</a>
         </li>
-    
-</ul>
+        <li>
+          <a href="">Sair</a>
+        </li>
+      </ul>
 
-</div>
+    </nav>
 
-  </header>
-  <div class="dark-fade"></div>
-  <div class="car-text" data-aos="fade-up"
+
+<div class="car-text" data-aos="fade-up"
   data-aos-offset="200"
   data-aos-delay="50"
   data-aos-duration="1000"
@@ -120,115 +106,49 @@ require_once '../javascript/web.php'
 } else {
     echo "NOME NÃO DISPONÍVEL!";
 }
-?>
-  </div>
-  <div id="carouselExampleControls" class="img-fundo carousel slide" data-ride="carousel">
-
-    <div class="carousel-inner">
-
-     
-      <div class="carousel-item active">
-        <img class="d-block w-100" src="../img/post-id-dia-internacional-da-reciclagem-secretaria-municip.jpg" alt="Primeiro Slide">
-      </div>
-    </div>
-
-  </div>
-
-
-
-
-
-
-  <main class=" container-fluid">
-
-
-    <section class="sec-03 ">
-
-      <h2>Pontos de Coleta personalizado:</h2>
-
-      <div class="work-sec" >
-
-        <div class="parawork" data-aos="fade-right"
-  data-aos-offset="200"
-  data-aos-delay="100"
-  data-aos-duration="1000"
-  data-aos-easing="ease-in-out"
-  data-aos-mirror="true"
-  data-aos-once="true" >
-
-          <p >Para empresas já cadastradas, oferecemos o serviço de pontos de coleta personalizados, podendo escolher o ponto, material e volume de acordo com seu negócio</p>
-
-      </div>
- 
-         
-
+?> 
+</div>
+  </header>
   
-   
-        <div id="work" data-aos="fade-left"
-  data-aos-offset="200"
-  data-aos-delay="1000"
-  data-aos-duration="20000"
-  data-aos-easing="ease-in-out"
-  data-aos-mirror="true"
-  data-aos-once="true">
+  <section class="cards" >
 
-          <img src="../img/conceituando-ilustracao-de-design-isometrico-de-reciclagem-de-residuos_780482-37.avif" alt="">
-          
-        </div>
-      <div class="parawork" data-aos="fade-left"
-  data-aos-offset="200"
-  data-aos-delay="100"
-  data-aos-duration="1000"
-  data-aos-easing="ease-in-out"
-  data-aos-mirror="true"
-  data-aos-once="true" >
+  <div class="card-container">
 
-  <p >Para saber como funciona e quais as opções disponíveis acesse a página de cadastro de Pontos de Coleta Personalizados <a href="cadastro-lixeira.php">clicando aqui</a></p>
-      
-          </div>
+   <a href=""> <div class="card" id="card1">
+      <h3>Painel/Meus Pontos de Coleta</h3>
+      <p>Vizualize seus pontos de Coleta cadastrados.Acompanhe em tempo real e seja notificado quando ponto estiver pronto para coleta</p>
+    </div></a>
 
-
- </div>
-
-    </section>
-  
-    <section class="sec-02 container-fluid" data-aos="fade-down"
-    data-aos-offset="100"
-    data-aos-delay="50"
-    data-aos-duration="1000"
-    data-aos-easing="ease-in-out"
-    data-aos-mirror="true"
-    data-aos-once="true" >
-      <h2 class="dysplay-4">Meus pontos de coleta no Mapa:</h2>
-
-     
-      <div class="img-maps">
-
-        <div id="mapa"></div>
-      
-       
- <div class="text-leg">
-            
-  <h3 style="font-variant: small-caps;">Legenda</h3>
-  <p>Cada cor representa um tipo de lixo em nossos ícones siga a legenda a baixo se necessário</p>
-
-               <div class="leg"> 
-                <label for="">Vidro
-                <span class="cube" id="green"></span></label>
-                <label for="">Papel
-                <span class="cube" id="blue"></span></label>
-                <label for="">Metal
-                <span class="cube" id="yellow"></span></label>
-                <label for="">Plastico
-                <span class="cube" id="red"></span></label>
-              </div>
-    
+   <a href=""> <div class="card" id="card1">
+      <h3>Requisitar Novo Ponto de Coleta</h3>
+      <p>Vizualize seus pontos de Coleta cadastrados.Acompanhe em tempo real e seja notificado quando ponto estiver pronto para coleta</p>
+    </div></a>
 </div>
 
- </section>
+<div class="card-container">
+
+ <a href=""><div class="card" id="card3">
+    <h3>Perfil</h3>
+    <p>informações relacionadas a sua empresa e dados cadastrados.</p>
+  </div></a> 
+
+ <a href=""><div class="card" id="card4">
+    <h3>Sair</h3>
+    <p>Encerrar Seção de Login.</p>
+  </div></a> 
+</div>
+
+
+  </section>
+ 
+ 
 
 
 
+  
+
+
+    
   </main>
 
   <footer>
