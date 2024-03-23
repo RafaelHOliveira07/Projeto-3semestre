@@ -80,7 +80,7 @@ require_once '../javascript/web.php'
   <main>
     <section class="table-sec">
       <div class="h2"> <span></span>
-        <h2>Seus Pontos de Coleta</h2>
+        <h2>Meus Pontos de Coleta</h2>
       </div>
 
       <table class="table table-bordered ">
