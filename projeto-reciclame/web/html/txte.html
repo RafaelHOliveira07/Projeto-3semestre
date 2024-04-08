@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress Bar</title>
+<style>
+    .progress-container {
+        margin-bottom: 20px;
+    }
+
+    .progress-wrapper {
+        width: 160px;
+        height: 180px; /* Ajuste conforme necessário */
+        position: relative;
+        
+    }
+
+    .progress {
+        width: 100%;
+        height: 100%;
+        background-color: #dddddda8;
+        text-shadow: 2px 2px 2px black;
+        position: absolute;
+        top: 0;
+        left: 0;
+        clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%);
+        z-index: 1;
+        
+    }
+
+    .progress-fill {
+        width: 100%;
+        height: var(--progress-value, 0%);
+        background-color: #4CAF50;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index:0;
+        margin-top: -180px; /* Ajuste conforme necessário */
+        
+    }
+
+    input[type="number"] {
+        width: 100px;
+        font-size: 16px;
+        padding: 5px;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="progress-container">
+    <div class="progress-wrapper">
+        
+        <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+</div>
+
+<input type="number" id="progressValue" min="0" max="100" value="0">
+
+<script>
+    // Função para atualizar o preenchimento da barra de progresso
+    function updateProgress(value) {
+        var progressFill = document.getElementById("progressFill");
+        progressFill.style.height = value + "%";
+    }
+
+    // Função para gerar dados simulados e atualizar a barra de progresso
+    function gerarDadosSimulados() {
+        var limiteMaximoVolume = 80; // Substitua com o seu limite máximo de volume
+        var volumeTotal = 0;
+        var intervaloDeTempo = 5000; // Tempo em milissegundos (por exemplo, a cada 5 segundos)
+
+        setInterval(function() {
+            var volume = Math.round(Math.random() * 10) + 1;
+
+            if ((volumeTotal + volume) <= limiteMaximoVolume) {
+                volumeTotal += volume;
+                // Atualiza o preenchimento da barra de progresso com o novo valor de volume
+                updateProgress((volumeTotal / limiteMaximoVolume) * 100);
+            } else {
+                console.log("Dados excedem os limites máximos. Não atualizando a barra de progresso.");
+            }
+        }, intervaloDeTempo);
+    }
+
+    // Inicia o processo de geração de dados e atualização da barra de progresso
+    gerarDadosSimulados();
+</script>
+
+</body>
+</html>

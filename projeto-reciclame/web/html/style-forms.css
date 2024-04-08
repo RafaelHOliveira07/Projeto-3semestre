@@ -1,0 +1,20 @@
+.progress-container {
+    margin-bottom: 20px;
+}
+
+.progress {
+    width: 60px;
+    height: 20px;
+    border: solid 15px transparent;
+    border-bottom: solid 90px #99f;
+    border-top: none;
+    transform: rotate(180deg);
+    position: relative;
+}
+
+input[type="number"] {
+    width: 100px;
+    font-size: 16px;
+    padding: 5px;
+    margin-top: 10px;
+}
