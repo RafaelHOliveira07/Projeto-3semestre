@@ -1,6 +1,6 @@
 
 body {
-    background: #1B213B;
+
     color: #777;
     font-family: Montserrat, Arial, sans-serif;
   }
@@ -28,7 +28,7 @@ body {
   }
   
   .box {
-    background-color: #262D47;
+    background-color: #0c0c0c;
     padding: 25px 25px; 
     border-radius: 4px; 
   }
