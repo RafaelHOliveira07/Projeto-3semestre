@@ -52,13 +52,14 @@ require_once '../javascript/web.php'
 <body>
   <main>
   <header>
-    <div class="h1-logo">
-      <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt="">
-    </div>
+
 
     <nav>
-
+     
       <ul>
+         <div class="h1-logo">
+        <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt="">
+      </div>
         <li>
           <a href=""><span class="material-symbols-outlined">
             home
@@ -81,9 +82,11 @@ require_once '../javascript/web.php'
 
     </nav>
   
-
-  <a href="">Sair</a>
-
+    <div class="exit-link">
+    <a href="" class="">Sair<span class="material-symbols-outlined">
+      logout
+      </span></a>
+</div>
   </header>
   <main>
     <section class="meio">
@@ -110,7 +113,15 @@ require_once '../javascript/web.php'
 } else {
     echo "NOME NÃO DISPONÍVEL!";
 }
-?> 
+?> <div class="msg-box">
+<span class="material-symbols-outlined">
+
+  notifications
+  </span>
+
+    
+  
+</div>
 </div>
   <div class="cards">
   <div class="card-container">
