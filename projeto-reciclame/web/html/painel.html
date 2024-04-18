@@ -46,6 +46,8 @@ require_once '../javascript/web.php'
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="stylesheet" href="../style/style-log.css">
   <link rel="stylesheet" href="../style/painel-style.css">
+  <link rel="stylesheet" href="../style/style-charts.css">
+
 
   <title>Projeto-Reciclame</title>
 </head>
@@ -93,15 +95,119 @@ require_once '../javascript/web.php'
  
    
    <section class="dash-area">
+    
        <div id="wrapper">
+        
          <div class="content-area">
            <div class="container-fluid">
            
              <div class="main">
+              <select name="pontos de coleta" id="pontosc" aria-placeholder="" >
+                <option value="0">Escolha um de seus pontos de coleta inteligente...</option>
+                <option value="0">Churrasqueira 1</option>
+                <option value="0">Churrasqueira 2</option>
+                <option value="0">Churrasqueira 3</option>
+                <option value="0">Academia</option>
+                            </select>
                <div class="row mt-4">
                  <div class="col-md-5">
-                   <div class="box columnbox mt-4">
-                     <div id="columnchart"></div>
+
+                   <div class="box columnbox mt-4" id="ponto-form">
+                    <li>
+                      <span>Tipo: Plastico</span>
+                      <span>Local/Localização: Churrasqueira 2</span>
+                      <span>Status:ON</span>
+
+                    </li>
+       
+                      <div class="progress-container">
+                        <div class="progress-wrapper">
+                          <div class="progress2"></div>
+                          <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+                          <div id="percentage">0%</div> <!-- Número de porcentagem no meio do gráfico -->
+                      </div>
+                        </div>
+                        <div id="pesoDisplay"></div> <!-- Campo para exibir o peso -->
+                      </div>
+
+<script>
+  // Função para atualizar o preenchimento da barra de progresso e a porcentagem
+  function updateProgress(volume, limiteMaximoVolume) {
+      var progressFill = document.getElementById("progressFill");
+      var altura = (volume / limiteMaximoVolume) * 100;
+      progressFill.style.height = altura + "%";
+
+      // Atualiza o número de porcentagem
+      var percentage = (volume / limiteMaximoVolume) * 100;
+      document.getElementById("percentage").textContent = Math.round(percentage) + "%";
+      
+      // Atualiza o peso exibido
+      updatePeso(volume);
+  }
+
+  // Função para atualizar o peso exibido
+  function updatePeso(peso) {
+      var pesoDisplay = document.getElementById("pesoDisplay");
+      pesoDisplay.textContent = "Peso: " + peso.toFixed(2) + " Kgs"; // Arredonda o peso para 2 casas decimais
+  }
+
+  // Simulação de dados
+  var volumeAtual = 0;
+  var limiteMaximoVolume = 80; // Volume máximo definido
+
+  // Atualização dos dados a cada intervalo de tempo (em milissegundos)
+  var intervaloDeTempo = 10000; // 1 segundo
+  setInterval(function() {
+      // Incrementa o volume atual (simulação)
+      volumeAtual += Math.random() * 8; // Incremento aleatório
+      
+      // Verifica se o volume atual ultrapassou o limite máximo
+      if (volumeAtual > limiteMaximoVolume) {
+          volumeAtual = limiteMaximoVolume; // Limita o volume atual ao máximo
+      }
+
+      // Atualiza a barra de progresso com os novos dados
+      updateProgress(volumeAtual, limiteMaximoVolume);
+  }, intervaloDeTempo);
+</script>
+<script>
+  
+    // Função para atualizar o preenchimento da barra de progresso e a porcentagem
+    function updateProgress(volume, limiteMaximoVolume) {
+        var progressFill = document.getElementById("progressFill");
+        var percentage = (volume / limiteMaximoVolume) * 100;
+        progressFill.style.height = percentage + "%";
+        document.getElementById("percentage").textContent = Math.round(percentage) + "%";
+    }
+
+    // Iniciar o WebSocket e receber dados
+    // Este trecho de código pode ser colocado em um arquivo JavaScript separado e incluído aqui usando a tag <script>
+    var socket = new WebSocket("ws://localhost:1880/reciclame.com/ws");
+
+    socket.onmessage = function (event) {
+        var dadosRecebidos = JSON.parse(event.data);
+        
+        // Verifica se os dados recebidos são um array
+        if (Array.isArray(dadosRecebidos) && dadosRecebidos.length > 0) {
+            // Extrai os dados do primeiro elemento do array
+            var primeiroElemento = dadosRecebidos[0];
+            var data = primeiroElemento.data;
+            
+            // Verifica se há dados válidos
+            if (Array.isArray(data) && data.length > 0) {
+                // Assumindo que o primeiro elemento do array "data" contém o volume e o limite
+                var volumeAtual = data[0][0]; // Primeiro elemento do primeiro array em data
+                var limiteMaximoVolume = data[0][2]; // Terceiro elemento do primeiro array em data
+                updateProgress(volumeAtual, limiteMaximoVolume);
+            } else {
+                console.log("Dados recebidos inválidos: array de dados vazio.");
+            }
+        } else {
+            console.log("Dados recebidos inválidos: array de dados vazio ou não encontrado.");
+        }
+    };
+</script>
+
                    </div>
                  </div>
                  <div class="col-md-7">
@@ -145,57 +251,13 @@ require_once '../javascript/web.php'
            </div>
          </div>
        </div>
-       <section class="table-sec">
-        <div class="h2"> <span></span>
-          <h2>Meus Pontos de Coleta</h2>
-        </div>
-  
-        <table class="table table-bordered ">
-          <thead class="thead-dark">
-  
-            <th scope="col">Código</th>
-            <th scope="col">propietario</th>
-            <th scope="col">Material</th>
-            <th scope="col">peso.Max</th>
-            <th scope="col">vol.Max</th>
-            <th scope="col">localizacao</th>
-  
-            </tr>
-            <?php foreach ($lista as $linha): ?>
-              <tr class="table-light">
-  
-                <td>
-                  <?php echo $linha['idLixeira'] ?>
-                </td>
-                <td>
-                  <?php echo $linha['nome_empresa'] ?>
-                </td>
-                <td>
-                  <?php echo $linha['tipo'] ?>
-                </td>
-                <td>
-                  <?php echo $linha['peso'] ?>
-                </td>
-                <td>
-                  <?php echo $linha['volume'] ?>
-  
-                <td>
-                  <?php echo $linha['nome'] ?>
-                </td>
-  
-  
-  
-  
-              </tr>
-            <?php endforeach ?>
-        </table>
-      </section>
-   </section>
+       
       </main>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
        <script src="../javascript/dash.js"></script>
+      
    
 
   <script>
