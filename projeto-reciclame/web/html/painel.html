@@ -130,46 +130,7 @@ require_once '../javascript/web.php'
                         <div id="pesoDisplay"></div> <!-- Campo para exibir o peso -->
                       </div>
 
-<script>
-  // Função para atualizar o preenchimento da barra de progresso e a porcentagem
-  function updateProgress(volume, limiteMaximoVolume) {
-      var progressFill = document.getElementById("progressFill");
-      var altura = (volume / limiteMaximoVolume) * 100;
-      progressFill.style.height = altura + "%";
 
-      // Atualiza o número de porcentagem
-      var percentage = (volume / limiteMaximoVolume) * 100;
-      document.getElementById("percentage").textContent = Math.round(percentage) + "%";
-      
-      // Atualiza o peso exibido
-      updatePeso(volume);
-  }
-
-  // Função para atualizar o peso exibido
-  function updatePeso(peso) {
-      var pesoDisplay = document.getElementById("pesoDisplay");
-      pesoDisplay.textContent = "Peso: " + peso.toFixed(2) + " Kgs"; // Arredonda o peso para 2 casas decimais
-  }
-
-  // Simulação de dados
-  var volumeAtual = 0;
-  var limiteMaximoVolume = 80; // Volume máximo definido
-
-  // Atualização dos dados a cada intervalo de tempo (em milissegundos)
-  var intervaloDeTempo = 10000; // 1 segundo
-  setInterval(function() {
-      // Incrementa o volume atual (simulação)
-      volumeAtual += Math.random() * 8; // Incremento aleatório
-      
-      // Verifica se o volume atual ultrapassou o limite máximo
-      if (volumeAtual > limiteMaximoVolume) {
-          volumeAtual = limiteMaximoVolume; // Limita o volume atual ao máximo
-      }
-
-      // Atualiza a barra de progresso com os novos dados
-      updateProgress(volumeAtual, limiteMaximoVolume);
-  }, intervaloDeTempo);
-</script>
 <script>
   
     // Função para atualizar o preenchimento da barra de progresso e a porcentagem
