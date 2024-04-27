@@ -22,8 +22,9 @@
 }
 
 body{
-  background-color: rgb(34, 34, 34);
-  height: 100vh;
+  background-color: rgb(19, 19, 22);
+  height: 100%;
+  width: 100%;
 
 
 }
@@ -32,18 +33,20 @@ main{
  
     display: flex;
     flex-direction: row;
-
-    justify-content: center;
+    width: 100%;
+   height: 100vh;
     margin: 0%;
 
     
 }
 
 .car-text-login{
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(27, 27, 31);
   padding: 1rem;
   margin: 0;
   top: 0;
+  box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.13);
+  color: hsl(91, 95%, 43%);
 
  
 }
@@ -55,9 +58,20 @@ main{
   justify-content: left;
   align-items: center;
 }
+.h1-logo{
+  display: flex;
+  justify-content: center;
+  height: 10rem;
+ 
+}
+.h1-logo>img{
+ width: 70%;
+ object-fit: cover ;
+ filter: saturate(200%);
+}
 .exit-link a{
-
-  color: greenyellow;
+  
+  color: hsl(91, 100%, 49%);
 
 
   display: flex;
@@ -71,18 +85,19 @@ main{
   display: flex;
   flex-direction: row;
   gap: 5px;
-  color: rgb(5, 196, 5);
+  color: hsl(91, 100%, 49%);
   text-decoration: none;
 }
 header{
 
     width: 400px;
     height: 100vh;
-    background-color: rgb(53, 53, 53);
+    background-color: rgb(27, 27, 31);
     margin-left: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 8px 10px 15px rgba(0, 0, 0, 0.13);
    
    
     
@@ -102,6 +117,7 @@ nav{
     display: flex;
     flex-direction: column;
     justify-content: left;
+    margin-bottom: 20rem;
     
 
 }
@@ -125,16 +141,14 @@ nav ul li{
  
   
 }
-.car-text-login{
-  color: rgb(109, 226, 41);
-}
+
 .meio{
   
   width: 100%;
-
   display: flex;
   gap: 1rem;
   flex-direction: column;
+  
 
 }
 nav ul li a{
@@ -148,12 +162,12 @@ nav ul li a{
 nav ul li a:hover{
  
   text-decoration: none;
-  color: rgb(109, 226, 41);
+  color: hsl(91, 100%, 49%);
 }
 nav ul li:hover a {
 
   text-decoration: none;
-  color: rgb(109, 226, 41);
+  color: hsl(91, 100%, 49%);
 }
 nav ul li:hover{
   background-color: black;
@@ -168,6 +182,8 @@ nav ul li:hover{
     display: flex;
     flex-direction: column;
     gap: 3rem;
+    height: 100%;
+    justify-content: center;
    
    
 }
@@ -178,6 +194,7 @@ nav ul li:hover{
     flex-direction: row;
     gap: 3rem;
     justify-content: center;
+    
 }
 
 
@@ -219,13 +236,13 @@ nav ul li:hover{
 .card {
   max-width: 100%;
   width: 400px;
-  background-color: rgb(12, 12, 12);
+background-color: rgb(12, 12, 14);
   padding: 2rem;
   border-top: 5px solid var(--border-color);
   border-radius: 5px;
   box-shadow: 5px 10px 10px rgba(134, 153, 172, 0.055);
   color: white;
-  --border-color: hsl(106, 100%, 49%);
+  --border-color: hsl(91, 100%, 49%);
 }
 
 .card_title {
@@ -243,6 +260,7 @@ nav ul li:hover{
 .card_img {
   margin-left: auto;
   display: block;
+  
 }
 
 @media (max-width: 768px) {
