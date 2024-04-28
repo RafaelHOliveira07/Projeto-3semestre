@@ -1,9 +1,19 @@
 <?php
-
 require_once 'empresa-verifica.php';
 $idEmpresa = $_SESSION['idEmpresa'];
+include_once '../classes/empresa.php';
+$empresa = new Empresa();
 
-require_once "../classes/Lixeira.php";
+
+$pontos_empresa = $empresa->obterPontoEmpresaParaMapa();
+$pontos_json_empresa = json_encode($pontos_empresa);
+
+
+require_once '../classes/lixeira.php';
+$lixeira = new Lixeira();
+$jsonPontosLixeira = $lixeira->obterPontosLixeiraParaMapa();
+require_once 'maps-empresa.php';
+
 $lixeira = new Lixeira();
 $lista = $lixeira->listarlogado($idEmpresa);
 
@@ -21,9 +31,11 @@ require_once '../javascript/web.php'
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
- 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap"
+    async defer></script>
+
+</script>
+
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -32,16 +44,18 @@ require_once '../javascript/web.php'
     <link rel="shortcut icon" href="../img/bin-verde.png" type="image/x-icon">
   <link href="../style/stylemap.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  
   <link rel="stylesheet" href="../style/style-log.css">
 
   <link rel="stylesheet" href="../style/painel-style.css">
   <link rel="stylesheet" href="../style/style-charts.css">
-
+  
 
 
   <title>Projeto-Reciclame</title>
 </head>
 <body>
+  
   <main>
   <header>
      <div class="h1-logo">
@@ -80,7 +94,7 @@ require_once '../javascript/web.php'
       </span></a>
 </div>
   </header>
-  <main>
+ 
     <section class="meio">
     <div class="car-text-login">
    
@@ -117,7 +131,7 @@ require_once '../javascript/web.php'
 </div>
 
    <section class="dash-area">
-    
+ 
   <div class="h2"> <span></span>
     <h2 class="card-title"></h2>
   </div>
@@ -156,10 +170,12 @@ require_once '../javascript/web.php'
                         <div id="pesoDisplay"></div> <!-- Campo para exibir o peso -->
                       </div>
 
+                      <div class="img-maps">
 
+<div id="mapa"></div>
 
-
-                   </div>
+</div>
+                      
                  </div>
                  <div class="col-md-7">
                    <div class="box  mt-4">

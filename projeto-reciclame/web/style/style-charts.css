@@ -9,6 +9,24 @@
         
     }
 
+    .img-maps{
+        max-width: 100%;
+        width: 80rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+      }
+      
+      #mapa{
+        height: 600px; 
+        width: 100%;
+        background-color: #000;
+        border-radius: 10px 0px 0px 10px;
+      }
+      
+      
+      
     .progress {
         width: 100%;
         height: 100%;
