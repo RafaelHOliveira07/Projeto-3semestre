@@ -130,7 +130,7 @@ require_once '../javascript/web.php'
   
 </div>
 
-   <section class="dash-area">
+ 
  
   <div class="h2"> <span></span>
     <h2 class="card-title"></h2>
@@ -138,10 +138,10 @@ require_once '../javascript/web.php'
     
        <div id="wrapper">
         
-         <div class="content-area">
-           <div class="container-fluid">
+     
            
-             <div class="main">
+            <div class="charts-flex">
+            
               <select name="pontos de coleta" id="pontosc" aria-placeholder="" >
                 <option value="0">Escolha um de seus pontos de coleta inteligente...</option>
                 <option value="0">Churrasqueira 1</option>
@@ -149,16 +149,11 @@ require_once '../javascript/web.php'
                 <option value="0">Churrasqueira 3</option>
                 <option value="0">Academia</option>
                             </select>
-               <div class="row mt-4">
-                 <div class="col-md-5">
+               
+                 <div class="ponto-chart ">
 
-                   <div class="box columnbox mt-4" id="ponto-form">
-                    <li>
-                      <span>Tipo: Plastico</span>
-                      <span>Local/Localização: Churrasqueira 2</span>
-                      <span>Status:ON</span>
-
-                    </li>
+                  <div class="ponto-real" id="ponto-form">
+                    
        
                       <div class="progress-container">
                         <div class="progress-wrapper">
@@ -167,51 +162,34 @@ require_once '../javascript/web.php'
                           <div id="percentage">0%</div> <!-- Número de porcentagem no meio do gráfico -->
                       </div>
                         </div>
-                        <div id="pesoDisplay"></div> <!-- Campo para exibir o peso -->
-                      </div>
+                        <div id="pesoDisplay"></div> <li>
+                          <ul>
+                      <li><span>Tipo: Plastico</span></li>
+                      <li><span>Local/Localização: Churrasqueira 2</span></li>
+                     <li> <span>Status:ON</span>     </li>
+
+               </ul>
+                  </div>
 
                       <div class="img-maps">
 
-<div id="mapa"></div>
+                        <div id="mapa"></div>
 
-</div>
+                        </div>
                       
+                 
                  </div>
-                 <div class="col-md-7">
-                   <div class="box  mt-4">
-                     <div id="linechart"></div>
-                   </div>
-                 </div>
-               </div>
+              </div>
+           
+        
+       
+    </section>
    
-               <div class="row">
-                 <div class="col-md-5">
-                   <div class="box radialbox mt-4">
-                     <div id="circlechart"></div>
-                   </div>
-                 </div>
-                 <div class="col-md-7">
-                   <div class="box mt-4">
-                     <div class="mt-4">
-                       <div id="progress1"></div>
-                     </div>
-                     <div class="mt-4">
-                       <div id="progress2"></div>
-                     </div>
-                     <div class="mt-4">
-                       <div id="progress3"></div>
-                     </div>
-                   </div>
-                 </div>
-               </div>
+               
+   
    
               
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-       
+ 
       </main>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
