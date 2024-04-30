@@ -1,75 +1,91 @@
-<?php
-
-require_once 'empresa-verifica.php';
-$idEmpresa = $_SESSION['idEmpresa'];
-
-require_once "../classes/Lixeira.php";
-$lixeira = new Lixeira();
-$lista = $lixeira->listarlogado($idEmpresa);
-
-$listaJson = json_encode($lista);
-require_once '../javascript/web.php'
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Progress Bar</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gráfico de Torta de Pontos de Coleta</title>
+  <!-- Incluindo Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
-
 <body>
+  <canvas id="graficoTorta" width="400" height="400"></canvas>
 
-<div class="progress-container">
-    <div class="progress-wrapper">
-        <div class="progress">
-            <div class="progress-fill" id="progressFill"></div>
-        </div>
-        <div class="percentage" id="percentage">0%</div>
-    </div>
-</div>
+  <script>
+    // Dados dos pontos de coleta
+    const pontosColeta = [
+      { tipo: "Plastico", latitude: -22.4255683, longitude: -46.8300221 },
+      { tipo: "Plastico", latitude: -22.4445997, longitude: -46.8187192 },
+      { tipo: "Plastico", latitude: -22.4329607, longitude: -46.8319485 },
+      { tipo: "Plastico", latitude: -22.4445997, longitude: -46.8187192 },
+      { tipo: "Papel", latitude: -22.4155876, longitude: -46.8214036 },
+      { tipo: "Metal", latitude: -22.4255683, longitude: -46.8300221 },
+      { tipo: "Papel", latitude: -22.4255683, longitude: -46.8300221 },
+      { tipo: "Vidro", latitude: -22.4329607, longitude: -46.8319485 }
+    ];
 
-<script>
-    // Função para atualizar o preenchimento da barra de progresso e a porcentagem
-    function updateProgress(volume, limiteMaximoVolume) {
-        var progressFill = document.getElementById("progressFill");
-        var percentage = (volume / limiteMaximoVolume) * 100;
-        progressFill.style.height = percentage + "%";
-        document.getElementById("percentage").textContent = Math.round(percentage) + "%";
-    }
+    // Contagem dos tipos de pontos de coleta
+    const contagemTipos = {};
+    pontosColeta.forEach(ponto => {
+      contagemTipos[ponto.tipo] = contagemTipos[ponto.tipo] + 1 || 1;
+    });
 
-    // Iniciar o WebSocket e receber dados
-    // Este trecho de código pode ser colocado em um arquivo JavaScript separado e incluído aqui usando a tag <script>
-    var socket = new WebSocket("ws://localhost:1880/reciclame.com/ws");
+    const tipos = Object.keys(contagemTipos);
+    const quantidades = Object.values(contagemTipos);
 
-    socket.onmessage = function (event) {
-        var dadosRecebidos = JSON.parse(event.data);
-        
-        // Verifica se os dados recebidos são um array
-        if (Array.isArray(dadosRecebidos) && dadosRecebidos.length > 0) {
-            // Extrai os dados do primeiro elemento do array
-            var primeiroElemento = dadosRecebidos[0];
-            var data = primeiroElemento.data;
-            
-            // Verifica se há dados válidos
-            if (Array.isArray(data) && data.length > 0) {
-                // Assumindo que o primeiro elemento do array "data" contém o volume e o limite
-                var volumeAtual = data[0][0]; // Primeiro elemento do primeiro array em data
-                var limiteMaximoVolume = data[0][2]; // Terceiro elemento do primeiro array em data
-                updateProgress(volumeAtual, limiteMaximoVolume);
-            } else {
-                console.log("Dados recebidos inválidos: array de dados vazio.");
-            }
-        } else {
-            console.log("Dados recebidos inválidos: array de dados vazio ou não encontrado.");
+    // Calculando total de pontos de coleta
+    const total = quantidades.reduce((acc, cur) => acc + cur, 0);
+
+    // Calculando porcentagem de cada tipo
+    const porcentagens = quantidades.map(qtde => ((qtde / total) * 100).toFixed(1));
+
+    // Configurações do gráfico
+    const config = {
+      type: 'doughnut',
+      data: {
+        labels: tipos.map((tipo, index) => `${tipo} (${porcentagens[index]}%)`),
+        datasets: [{
+          label: 'Quantidade',
+          data: quantidades,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+            'rgba(75, 192, 192, 0.5)',
+            'rgba(153, 102, 255, 0.5)',
+            'rgba(255, 159, 64, 0.5)',
+            'rgba(255, 99, 255, 0.5)' // Cor adicionada para o tipo "Vidro"
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+            'rgba(255, 99, 255, 1)' // Cor adicionada para o tipo "Vidro"
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Distribuição dos Tipos de Pontos de Coleta'
+        },
+        animation: {
+          animateScale: true,
+          animateRotate: true
         }
+      }
     };
-</script>
 
-
+    // Desenhar o gráfico
+    const ctx = document.getElementById('graficoTorta').getContext('2d');
+    new Chart(ctx, config);
+  </script>
 </body>
 </html>

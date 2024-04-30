@@ -50,7 +50,7 @@ require_once '../javascript/web.php'
 </head>
 
 <body>
-  <main>
+  
   <header>
      <div class="h1-logo">
         <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt="">
@@ -66,7 +66,7 @@ require_once '../javascript/web.php'
             </span>Inicio</a>
         </li>
         <li>
-          <a href=""><span class="material-symbols-outlined">
+          <a href="painel2.php"><span class="material-symbols-outlined">
             delete
             </span> Meus Pontos de Coleta</a>
         </li>
@@ -88,7 +88,7 @@ require_once '../javascript/web.php'
       </span></a>
 </div>
   </header>
-  <main>
+
     <section class="meio">
     <div class="car-text-login">
     <h1 class="fancy">Seja-bem vindo</h1>
@@ -118,11 +118,11 @@ require_once '../javascript/web.php'
 
   notifications
   </span>
-
+ </section>
     
   
 </div>
-</div>
+</div><main>
   <div class="cards">
   <div class="card-container">
   <div class="card cyan">
@@ -153,7 +153,7 @@ require_once '../javascript/web.php'
 
 
 </div>
- </section>
+
 
 
 

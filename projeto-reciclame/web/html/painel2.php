@@ -31,10 +31,9 @@ require_once '../javascript/web.php'
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap"
-    async defer></script>
 
-</script>
+
+
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
@@ -44,19 +43,19 @@ require_once '../javascript/web.php'
     <link rel="shortcut icon" href="../img/bin-verde.png" type="image/x-icon">
   <link href="../style/stylemap.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="../style/style-log.css">
 
-  <link rel="stylesheet" href="../style/painel-style.css">
+ 
   <link rel="stylesheet" href="../style/style-charts.css">
-  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
   <title>Projeto-Reciclame</title>
 </head>
 <body>
   
-  <main>
+  
   <header>
      <div class="h1-logo">
         <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt="">
@@ -130,31 +129,33 @@ require_once '../javascript/web.php'
   
 </div>
 
+</section>
+ <main>
  
- 
-  <div class="h2"> <span></span>
-    <h2 class="card-title"></h2>
-  </div>
     
        <div id="wrapper">
         
      
            
             <div class="charts-flex">
-            
+              <h3>Tempo real:</h3>
+              <p>Selecione o ponto que desejar e acompanhe o estado do volume em tempo real:</p>
               <select name="pontos de coleta" id="pontosc" aria-placeholder="" >
                 <option value="0">Escolha um de seus pontos de coleta inteligente...</option>
-                <option value="0">Churrasqueira 1</option>
-                <option value="0">Churrasqueira 2</option>
-                <option value="0">Churrasqueira 3</option>
-                <option value="0">Academia</option>
+                <?php
+    // Itera sobre a lista de pontos de coleta
+    foreach ($lista as $ponto) {
+        echo "<option value='" . $ponto['idLixeira'] . "'>" . $ponto['nome'] . "</option>";
+    }
+    ?>
                             </select>
                
                  <div class="ponto-chart ">
 
                   <div class="ponto-real" id="ponto-form">
-                    
-       
+                  <div id="informacoes_ponto" class="ponto-real">
+  <!-- Esta div será preenchida dinamicamente com as informações do ponto de coleta selecionado -->
+</div>
                       <div class="progress-container">
                         <div class="progress-wrapper">
                           <div class="progress2"></div>
@@ -162,31 +163,85 @@ require_once '../javascript/web.php'
                           <div id="percentage">0%</div> <!-- Número de porcentagem no meio do gráfico -->
                       </div>
                         </div>
-                        <div id="pesoDisplay"></div> <li>
-                          <ul>
-                      <li><span>Tipo: Plastico</span></li>
-                      <li><span>Local/Localização: Churrasqueira 2</span></li>
-                     <li> <span>Status:ON</span>     </li>
-
-               </ul>
+          
                   </div>
 
                       <div class="img-maps">
 
-                        <div id="mapa"></div>
+                        <div id="mapa">
+                          
+                        </div>
 
                         </div>
                       
                  
                  </div>
               </div>
+           <section class="gerais">
+                <canvas id="graficoTorta" width="300" height="300"></canvas>
+
+                <script>
+                  // Dados dos pontos de coleta
+                  const pontosColeta = [
+                    { tipo: "Plastico", usos: 25 },
+                    { tipo: "Papel", usos: 20 },
+                    { tipo: "Metal", usos: 15 },
+                    { tipo: "Vidro", usos: 10 }
+                  ];
+              
+                  // Obtendo tipos e quantidades de usos
+                  const tipos = pontosColeta.map(ponto => ponto.tipo);
+                  const quantidades = pontosColeta.map(ponto => ponto.usos);
+              
+                  // Configurações do gráfico
+                  const config = {
+                    type: 'doughnut',
+                    data: {
+                      labels: tipos,
+                      datasets: [{
+                        label: 'Quantidade',
+                        data: quantidades,
+                        backgroundColor: [
+                          'rgba(255, 99, 132, 0.5)',
+                          'rgba(54, 162, 235, 0.5)',
+                          'rgba(255, 206, 86, 0.5)',
+                          'rgba(75, 192, 192, 0.5)',
+                        ],
+                        borderColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                        ],
+                        borderWidth: 1
+                      }]
+                    },
+                    options: {
+                      responsive: true,
+                      legend: {
+                        position: 'top',
+                      },
+                      title: {
+                        display: true,
+                        text: 'Distribuição dos Tipos de Pontos de Coleta'
+                      },
+                      animation: {
+                        animateScale: true,
+                        animateRotate: true
+                      }
+                    }
+                  };
+              
+                  // Desenhar o gráfico
+                  const ctx = document.getElementById('graficoTorta').getContext('2d');
+                  new Chart(ctx, config);
+                </script>
            
-        
        
     </section>
    
                
-   
+
    
               
  
@@ -201,7 +256,8 @@ require_once '../javascript/web.php'
   <script>
     var socket = new WebSocket("ws://localhost:1880/reciclame.com/ws");
   </script>
- 
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap"
+    async defer></script>
 
 </body>
 
