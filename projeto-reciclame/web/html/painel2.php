@@ -18,8 +18,8 @@ $lixeira = new Lixeira();
 $lista = $lixeira->listarlogado($idEmpresa);
 
 $listaJson = json_encode($lista);
-require_once '../javascript/web.php'
-
+require_once '../javascript/web.php';
+require_once '../javascript/infos.php';
 
 ?>
 
@@ -140,20 +140,20 @@ require_once '../javascript/web.php'
             <div class="charts-flex">
               <h3>Tempo real:</h3>
               <p>Selecione o ponto que desejar e acompanhe o estado do volume em tempo real:</p>
-              <select name="pontos de coleta" id="pontosc" aria-placeholder="" >
-                <option value="0">Escolha um de seus pontos de coleta inteligente...</option>
-                <?php
-    // Itera sobre a lista de pontos de coleta
-    foreach ($lista as $ponto) {
-        echo "<option value='" . $ponto['idLixeira'] . "'>" . $ponto['nome'] . "</option>";
-    }
-    ?>
-                            </select>
+              <select id="pontosSelect" onchange="carregarInformacoes()">
+    <?php foreach ($lista as $ponto): ?>
+        <option value="<?php echo $ponto['idLixeira']; ?>"><?php echo $ponto['nome']; ?></option>
+    <?php endforeach; ?>
+</select>
+
                
                  <div class="ponto-chart ">
 
                   <div class="ponto-real" id="ponto-form">
-                  <div id="informacoes_ponto" class="ponto-real">
+                  <div  class="ponto-real">
+                  <div id="informacoes_ponto">
+    <!-- Aqui serão exibidas as informações do ponto de coleta -->
+</div>
   <!-- Esta div será preenchida dinamicamente com as informações do ponto de coleta selecionado -->
 </div>
                       <div class="progress-container">
@@ -249,7 +249,11 @@ require_once '../javascript/web.php'
        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-       
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    // Seu código jQuery aqui
+</script>
+
        <script src="../javascript/test.js"></script>
    
 

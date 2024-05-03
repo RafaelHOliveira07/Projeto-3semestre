@@ -43,4 +43,5 @@
             console.log("Lixeira com ID " + idLixeiraRecebido + " não encontrada na lista.");
         }
     };
+    
 </script>
