@@ -1,43 +1,47 @@
 <?php
-// Verifique se o JSON foi enviado via POST
-if(isset($_POST['jsonData']) && isset($_POST['idPontoColeta'])) {
-    $jsonData = $_POST['jsonData'];
-    $idPontoColeta = $_POST['idPontoColeta'];
+require_once 'empresa-verifica.php';
+$idEmpresa = $_SESSION['idEmpresa'];
+require_once '../classes/lixeira.php';
+$lixeira = new Lixeira();
+include_once '../classes/empresa.php';
+$empresa = new Empresa();
+$lista = $lixeira->listar();
 
+$listaJson = json_encode($lista);
 
-    // Converta o JSON em um array associativo
-    $listaDeLixeiras = json_decode($jsonData, true);
-
-    // Verifique se o ID do ponto de coleta foi enviado via POST
-    if(isset($_POST['idPontoColeta'])) {
-        // Obtenha o ID do ponto de coleta enviado via POST
+// Verifique se a lista JSON foi gerada com sucesso
+if ($listaJson !== false) {
+    // Verifique se o ID da lixeira foi enviado via POST
+    if (isset($_POST['idPontoColeta'])) {
+        // Obtenha o ID da lixeira selecionada
         $idPontoColeta = $_POST['idPontoColeta'];
 
-        // Procurar as informações do ponto de coleta com base no ID
-        $informacoesPontoColeta = null;
-        foreach ($listaDeLixeiras as $lixeira) {
+        // Procurar a lixeira com base no ID
+        $lixeiraSelecionada = null;
+        foreach ($lista as $lixeira) {
             if ($lixeira['idLixeira'] == $idPontoColeta) {
-                $informacoesPontoColeta = $lixeira;
+                $lixeiraSelecionada = $lixeira;
                 break;
             }
         }
 
-        // Exiba as informações em formato de lista
-        if(!empty($informacoesPontoColeta)) {
+        // Exiba as informações da lixeira selecionada
+        if (!empty($lixeiraSelecionada)) {
             echo '<ul>';
             echo '<li><h4>Informações</h4></li>';
-            echo '<li><span>Tipo: ' . $informacoesPontoColeta['tipo'] . '</span></li>';
-            echo '<li><span>Local/Localização: ' . $informacoesPontoColeta['nome'] . '</span></li>';
-            echo '<li><span>Vol MAX: ' . $informacoesPontoColeta['volume'] . '</span></li>';
-            echo '<li><span>Pes MAX: ' . $informacoesPontoColeta['peso'] . '</span></li>';
+            echo '<li><span>Tipo: ' . $lixeiraSelecionada['tipo'] . '</span></li>';
+            echo '<li><span>Local/Localização: ' . $lixeiraSelecionada['nome'] . '</span></li>';
+            echo '<li><span>Vol MAX: ' . $lixeiraSelecionada['volume'] . '</span></li>';
+            echo '<li><span>Pes MAX: ' . $lixeiraSelecionada['peso'] . '</span></li>';
             echo '</ul>';
         } else {
-            echo 'Nenhuma informação encontrada para este ponto de coleta.';
+            echo 'Nenhuma informação encontrada para esta lixeira.';
         }
     } else {
-        echo 'ID do ponto de coleta não enviado.';
+        echo 'ID da lixeira não enviado.';
     }
 } else {
-    echo 'JSON de lixeiras não recebido.';
+    // Se houver erro na geração do JSON, exiba uma mensagem de erro
+    echo 'Erro ao converter lista em JSON.';
 }
 ?>

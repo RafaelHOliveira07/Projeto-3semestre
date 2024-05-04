@@ -21,7 +21,7 @@ $lista = $lixeira->listarlogado($idEmpresa);
 $listaJson = json_encode($lista);
 require_once '../javascript/web.php';
 require_once '../javascript/infos.php';
-require_once '../javascript/json.php';
+
 ?>
 
 
@@ -268,22 +268,7 @@ require_once '../javascript/json.php';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-    var jsonData = <?php echo $listaJson; ?>; // Isso assume que $listaJson já é um objeto JavaScript válido
-
-    $(document).ready(function() {
-        // Enviar o JSON para infos-dash.php
-        $.post('infos-dash.php', {
-                jsonData: jsonData // Passa o objeto JSON diretamente, não como uma string
-            })
-            .done(function(response) {
-                console.log(response); // Exibir a resposta do PHP no console
-            })
-            .fail(function(xhr, status, error) {
-                console.error(error); // Exibir erros no console, caso ocorram
-            });
-    });
-</script>
+  
 
 
 
