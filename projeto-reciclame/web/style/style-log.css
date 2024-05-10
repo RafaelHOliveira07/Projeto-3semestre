@@ -98,7 +98,7 @@ left: 25%;
 header{
     position: fixed;
     width: 400px;
-    height: 80%;
+    height: 90%;
     background-color: rgb(27, 27, 31);
     margin-left: 0;
     display: flex;
@@ -106,7 +106,7 @@ header{
     justify-content: space-between;
    box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.26); /* sombra */
  
-    margin-top: 10rem;
+  margin-top: 2%;
     border-radius:0px 10px 10px 0px  ;
    
    

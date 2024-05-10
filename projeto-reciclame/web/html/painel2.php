@@ -139,14 +139,16 @@ require_once '../javascript/infos.php';
 
 
         <div id="wrapper">
-
+       
 
 
             <div class="charts-flex">
                 <h3>Tempo real:</h3>
                 <p>Selecione o ponto que desejar e acompanhe o estado do volume em tempo real:</p>
                 <select id="pontosSelect" onchange="carregarInformacoes()">
+                <option value ="msg">Selecione um ponto de coleta... </option>
                     <?php foreach ($lista as $ponto): ?>
+                        
                     <option value="<?php echo $ponto['idLixeira']; ?>"><?php echo $ponto['nome']; ?></option>
                     <?php endforeach; ?>
                 </select>

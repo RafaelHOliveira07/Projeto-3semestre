@@ -27,8 +27,8 @@
       }
       #informacoes_ponto{
         color: white;
-    
-        background-color: #000;
+        
+       
       }
    
         .ponto-chart{
@@ -58,7 +58,9 @@
         .ponto-real{
             display: flex;
             flex-direction: row;
-            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+         
             padding: 3rem;
             margin-right: 3rem;
             
