@@ -35,94 +35,12 @@ require_once '../javascript/web.php'
 
 <body>
 
-  <header>
-    <div class="h1-logo">
-      <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt="">
-    </div>
-
-    <nav class="navbar navbar-expand-lg main-nav px-0">
+ 
 
 
-
-
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu"
-        aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="burg" id="d1"></span>
-        <span class="burg" id="d2"></span>
-        <span class="burg" id="d3"></span>
-
-      </button>
-      <div class="collapse navbar-collapse" id="mainMenu">
-
-        <ul class="navbar-nav ml-auto text-uppercase f1">
-          <li>
-            <a href="index-logado.php">Início</a>
-          </li>
-      
-          <li>
-            <a href="painel.php">Painel</a>
-          </li>
-          <li>
-            <a href="cadastro-lixeira.php">Novo ponta de Coleta</a>
-        </li>
-          <li>
-            <a href="empresa-logout.php">Sair</a>
-          </li>
-
-        </ul>
-
-      </div>
-
-  </header>
-
-
-  <iframe src="http://127.0.0.1:1880/ui/#!/0?socketid=TzzAfH__q_OlG8zZAAAJ"> </iframe>
+ 
   <main>
-    <section class="table-sec">
-      <div class="h2"> <span></span>
-        <h2>Meus Pontos de Coleta</h2>
-      </div>
-
-      <table class="table table-bordered ">
-        <thead class="thead-dark">
-
-          <th scope="col">Código</th>
-          <th scope="col">propietario</th>
-          <th scope="col">Material</th>
-          <th scope="col">peso.Max</th>
-          <th scope="col">vol.Max</th>
-          <th scope="col">localizacao</th>
-
-          </tr>
-          <?php foreach ($lista as $linha): ?>
-            <tr class="table-light">
-
-              <td>
-                <?php echo $linha['idLixeira'] ?>
-              </td>
-              <td>
-                <?php echo $linha['nome_empresa'] ?>
-              </td>
-              <td>
-                <?php echo $linha['tipo'] ?>
-              </td>
-              <td>
-                <?php echo $linha['peso'] ?>
-              </td>
-              <td>
-                <?php echo $linha['volume'] ?>
-
-              <td>
-                <?php echo $linha['nome'] ?>
-              </td>
-
-
-
-
-            </tr>
-          <?php endforeach ?>
-      </table>
-    </section>
+    
   </main>
   <footer>
     <h3>Redes Sociais</h3>
