@@ -4,13 +4,7 @@
 }
 
 
-body{
-background-color: rgb(21, 20, 26);
-width: 100%;
-justify-content: center;
 
-    
-}
 main{
     display: flex;
     flex-direction: column;

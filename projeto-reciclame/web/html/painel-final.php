@@ -47,11 +47,9 @@ require_once '../javascript/infos.php';
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../style/style-log.css">
-
-
     <link rel="stylesheet" href="../style/style-charts.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-     <link href="../style/stylemap.css" rel="stylesheet"> <link rel="stylesheet" href="../style/style-painel.css">
+    <link href="../style/stylemap.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="../style/style-painel.css">
 
     <title>Projeto-Reciclame</title>
 </head>
@@ -64,31 +62,32 @@ require_once '../javascript/infos.php';
             <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt="">
         </div>
 
-        <nav>
 
-            <ul>
-
-                <li>
-                    <a href=""><span class="material-symbols-outlined">
-                            home
+            <nav>
+                    
+                    <ul>
+                
+                    <li>
+                        <a href="index-logado.php"><span class="material-symbols-outlined">
+                        home
                         </span>Inicio</a>
-                </li>
-                <li>
-                    <a href=""><span class="material-symbols-outlined">
-                            delete
+                    </li>
+                    <li>
+                        <a href="painel-final.php"><span class="material-symbols-outlined">
+                        delete
                         </span> Meus Pontos de Coleta</a>
-                </li>
-                <li>
-                    <a href="">
+                    </li>
+                    <li>
+                        <a href="cadastro-lixeira.php">
                         <span class="material-symbols-outlined">
                             library_add
-                        </span>
+                            </span>
                         </span>Novo Ponto de Coleta</a>
-                </li>
+                    </li>
+                
+                    </ul>
 
-            </ul>
-
-        </nav>
+            </nav>
 
         <div class="exit-link">
             <a href="" class="">Sair<span class="material-symbols-outlined">
@@ -181,7 +180,7 @@ notifications
 
 
 
-    <script src="../javascript/test.js"></script>
+   
 
 
  
