@@ -188,14 +188,6 @@ notifications
 
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 4c1e7b8ab3127b70574dfea2bb4d6145e99ea8fd
-   
-
->>>>>>> 4c1e7b8ab3127b70574dfea2bb4d6145e99ea8fd
 
  
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap"
