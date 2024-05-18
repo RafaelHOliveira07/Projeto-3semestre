@@ -4,13 +4,7 @@
 }
 
 
-body{
-background-color: rgb(21, 20, 26);
-width: 100%;
-justify-content: center;
 
-    
-}
 main{
     display: flex;
     flex-direction: column;
@@ -56,13 +50,14 @@ td{
     position: absolute;
     z-index: 1000;
     width: 300px;
-    height: max-content;
+  ;
+    max-height: 400px;
     background-color: rgb(21, 20, 26);
     right: 5%;
    margin-top: 5rem;
     list-style: none;
    border-radius: 1rem;
-
+    overflow: scroll;
 
 
 }

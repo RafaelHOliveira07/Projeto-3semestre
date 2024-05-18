@@ -22,7 +22,7 @@
 }
 
 body{
-  background-color: rgb(24, 24, 32);
+  background-color: rgb(31, 31, 49);
   height: 100%;
   width: 100%;
 
@@ -31,10 +31,10 @@ body{
 
 main{
     
-  position: absolute;
-left: 25%;
+    position: absolute;
+    left: 25%;
     width: 70%;
-   height: 100%;
+    height: 100%;
     margin: 0%;
     margin-top: 7rem;
     box-sizing: border-box;
@@ -43,10 +43,10 @@ left: 25%;
 }
 
 .car-text-login{
-  position: fixed;
-  background-color: rgb(17, 17, 19);
-  width: 100%;
   
+  position: fixed;
+ 
+  width: 100%;
   padding: 1rem;
   margin: 0;
   top: 0;
@@ -56,15 +56,7 @@ left: 25%;
 
  
 }
-.exit-link{
-    width: 100%;
-  padding: 1.3rem;
-  background-color: rgb(15, 15, 15);
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  border-radius: 0px 0px 10px 0px;
-}
+
 .h1-logo{
   display: flex;
   justify-content: center;
@@ -76,17 +68,7 @@ left: 25%;
  object-fit: cover ;
  filter: saturate(200%);
 }
-.exit-link a{
-  
-  color: hsl(91, 100%, 49%);
 
-
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  gap: 2px;
-  transition: all ease-in-out .4s;
-}
 .exit-link a:hover{
 
   display: flex;
@@ -95,26 +77,52 @@ left: 25%;
   color: hsl(91, 100%, 49%);
   text-decoration: none;
 }
+
+header,.car-text-login{
+  background-color: rgb(24, 24, 34);
+}
 header{
     position: fixed;
-    margin-top: 6.5rem;
     width: 400px;
-    height: 90%;
-    background-color: rgb(17, 17, 19);
+    height: 100vh;
+    margin-top: 4rem;
     margin-left: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 1.3rem;
+    
    box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.26); /* sombra */
  
   
     border-radius:0px 10px 10px 0px  ;
-   
-   
-    
-    
 
 }
+
+.exit-link{
+  width: 100%;
+padding: 1.3rem;
+background-color: rgb(15, 15, 15);
+display: flex;
+justify-content: left;
+align-items: center;
+position: absolute;
+bottom: 5.3vw;
+
+
+
+
+}
+
+.exit-link a{
+
+color: hsl(91, 100%, 49%);
+display: flex;
+justify-content: left;
+align-items: center;
+gap: 2px;
+transition: all ease-in-out .4s;
+}
+
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
@@ -128,7 +136,6 @@ nav{
     display: flex;
     flex-direction: column;
     justify-content: left;
-    margin-bottom: 20rem;
     
 
 }

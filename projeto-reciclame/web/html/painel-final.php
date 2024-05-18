@@ -47,11 +47,9 @@ require_once '../javascript/infos.php';
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../style/style-log.css">
-
-
     <link rel="stylesheet" href="../style/style-charts.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-     <link href="../style/stylemap.css" rel="stylesheet"> <link rel="stylesheet" href="../style/style-painel.css">
+    <link href="../style/stylemap.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="../style/style-painel.css">
 
     <title>Projeto-Reciclame</title>
 </head>
@@ -64,34 +62,35 @@ require_once '../javascript/infos.php';
             <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt="">
         </div>
 
-        <nav>
 
-            <ul>
-
-                <li>
-                    <a href=""><span class="material-symbols-outlined">
-                            home
+            <nav>
+                    
+                    <ul>
+                
+                    <li>
+                        <a href="index-logado.php"><span class="material-symbols-outlined">
+                        home
                         </span>Inicio</a>
-                </li>
-                <li>
-                    <a href=""><span class="material-symbols-outlined">
-                            delete
+                    </li>
+                    <li>
+                        <a href="painel-final.php"><span class="material-symbols-outlined">
+                        delete
                         </span> Meus Pontos de Coleta</a>
-                </li>
-                <li>
-                    <a href="">
+                    </li>
+                    <li>
+                        <a href="cadastro-lixeira.php">
                         <span class="material-symbols-outlined">
                             library_add
-                        </span>
+                            </span>
                         </span>Novo Ponto de Coleta</a>
-                </li>
+                    </li>
+                
+                    </ul>
 
-            </ul>
-
-        </nav>
+            </nav>
 
         <div class="exit-link">
-            <a href="" class="">Sair<span class="material-symbols-outlined">
+            <a href="empresa-logout.php" class="">Sair<span class="material-symbols-outlined">
                     logout
                 </span></a>
         </div>
@@ -104,9 +103,17 @@ require_once '../javascript/infos.php';
 notifications
 </span></button>
 <ul id="notificationsList" class="not-list" style="display: none;"></ul>
-<script></script>
 
+<button id="toggleStatusButton" onclick="toggleStatusMenu()">Status das Lixeiras</button>
+    <div id="statusMenu" style="display: none;">
+    <ul id="statusList">
 
+</ul>
+
+    <!-- Os itens da lista de status serão adicionados aqui dinamicamente -->
+</ul>
+
+    </div>
 
 
    
@@ -181,8 +188,11 @@ notifications
 
 
 
-    <script src="../javascript/test.js"></script>
+<<<<<<< HEAD
+=======
+   
 
+>>>>>>> 4c1e7b8ab3127b70574dfea2bb4d6145e99ea8fd
 
  
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap"
