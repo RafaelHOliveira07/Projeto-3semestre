@@ -1,53 +1,8 @@
 <script>
-        // Lista de lixeiras carregadas do PHP
-        var listaDeLixeiras = <?php echo $listaJson; ?>;
-        console.log("Lista de Lixeiras:", listaDeLixeiras);
 
-       
-    // WebSocket para receber dados das lixeiras
-    var socket = new WebSocket("ws://localhost:1880/reciclame.com/ws");
-
-    socket.onmessage = function(event) {
-        var dadosRecebidos = JSON.parse(event.data);
-        console.log("Dados Recebidos:", dadosRecebidos);
-
-        var idLixeiraRecebido = dadosRecebidos.idLixeira.toString();
-        var lixeiraEncontrada = listaDeLixeiras.find(function(lixeira) {
-            return lixeira.idLixeira.toString() === idLixeiraRecebido;
-        });
-
-        // Atualiza o status da lixeira se ela for encontrada
-        if (lixeiraEncontrada) {
-            console.log("Lixeira encontrada na lista:", lixeiraEncontrada);
-            if (dadosRecebidos.status === "Cheia") {
-                updateStatus(idLixeiraRecebido, "Cheia");
-            } else {
-                updateStatus(idLixeiraRecebido, "Pronto para coleta");
-            }
-            updateLastPulse(idLixeiraRecebido);
-        } else {
-            console.log("Lixeira com ID " + idLixeiraRecebido + " não encontrada na lista.");
-        }
-    };
-
-    // Atualiza todos os status para "Em uso" no carregamento da página
-    window.onload = function() {
-        initializeStatus();
-        updateStatusMenu();
-        setInterval(checkLixeiraStatus, 60000); // Verificar status das lixeiras a cada minuto
-        displayNotifications();
-    };
-
-    // Inicializa o status das lixeiras como "Em uso"
-    function initializeStatus() {
-        listaDeLixeiras.forEach(function(lixeira) {
-            updateStatus(lixeira.idLixeira.toString(), "Em uso");
-        });
-        saveStatusToLocalStorage();
-    }
-
-
-
+   // Lista de lixeiras carregadas do PHP
+var listaDeLixeiras = <?php echo $listaJson; ?>;
+console.log("Lista de Lixeiras:", listaDeLixeiras);
 
 // WebSocket para receber dados das lixeiras
 var socket = new WebSocket("ws://localhost:1880/reciclame.com/ws");
@@ -86,18 +41,35 @@ socket.onmessage = function(event) {
     } else {
         console.log("Lixeira com ID " + idLixeiraRecebido + " não encontrada na lista.");
     }
+};
+
+// Atualiza todos os status para "Em uso" no carregamento da página
+window.onload = function() {
+    // Inicializa os status das lixeiras como "Em uso"
+    initializeStatus();
+    loadNotificationsFromLocalStorage();
+
+    updateStatusMenu();
+    // Inicia a verificação dos status das lixeiras a cada minuto
+    setInterval(checkLixeiraStatus, 60000); // Verificar status das lixeiras a cada minuto
+
+    // Exibe as notificações
+    displayNotifications();
+};
 
 
-        };
+
+        
 
         // Array para armazenar as notificações
         let notifications = [];
         let lixeiraStatus = {};
         let lixeiraLastPulse = {};  // Armazenar o timestamp do último pulso
+        let newIndexForNewNotifications = 0; // Índice para controlar as novas notificações
 
-  
+       
+   
 
-        // Função para criar uma nova notificação e armazená-la
         function createNotification(title, message, timestamp) {
             let notification = {
                 title: title,
@@ -115,6 +87,15 @@ socket.onmessage = function(event) {
                 });
             }
 
+            // Adiciona a classe de animação ao sino
+            const sino = document.getElementById('sino');
+            sino.classList.add('balançando');
+
+            // Remove a classe após a animação terminar (4s)
+            setTimeout(() => {
+                sino.classList.remove('balançando');
+            }, 4000); // Tempo da animação em milissegundos
+
             saveNotificationsToLocalStorage(notifications);
             displayNotifications();
         }
@@ -122,34 +103,58 @@ socket.onmessage = function(event) {
         function loadNotificationsFromLocalStorage() {
             let storedNotifications = JSON.parse(localStorage.getItem("notifications"));
             if (storedNotifications) {
-                notifications = storedNotifications.slice(-5);
+                notifications = storedNotifications.slice(-25);
                 displayNotifications();
             }
         }
 
         function saveNotificationsToLocalStorage(notifications) {
-            let lastFiveNotifications = notifications.slice(-5);
+            let lastFiveNotifications = notifications.slice();
             localStorage.setItem("notifications", JSON.stringify(lastFiveNotifications));
         }
 
-        function displayNotifications() {
-            let notificationsList = document.getElementById("notificationsList");
-            notificationsList.innerHTML = "";
+    
+// Função para exibir notificações
+function displayNotifications() {
+    let notificationsList = document.getElementById("notificationsList");
+    notificationsList.innerHTML = "";
 
-            notifications.forEach(notification => {
-                let listItem = document.createElement("li");
-                listItem.textContent = `${notification.title}: ${notification.message} (${new Date(notification.timestamp).toLocaleString()})`;
-                notificationsList.appendChild(listItem);
-            });
+    // Limita o número de notificações exibidas a 25
+    let startIdx = Math.max(0, notifications.length - 25);
+    let endIdx = notifications.length;
 
-            document.getElementById("notificationUnreadIcon").style.display = notifications.length > 0 ? "inline" : "none";
-            document.getElementById("notificationIcon").style.display = notifications.length > 0 ? "none" : "inline";
-        }
+    for (let i = startIdx; i < endIdx; i++) {
+        let notification = notifications[i];
+        let listItem = document.createElement("li");
+        listItem.textContent = `${notification.title}: ${notification.message} (${new Date(notification.timestamp).toLocaleString()})`;
+        notificationsList.appendChild(listItem);
+    }
+
+    // Atualiza o contador de notificações apenas com as novas notificações
+    let newNotificationsCount = Math.max(0, notifications.length - newIndexForNewNotifications);
+    const notificationCount = document.getElementById("notificationCount");
+    notificationCount.textContent = newNotificationsCount > 0 ? newNotificationsCount.toString() : "0";
+    notificationCount.style.display = newNotificationsCount > 0 ? "flex" : "none";
+}
+
+// Função para zerar o contador de notificações
+function resetNotificationCounter() {
+    newIndexForNewNotifications = notifications.length;
+}
 
         function toggleNotifications() {
-            let notificationsList = document.getElementById("notificationsList");
-            notificationsList.style.display = notificationsList.style.display === "none" ? "block" : "none";
-        }
+    let notificationsList = document.getElementById("notificationsList");
+    notificationsList.style.display = notificationsList.style.display === "none" ? "block" : "none";
+
+    // Zera o contador ao visualizar a lista de notificações
+    const notificationCount = document.getElementById("notificationCount");
+    notificationCount.textContent = "0";
+    notificationCount.style.display = "none"; // Oculta o contador ao zerá-lo
+}
+
+
+
+       
 
         // Status Management
         function initializeStatus() {

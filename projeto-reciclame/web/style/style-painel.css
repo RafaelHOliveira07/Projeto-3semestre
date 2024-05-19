@@ -32,26 +32,81 @@ td{
     color: black;
 }
 
-.button-not{
-    background-color: rgba(255, 255, 255, 0);
-    border: none;
-    position: absolute;
-    right: 5%;
-    top: 40%;
-}
+
 
 .material-symbols-outlined{
 
     color: white;
 }
+.button-not {
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    position: absolute;
+    right: 5%;
+    top: 40%;
+    transform: scale(1);
+    
+      
+}
+.notification-count {
+    position: absolute;
+    top: -4px;  /* Ajuste conforme necessário */
+    right: -3px;  /* Ajuste conforme necessário */
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 16px;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+@keyframes balancar {
+    0% {
+       transform: scale(1.1);
+    }
+    5%, 15% {
+        transform:  rotate(16deg);
+    }
+    10%, 20% {
+        transform:  rotate(-16deg);
+    }
+    25% {
+        transform:  rotate(0deg);
+    }
+    100% {
+        transform:  rotate(0deg);
+    }
+}
+
+.balançando {
+    animation-name: balancar;
+    animation-duration: 4s; /* Duracão aumentada para tornar a animação mais lenta */
+    animation-timing-function: ease-in-out; /* Função de timing para suavizar a animação */
+    animation-iteration-count: infinite;
+}
+
+
+#sino{
+    color: hsl(91, 100%, 49%);
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.button-not:focus{
+    outline-style: none;
+    
+    
+}
 .not-list{
 
     position: absolute;
     z-index: 1000;
-    width: 300px;
-  ;
-    max-height: 400px;
+    width: 450px;
+  
+    max-height: 800px;
     background-color: rgb(21, 20, 26);
     right: 5%;
    margin-top: 5rem;
@@ -60,6 +115,10 @@ td{
     overflow: scroll;
 
 
+}
+.not-list ul{
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .not-list li{

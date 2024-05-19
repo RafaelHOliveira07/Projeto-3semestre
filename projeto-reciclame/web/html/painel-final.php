@@ -99,10 +99,12 @@ require_once '../javascript/infos.php';
     <section class="meio">
         <div class="car-text-login">
         <button id="toggleNotificationsButton" class="button-not" onclick="toggleNotifications()">
-            </span><span class="material-symbols-outlined">
-notifications
-</span></button>
-<ul id="notificationsList" class="not-list" style="display: none;"></ul>
+        <span id="sino" class="material-symbols-outlined">notifications</span>
+        <span id="notificationCount" class="notification-count">0</span>
+    </button>
+    <ul id="notificationsList" class="not-list" style="display: none;"></ul>
+
+
 
 <button id="toggleStatusButton" onclick="toggleStatusMenu()">Status das Lixeiras</button>
     <div id="statusMenu" style="display: none;">
