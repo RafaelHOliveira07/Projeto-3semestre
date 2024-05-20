@@ -43,8 +43,9 @@ td {
     background-color: rgba(255, 255, 255, 0);
     border: none;
     position: absolute;
-    right: 10%;
+    right: 8%;
     top: 40%;
+    color: white;
 }
 
 .notification-count {
@@ -114,6 +115,24 @@ td {
     list-style: none;
     border-radius: 1rem;
     overflow: scroll;
+}
+
+.sta-list {
+    position: absolute;
+    z-index: 1000;
+    width: 250px;
+    max-height: max-content;
+    background-color: rgb(21, 20, 26);
+    right: 8.1%;
+    margin-top: 5rem;
+    list-style: none;
+    border-radius: 1rem;
+}
+
+.sta-list li {
+    color: white;
+    padding: 1rem;
+    border-top: 1px solid rgba(128, 128, 128, 0.401);
 }
 
 .not-list ul {
