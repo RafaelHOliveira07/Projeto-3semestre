@@ -106,7 +106,7 @@ require_once '../javascript/infos.php';
 
 
 
-<button id="toggleStatusButton" onclick="toggleStatusMenu()">Status das Lixeiras</button>
+<button id="toggleStatusButton" class="button-status" onclick="toggleStatusMenu()">Status das Lixeiras</button>
     <div id="statusMenu" style="display: none;">
     <ul id="statusList">
 
