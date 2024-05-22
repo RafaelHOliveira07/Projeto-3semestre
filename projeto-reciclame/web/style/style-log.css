@@ -60,13 +60,21 @@ main{
 .h1-logo{
   display: flex;
   justify-content: center;
-  height: 10rem;
+  padding: 1rem;
+  padding-top: 3rem;
+  width: 400px;
+  
  
 }
 .h1-logo>img{
- width: 70%;
- object-fit: cover ;
- filter: saturate(200%);
+
+width: 400px;
+height: 5rem;
+
+
+
+
+
 }
 
 .exit-link a:hover{
@@ -84,17 +92,16 @@ header,.car-text-login{
 header{
     position: fixed;
     width: 400px;
-    height: 100vh;
-    margin-top: 4rem;
+   height: 100%;
+    top: 7rem;
     margin-left: 0;
     display: flex;
     flex-direction: column;
     gap: 1.3rem;
-    
+    z-index: 2;
    box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.26); /* sombra */
- 
-  
-    border-radius:0px 10px 10px 0px  ;
+
+    
 
 }
 
@@ -221,11 +228,7 @@ nav ul li:hover{
 
 
 
-.header {
-  text-align: center;
 
-
-}
 
 .header_subtitle,
 .header_title {

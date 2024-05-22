@@ -20,7 +20,7 @@ $lista = $lixeira->listarlogado($idEmpresa);
 
 $listaJson = json_encode($lista);
 require_once '../javascript/web.php';
-require_once '../javascript/infos.php';
+
 
 ?>
 
@@ -151,32 +151,7 @@ require_once '../javascript/infos.php';
     <iframe src="http://127.0.0.1:1880/ui/#!/0?socketid=n6TjMogNll7Hy90rAAAF"> </iframe>
 
 
-    <section class="status-sec">
-      <div class="h2"> <span></span>
 
-
-        <h2>Status dos pontos:</h2>
-      </div>
-
-  
-
-          </tr>
-          <?php foreach ($lista as $linha): ?>
-
-            <ul>
-                <span>Ponto de coleta <?php echo $linha['idLixeira'] ?> :</span>
-          
-   
-           
-                
-            </ul>
-
-
-
-
-            </tr>
-          <?php endforeach ?>
-      </table>
     </section>
 
    
@@ -188,7 +163,31 @@ require_once '../javascript/infos.php';
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnw1VEDXoPg6E4-Fk3SUkIPpOcIx5Y-nk&callback=initMap"
         async defer></script>
+        <script>
+  function toggleNotifications() {
+    var notificationsList = document.getElementById('notificationsList');
+    var statusMenu = document.getElementById('statusMenu');
+    
+    if (notificationsList.style.display === 'none' || notificationsList.style.display === '') {
+      notificationsList.style.display = 'block';
+      statusMenu.style.display = 'none';
+    } else {
+      notificationsList.style.display = 'none';
+    }
+  }
 
+  function toggleStatusMenu() {
+    var notificationsList = document.getElementById('notificationsList');
+    var statusMenu = document.getElementById('statusMenu');
+    
+    if (statusMenu.style.display === 'none' || statusMenu.style.display === '') {
+      statusMenu.style.display = 'block';
+      notificationsList.style.display = 'none';
+    } else {
+      statusMenu.style.display = 'none';
+    }
+  }
+</script>
 
 
 

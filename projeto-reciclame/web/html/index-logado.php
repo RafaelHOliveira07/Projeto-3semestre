@@ -44,55 +44,80 @@ require_once '../javascript/web.php'
     <link rel="shortcut icon" href="../img/bin-verde.png" type="image/x-icon">
   <link href="../style/stylemap.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="../style/style-log.css">
+
+    <link rel="stylesheet" href="../style/style-charts.css">
+    <link href="../style/stylemap.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="../style/style-painel.css">
+    <link rel="stylesheet" href="../style/style-log.css">
 
   <title>Projeto-Reciclame</title>
 </head>
 
 <body>
   
-  <header>
-     <div class="h1-logo">
-        <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt="">
-      </div>
+<header>
+        <div class="h1-logo">
+            <img src="../img/Free_Sample_By_Wix__3_-removebg-preview.png" alt="">
+        </div>
 
-    <nav>
-     
-      <ul>
-    
-        <li>
-          <a href=""><span class="material-symbols-outlined">
-            home
-            </span>Inicio</a>
-        </li>
-        <li>
-          <a href="painel2.php"><span class="material-symbols-outlined">
-            delete
-            </span> Meus Pontos de Coleta</a>
-        </li>
-        <li>
-          <a href="">
-            <span class="material-symbols-outlined">
-              library_add
-              </span>
-          </span>Novo Ponto de Coleta</a>
-        </li>
-  
-      </ul>
 
-    </nav>
-  
-    <div class="exit-link">
-    <a href="" class="">Sair<span class="material-symbols-outlined">
-      logout
-      </span></a>
-</div>
-  </header>
+            <nav>
+                    
+                    <ul>
+                
+                    <li>
+                        <a href="index-logado.php"><span class="material-symbols-outlined">
+                        home
+                        </span>Inicio</a>
+                    </li>
+                    <li>
+                        <a href="painel2.php"><span class="material-symbols-outlined">
+                        delete
+                        </span> Meus Pontos de Coleta</a>
+                    </li>
+                    <li>
+                        <a href="cadastro-lixeira.php">
+                        <span class="material-symbols-outlined">
+                            library_add
+                            </span>
+                        </span>Novo Ponto de Coleta</a>
+                    </li>
+                
+                    </ul>
+
+            </nav>
+
+        <div class="exit-link">
+            <a href="empresa-logout.php" class="">Sair<span class="material-symbols-outlined">
+                    logout
+                </span></a>
+        </div>
+    </header>
 
     <section class="meio">
-    <div class="car-text-login">
-    <h1 class="fancy">Seja-bem vindo</h1>
-    <?php
+        <div class="car-text-login">
+        <button id="toggleNotificationsButton" class="button-not" onclick="toggleNotifications()">
+        <span id="sino" class="material-symbols-outlined">notifications</span>
+        <span id="notificationCount" class="notification-count">0</span>
+    </button>
+    <ul id="notificationsList" class="not-list" style="display: none;"></ul>
+
+
+
+<button id="toggleStatusButton" class="button-status" onclick="toggleStatusMenu()">Status das Lixeiras</button>
+    <div id="statusMenu" style="display: none;">
+    <ul id="statusList" class="sta-list">
+
+</ul>
+
+    <!-- Os itens da lista de status serão adicionados aqui dinamicamente -->
+</ul>
+
+    </div>
+
+
+   
+            <?php
     if (!empty($lista)) {
     // Obtém o nome da empresa da primeira linha (assumindo que o nome é o mesmo para todas as lixeiras)
     $nomeDaEmpresa = $lista[0]['nome_empresa'];
@@ -113,16 +138,14 @@ require_once '../javascript/web.php'
 } else {
     echo "NOME NÃO DISPONÍVEL!";
 }
-?> <div class="msg-box">
-<span class="material-symbols-outlined">
+?> <h1 class="fancy">Meus Pontos de Coleta</h1>
+        </div>
+        
 
-  notifications
-  </span>
- </section>
+    </section>     
+
     
-  
-</div>
-</div><main>
+<main>
   <div class="cards">
   <div class="card-container">
   <div class="card cyan">
