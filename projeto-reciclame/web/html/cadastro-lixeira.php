@@ -35,8 +35,9 @@ require_once '../javascript/web.php'
  
   <link rel="stylesheet" href="../style/style-painel.css"> 
 
-    <link rel="stylesheet" href="../style/newponto.css">  
-    <link rel="stylesheet" href="../style/style-log.css">
+    
+    <link rel="stylesheet" href="../style/style-log.css"> 
+    <link rel="stylesheet" href="../style/newponto.css"> 
   <title>Pontos de Coleta</title>
 </head>
 

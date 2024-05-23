@@ -1,4 +1,6 @@
-
+body{
+    background-color: white;
+}
 
 .cadas-cont{
 
@@ -11,6 +13,7 @@
 }
 
 .info-cadas{
+    margin-top: 5rem;
     width: 800px;
     padding: 3rem;
     background-color: rgb(255, 255, 255);
