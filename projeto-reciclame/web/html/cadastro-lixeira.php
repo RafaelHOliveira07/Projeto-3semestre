@@ -58,7 +58,7 @@ require_once '../javascript/web.php'
                     </span>Inicio</a>
                 </li>
                 <li>
-                    <a href="painel-final.php"><span class="material-symbols-outlined">
+                    <a href="painel2.php"><span class="material-symbols-outlined">
                     delete
                     </span> Meus Pontos de Coleta</a>
                 </li>
